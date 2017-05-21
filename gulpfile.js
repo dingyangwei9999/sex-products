@@ -22,7 +22,7 @@ gulp.task('autoRefresh',function(){
 	browserSync({
 		//server:'src',
 		//代理服务器
-		proxy:'http://localhost/tps138/',
+		proxy:'http://localhost/sex-products/',
 		//port:8080,//自定义端口
 		//监听文件修改，自动刷新浏览器
 		files:['src/html/*.html','src/index.html','src/js/*.js']
