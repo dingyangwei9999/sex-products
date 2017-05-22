@@ -1,8 +1,7 @@
 项目名：sex-products
 用户表名 consumers
 {
-	"10000":{
-			"userid":10000,  用户id
+	"130900909":{
 			"nickname":"demo",  用户名
 			"gender":"male",  性别
 			"mobileNo":130900909,  手机号
