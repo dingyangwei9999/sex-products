@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<script type="text/javascript" src="../libs/jquery/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript" src="../libs/common/global.js"></script>
+</head>
+<body>
+	<h1></h1>
+	<script type="text/javascript">
+		$(function(){
+			$.get(erp.baseUrl + 'getsession', function(response){
+				if(!response.status){
+					window.location.href = 'login.html';
+				} else {
+					$('h1').text(response.data);
+				}
+				// console.log(response)
+			})
+		})
+	</script>
+</body>
+</html>
