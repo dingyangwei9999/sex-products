@@ -1,22 +1,26 @@
 @import 'base';
 @import 'common';
+// html {font-size: 120px!important;}
 body{
 	background-color: #F8F8F8;
 	color:#666;
 }
 // 顶部
 header{
-	height: 0.703125rem;
-	border-bottom: #E3E3E3;
+	height: 1.40625rem;
+	border-bottom: 1px solid red;
 	h3{
 		display: inline-block;
 		font-weight: normal;
-		font-size:0.25rem;
-		line-height: 0.703125rem;
+		font-size:16px;
+		line-height: 1.40625rem;
 		margin-left: 0.171875rem;
+		.iconfont{
+			font-size: 14px;
+		}
 	}
 	p{
-		font-size: 0.234375rem;
+		font-size: 14px;
 		float: right;
 		line-height: 0.484375rem;
 		margin:0.109375rem 0 0 0.25rem;

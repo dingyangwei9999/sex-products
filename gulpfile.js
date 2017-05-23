@@ -4,16 +4,16 @@ var sass = require('gulp-sass');
 
 //创建gulp任务 以编译sass文件
 gulp.task('compileSass',function(){
-	gulp.src('src/sass/*.scss')
+	gulp.src('webapp/sass/*.scss')
 	//通过pipe方法导入到插件中实现编译sass
 	.pipe(sass({outputStyle:'extended'}).on('error',sass.logError))
 	//把编译的文件输出
-	.pipe(gulp.dest('src/css/'));
+	.pipe(gulp.dest('webapp/css/'));
 });
 
 //监听文件 自动执行任务
 gulp.task('listenerSass',function(){
-	gulp.watch('src/sass/*.scss',['compileSass']);
+	gulp.watch('webapp/sass/*.scss',['compileSass']);
 });
 
 //浏览器同步任务
@@ -25,11 +25,11 @@ gulp.task('autoRefresh',function(){
 		proxy:'http://localhost/sex-products/',
 		//port:8080,//自定义端口
 		//监听文件修改，自动刷新浏览器
-		files:['src/html/*.html','src/index.html','src/js/*.js']
+		files:['webapp/html/*.html','webapp/index.html','src/js/*.js']
 	});
 
 	//监听sass文件修改，执行编译sass文件任务
-	gulp.watch('src/sass/*.scss',['compileSass']);
+	gulp.watch('webapp/sass/*.scss',['compileSass']);
 });
 
 // 用于js文件的压缩
@@ -37,7 +37,7 @@ var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
 var concat = require('gulp-concat');
 gulp.task('compressJS',function(){
-	gulp.src('src/js/*.js')
+	gulp.src('webapp/js/*.js')
 
 	// 合并
 	.pipe(concat('page.js'))

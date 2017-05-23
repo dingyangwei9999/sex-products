@@ -63,16 +63,18 @@ body {
   color: #666; }
 
 header {
-  height: 0.703125rem;
-  border-bottom: #E3E3E3; }
+  height: 1.40625rem;
+  border-bottom: 1px solid red; }
   header h3 {
     display: inline-block;
     font-weight: normal;
-    font-size: 0.25rem;
-    line-height: 0.703125rem;
+    font-size: 16px;
+    line-height: 1.40625rem;
     margin-left: 0.171875rem; }
+    header h3 .iconfont {
+      font-size: 14px; }
   header p {
-    font-size: 0.234375rem;
+    font-size: 14px;
     float: right;
     line-height: 0.484375rem;
     margin: 0.109375rem 0 0 0.25rem;
