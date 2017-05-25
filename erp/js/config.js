@@ -11,7 +11,8 @@ require.config({
 		"lazyload" : ["jquery"],
 		"app" : ['jquery','amazeui.min'],
 		"amazeui.min" : ['jquery'],
-		"form" : ["jquery"]
+		"form" : ["jquery"],
+		"common" : ["jquery","app"]
 	}
 });
 

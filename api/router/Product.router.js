@@ -56,9 +56,7 @@ exports.Register = function(app){
 
 		console.log(newShopObj);
     //写入数据库
-    db.save('shopInfo',newShopObj); 
-    //设置请求头防止跨域
-    response.setHeader('Access-Control-Allow-Origin','*'); 	
+    db.save('shopInfo',newShopObj); 	
     //响应
 	 	response.send('{"status":true,"message":"上传成功"}'); 
 	});
@@ -69,4 +67,56 @@ exports.Register = function(app){
   //   response.setHeader('Access-Control-Allow-Origin','*');
   //   response.send('{"status":true,"message":"插入成功"}');
   // }); 
+  
+  //查询所有商品
+  app.post('/getProducts',urlencodedParser,function(request, response){
+    db.exists('shopInfo',{},[],function(result){
+      console.log(result);
+      response.send(JSON.stringify(result));
+    });
+  });
+
+  //根据id是否查询得到商品
+  app.post('/getProductsById',urlencodedParser,function(request, response){
+    console.log('request.body--------',request.body._id);
+
+    // var searchArr = [];
+    // for(var attr in request.body){
+    //   searchArr.push(attr);
+    // }
+
+     // console.log(searchArr);
+    //根据id是否查询得到商品
+    var isFinded = false;
+    db.exists('shopInfo',{},[],function(result){
+      result.forEach(function(item){
+        if(item._id == request.body._id){
+          isFinded = true;
+          response.send(JSON.stringify(item));
+          return false;
+        }
+      });
+      !isFinded ? response.send(JSON.stringify({status:false,meaages:"没有查询到商品"})):'';
+    });
+  });
+
+  //传入数组查询商品分类和关键字
+  app.post('/getProductsByArr',urlencodedParser,function(request, response){
+    console.log(request.body);
+    // var arr = ['keyword','classify'];
+    var arr = [];
+    for(var attr in request.body){
+      console.log(attr);
+      arr.push(request.body[attr]);
+    }
+    arr = arr.toString();
+    // var arr = request.body.keyword.split(',');
+    var Reg = new RegExp(arr);
+  console.log(arr.toString());
+    db.existsSingle('shopInfo',request.body,Reg,function(result){
+      console.log(result);
+      response.send(JSON.stringify(result));
+    });
+  });
+
 }
