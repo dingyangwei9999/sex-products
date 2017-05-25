@@ -235,6 +235,7 @@ body::-webkit-scrollbar {
   flex: 1;
   background: #EEEEEE; }
   #container .detail_cont .swiper-container {
+    height: 10.0rem;
     width: 100%; }
     #container .detail_cont .swiper-container .swiper-pagination .swiper-pagination-bullet-active {
       background: #FD19AE;

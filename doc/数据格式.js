@@ -22,7 +22,7 @@
 	"freight":10,  运费
 	"preview":"../img",  商品预览图
 	"listImg":['./img/01.jpg','./img/02.jpg'], 详情页下面的图片
-	"bannerImg":['./img/11.jpg','./img/12.jpg'], 详情页的banner图
+	"bannerImg":['11.jpg','12.jpg'], 详情页的banner图
 	"classify":['热门商品','男性用品','女性用品','安全套'] , 商品属于什么分类
 	"keyword":['安全套']
 }
@@ -34,6 +34,10 @@
 
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+>>>>>>> lisongkaifa
 	
 			"guid":100000,  商品id
 			"title":"WOMO女性粉嫩修复精华",  商品名称
@@ -47,7 +51,11 @@
 			"keyword":['安全套']
 	
 }
+<<<<<<< HEAD
 =======
+=======
+
+>>>>>>> lisongkaifa
 	"guid":100,
 	"title":"神鬼战士左鹰自动抽插震动棒 FunFactory",
 	"description":"该商品没有描述",
@@ -115,4 +123,8 @@
 	"classify":['女性专区'], 
 	"keyword":['快感','女性']
 }
+<<<<<<< HEAD
 >>>>>>> 81a8e53ae2c2ba8ea9cfb508b7b0b88a3d637d88
+=======
+
+>>>>>>> lisongkaifa

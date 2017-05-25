@@ -25,7 +25,7 @@ exports.Register = function(app){
   //上传图片用到的
   //upload.array('photos', 12)  备份
   var cpUpload =  upload.fields([{ name: 'preview', maxCount: 1 }, { name: 'bannerImg', maxCount: 8 }, { name: 'listImg', maxCount: 20 }]);
-	app.post('/upload', urlencodedParser,cpUpload, function(request, response) {
+  app.post('/upload', urlencodedParser,cpUpload, function(request, response) {
 
     //所有上传图片的集合(类型为obj) 格式{[{},{}]}
     var imgFilesObj = request.files;
@@ -54,12 +54,12 @@ exports.Register = function(app){
     newShopObj.bannerImg = bannerImgArr;
     newShopObj.listImg = listImgArr;
 
-		console.log(newShopObj);
+    console.log(newShopObj);
     //写入数据库
-    db.save('shopInfo',newShopObj); 	
+    db.save('shopInfo',newShopObj);   
     //响应
-	 	response.send('{"status":true,"message":"上传成功"}'); 
-	});
+    response.send('{"status":true,"message":"上传成功"}'); 
+  });
   //备份 (仅添加数据无上传图片)
   // app.post('/upload', urlencodedParser, function(request,response) {
   //   // console.log(request.body.newShop);
