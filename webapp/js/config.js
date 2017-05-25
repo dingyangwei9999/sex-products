@@ -4,7 +4,8 @@ require.config({
 		"jqueryCookie" : "../../libs/jquery/jquery.cookie",
 		"lazyload" : "../../libs/jquery/jquery.lazyload",
 		"sideshow" : "../../libs/Swiper-3.4.2/dist/js/swiper.min",
-		"swiper" : "../../libs/Swiper-3.4.2/dist/js/swiper.jquery.min"
+		"swiper" : "../../libs/Swiper-3.4.2/dist/js/swiper.jquery.min",
+		"baseUrl" : "../../libs/common/global"
 	},
 	shim : {
 		"jqueryCookie" : ["jquery"],

@@ -7,6 +7,7 @@
 	<link rel="stylesheet" type="text/css" href="../css/iconfont/iconfont.css">
 	<link rel="stylesheet" type="text/css" href="../css/shoppingCart.css">
     <script src="http://g.tbcdn.cn/mtb/lib-flexible/0.3.4/??flexible_css.js,flexible.js"></script> 
+    <script src="../../libs/jquery/require.js" data-main='../js/shoppingCart.js'></script>
 </head>
 <body>
 	<div id="container">
@@ -29,7 +30,7 @@
 			<ul>
 				<li guid="100">
 					<!-- 左边点击按钮 -->
-					<div>
+					<div id="pic_cart">
 						<i class="check"></i>
 					</div>		
 					<!-- 右边商品信息 -->
@@ -42,7 +43,7 @@
 							<p class="freight">0.00</p>
 							<div class="num">
 								<span class="sub">-</span>
-								<input type="text" value="0">
+								<input type="text" value="0" class="num_text">
 								<span class="plus">+</span>
 							</div>
 						</div>
@@ -66,7 +67,17 @@
 			<div class="tips">
 				<div class="title">确认从购物车删除这些商品?</div>
 				<div class="sub">
-					<nav data-action="cancel">取消</nav><nav data-action="ok">确定</nav>
+					<nav data-action="cancel" class="quxiao">取消</nav><nav data-action="ok" class="confim_ok">确定</nav>
+				</div>
+			</div>
+		</div>
+		<!-- 移至收藏夹弹窗提示 -->
+		<div class="dialog">
+			<div class="layer"></div>
+			<div class="tips">
+				<div class="title">确认将这些商品移至收藏夹?</div>
+				<div class="sub">
+					<nav data-action="cancel" class="quxiao">取消</nav><nav data-action="ok" class="confim_move">确定</nav>
 				</div>
 			</div>
 		</div>

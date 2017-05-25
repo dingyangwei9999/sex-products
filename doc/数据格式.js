@@ -22,7 +22,7 @@
 	"freight":10,  运费
 	"preview":"../img",  商品预览图
 	"listImg":['./img/01.jpg','./img/02.jpg'], 详情页下面的图片
-	"bannerImg":['./img/11.jpg','./img/12.jpg'], 详情页的banner图
+	"bannerImg":['11.jpg','12.jpg'], 详情页的banner图
 	"classify":['热门商品','男性用品','女性用品','安全套'] , 商品属于什么分类
 	"keyword":['安全套']
 }

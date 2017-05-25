@@ -47,5 +47,31 @@ var save = function(_collection, data){
 	})
 };
 
+var getProduct = function(_collection, callback){
+	db.open(function(error, db){
+		if(error){
+			console.log('connect db:', error);
+		}
+
+
+        db.collection(_collection, function(error, collection){
+            if(error){
+                console.log(error)
+            } else {
+            	// console.log('obj:',obj);
+            	// db.collection()
+            	
+                collection.find().toArray(function(err, pro){
+                    callback(pro);
+                });
+            }
+        });
+        db.close();
+		
+	})	
+};
+
+
 exports.exists = exists;
 exports.save = save;
+exports.getProduct = getProduct;

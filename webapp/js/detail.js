@@ -1,5 +1,5 @@
 require(['config'],function(){
-	require(['jquery','sideshow'],function(){
+	require(['jquery','sideshow','baseUrl'],function(){
 		var mySwiper = new Swiper ('.swiper-container', {
 	    loop: true,  
 	    pagination: '.swiper-pagination', 
@@ -60,12 +60,10 @@ require(['config'],function(){
 		var btn_like=$('.like');
 		btn_like.click(function(){
 			var yRgb ="#FD19AE";
-			 var rgb = $('.like .iconfont').css('color'); 
-			 console.log(rgb)
-			if(rgb!=yRgb ){
+			if(!$('.like .iconfont').hasClass("yRgb") ){
 				$('.like .iconfont').css('color',yRgb); 
 			}else{
-				$('.like .iconfont').removeClass(''); 
+				$('.like .iconfont').css('color','#fff'); 
 			}
 	 		// $('.like .iconfont').css('color','#FD19AE');
 	 	});
@@ -107,7 +105,6 @@ require(['config'],function(){
 		 	shoppNum.css('display','block');
 		 	$('.success').show(200).delay(400).hide(300);
 		 	$('#staNum').text(`数量为 ${i}`);
-		 	// $('.pic_tu').css('display','block');
 		 	$('.good_choose').on('click',function(){
 		 		console.log(i)
 				$('#bottom_total').text(i);
@@ -119,7 +116,22 @@ require(['config'],function(){
 		var btn_evenmore = $('.btn_more');
 		btn_evenmore.on('click',function(){
 			$('.hide_fun').toggle();
-
 		})
+
+		// 数据的导入
+		$.post(erp.baseUrl +'detail',{},function(response){
+			var arr = response;
+			// console.log(arr)
+			var str = JSON.stringify(arr);
+			console.log(str)
+			var htmlNodes = '';  
+	              for(var i = 0; i < arr.length; i ++){  
+	                  htmlNodes += '<img src="../imgs/detail1.jpg" alt="">' ;  
+	                  // <span>已售：'+arr[i].sales+'</span>
+	              }  
+
+	              $('.swiper-slide').append(htmlNodes); 
+
+		});
 	});
 })

@@ -69,4 +69,12 @@ exports.Register = function(app){
   //   response.setHeader('Access-Control-Allow-Origin','*');
   //   response.send('{"status":true,"message":"插入成功"}');
   // }); 
+  // 
+  // 得到我的详情页数据
+  app.post('/detail', urlencodedParser,function(request, response){
+        db.getProduct('shopInfo',function(result){
+      // res.header("Access-Control-Allow-Origin", "*");
+      response.send(result);
+    });
+  })
 }
