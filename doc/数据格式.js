@@ -11,7 +11,7 @@
 
 商品表名 shopInfo
 {
-	"100000":{
+	
 			"guid":100000,  商品id
 			"title":"WOMO女性粉嫩修复精华",  商品名称
 			"price":99,  现在的价格
@@ -22,5 +22,5 @@
 			"bannerImg":['./img/11.jpg','./img/12.jpg'], 详情页的banner图
 			"classify":['男性用品','女性用品','安全套'] , 商品属于什么分类
 			"keyword":['安全套']
-	}
+	
 }

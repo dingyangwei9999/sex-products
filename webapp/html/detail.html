@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" id="vp" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title>详情页</title>
+	<style type="text/css">
+		body{
+			width: 0.359375rem;
+			height: 0.46875rem;
+		}
+	</style>
+	<script type="text/javascript">
+		var wd = document.documentElement.clientWidth*window.devicePixelRatio/10;
+		document.getElementsByTagName("html")[0].style.fontSize = wd + "px";
+	</script>
+	<link rel="stylesheet" href="../css/detail.css">
+	<link rel="stylesheet" href="../css/iconfont/iconfont.css">
+	<link rel="stylesheet" href="../../libs/Swiper-3.4.2/dist/css/swiper.min.css">
+	<script src="http://g.tbcdn.cn/mtb/lib-flexible/0.3.4/??flexible_css.js,flexible.js"></script> 
+	<script src="../../libs/jquery/require.js" data-main='../js/detail.js'></script>
+
+</head>
+<body>
+	<div id="container">
+		<!-- 详情页头部 -->
+		<div class="detail_head">
+			<div class="pic_left">
+				<i class="iconfont icon-jinlingyingcaiicon01"></i>
+			</div>
+			<div class="pic_right">
+				<div class="btn_car">
+					<i class="iconfont icon-gouwuche1"></i>
+					<!-- <span class="pic_tu">1</span> -->
+				</div>
+				<div class="btn_more">
+					<i class="iconfont icon-gengduo1"></i>
+				</div>
+				<div class="hide_fun">
+					<p class="fun_menu"><i class="iconfont icon-shouye"></i>首页</p>
+					<p class="fun_menu"><i class="iconfont icon-huiyuanzhongxin"></i>会员中心</p>
+				</div>
+			</div>
+		</div>
+		<!-- 详情页背景颜色图 -->
+		<div class="detail_pic"></div>
+		<!-- 定位在底部的图片 -->
+		<div class="detail_bottom">
+			<div class="bottom_info">
+				<div class="info_left">
+					<img src="" alt="">
+				</div>
+				<div class="info_right">
+					<dic class="pri">￥<span id="marketprice">68</span></dic>
+					<div class="mesg">
+						库存：<span id="stock">99</span>件
+					</div>
+					<div class="option">请选择规格</div>
+				</div>
+				<div class="bottom_infoclose">
+					<i class="iconfont icon-cha"></i>
+				</div>
+			</div>
+			<div class="bottom_other" style="max-height: 804px;">
+				<div class="number">
+					<div class="label">购买数量</div>
+					<div class="num">
+						 <button id="btn_reduce">-</button>
+						<span id="bottom_total">1</span>
+						 <button id="btn_add">+</button>
+					</div>
+				</div>
+			</div>
+			<div class="bottom_close"></div>
+			<div class="bottom_confim">确认</div>
+		</div>
+		<!-- 详情页内容 -->
+		<div class="detail_cont">
+			<!-- 引入轮播图 -->
+			<div class="swiper-container">
+			    <div class="swiper-wrapper">
+			        <div class="swiper-slide"><img src="../imgs/detail1.jpg" alt=""></div>
+			        <div class="swiper-slide"><img src="../imgs/detail2.jpg" alt=""></div>
+			        <div class="swiper-slide"><img src="../imgs/detail3.jpg" alt=""></div>
+			        <div class="swiper-slide"><img src="../imgs/detail4.jpg" alt=""></div>
+			    </div>
+			    <!-- 如果需要分页器 -->
+			    <div class="swiper-pagination"></div>	    
+			</div>
+			<!-- 商品信息 -->
+			<div class="good_info">
+				<div class="good_title">
+					WOMO男用前列腺精油
+				</div>
+			</div>
+			<div class="good_price">
+				￥<d id="marketprice">68</d>
+				<span class="productprice">市场价&nbsp;￥78.00</span>
+				<span class="stockSal clearfix">库存:<d id="stock">99</d>&nbsp;销量:<d id="salesNum">6</d></span>
+			</div>
+			<div class="good_choose">
+				<span id="staNum">
+					请选择规格及数量
+				</span>
+				<i class="iconfont icon-youjiantou" style="float: right;line-height:1.25rem;font-size: 18px"></i>
+			</div>
+			<div class="good_main">
+				<!-- 导航条 -->
+				<div class="menu">
+					<div id="nav1" class="nav navon">
+						图文详情
+					</div>
+					<div id="nav2" class="nav">
+						产品参数
+					</div>
+					<div id="nav3" class="nav">
+						用户评价
+					</div>
+					<div id="nav4" class="nav">
+						同店推荐
+					</div>
+				</div>
+				<!-- 数据库显示过来的内容 -->
+				<div class="tab_con" id="con_1" style="display: block;">
+					<img src="../imgs/detail_tab1.jpg" alt="">
+					<img src="../imgs/detail_tab2.jpg" alt="">
+					<img src="../imgs/detail_tab3.jpg" alt="">
+					<img src="../imgs/detail_tab4.jpg" alt="">
+					<img src="../imgs/detail_tab5.jpg" alt="">
+					<img src="../imgs/detail_tab6.jpg" alt="">
+					<img src="../imgs/detail_tab7.jpg" alt="">
+				</div>
+				<div class="tab_con" id="con_2" style="display:none;">
+					fdsafsaf
+				</div>
+				<div class="tab_con" id="con_3" style="display:none;">
+					fasfafafa
+				</div>
+				<div class="tab_con" id="con_4" style="display:none;">
+					<div id="recommad">
+						<div class="good_mesg" data-goodsid="">
+							
+						</div>
+					</div>
+
+				</div>	
+			</div>
+			<div class="good_copyright">
+				<i class="iconfont icon-ic_copyright_px"></i>&nbsp;版权所有&nbsp;sex product情趣用品
+			</div>
+		</div>
+		<!-- 详情页尾部 -->
+		<div class="detail_foot">
+			<div class="like">
+				<i class="iconfont icon-shoucang-shoucang"></i>
+				<span>收藏</span>
+			</div>
+			<div class="detail_cart">
+				<i class="iconfont icon-gouwuche1"></i>
+				<span>购物车</span>
+				<b id="btn_addCart">1</b>
+			</div>
+			<div class="addCart">
+				<span class="success">添加成功</span>
+				加入购物车
+			</div>
+			<div class="detail_buy">
+				立即购买
+			</div>
+		</div>
+	</div>
+</body>
+</html>
