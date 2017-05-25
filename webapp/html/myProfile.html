@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" id="vp" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="../css/myProfile.css">
+	<link rel="stylesheet" href="../css/iconfont/iconfont.css">
+	<script src="http://g.tbcdn.cn/mtb/lib-flexible/0.3.4/??flexible_css.js,flexible.js"></script>
+	<script src="../../libs/jquery/require.js" data-main="../js/myProfile.js"></script>
+</head>
+<body>
+	<div id="container">
+		<header>
+			<span class="back">&lt</span><p>我的资料</p>
+		</header>
+		<main>
+			<div class="line clearfix">
+				<div class="title">姓名</div>
+				<div class="inline">
+					<input type="text" placeholder="请输入您的姓名" class="name">
+				</div>
+			</div>
+			<div class="line clearfix">
+				<div class="title">昵称</div>
+				<div class="inline">
+					<input type="text" placeholder="请输入您的昵称" class="nickname">
+				</div>
+			</div>
+			<div class="line clearfix">
+				<div class="title">手机号码</div>
+				<div class="inline">
+
+				<!-- 从数据库读取号码填写 -->
+
+					<span class="phone" class="phoneNum"></span>
+				</div>
+			</div>
+			<div class="line clearfix">
+				<div class="title">微信号</div>
+				<div class="inline">
+					<input type="text" placeholder="请输入微信号" class="wechat">
+				</div>
+			</div>
+			<div class="line clearfix">
+				<div class="title">性别</div>
+				<div class="inline">
+					<input type="radio" name="gender" class="genderRadio" value="男" checked><span class="gengder">男</span> 
+					<input type="radio" name="gender" class="genderRadio" value="女"><span class="gengder">女</span>
+				</div>
+			</div>
+			<div class="line clearfix">
+				<div class="title">所在城市</div>
+				<div class="inline">
+					<select class="city">
+			            <option value="北京市">北京市</option>
+			            <option value="天津市">天津市</option>
+			            <option value="河北省">河北省</option>
+			            <option value="山西省">山西省</option>
+			            <option value="内蒙古区">内蒙古区</option>
+			            <option value="辽宁省">辽宁省</option>
+			            <option value="吉林省">吉林省</option>
+			            <option value="黑龙江省">黑龙江省</option>
+			            <option value="上海市">上海市</option>
+			            <option value="江苏省">江苏省</option>
+			            <option value="浙江省">浙江省</option>
+			            <option value="安徽省">安徽省</option>
+			            <option value="福建省">福建省</option>
+			            <option value="江西省">江西省</option>
+			            <option value="山东省">山东省</option>
+			            <option value="河南省">河南省</option>
+			            <option value="湖北省">湖北省</option>
+			            <option value="湖南省">湖南省</option>
+			            <option value="广东省">广东省</option>
+			            <option value="广西区">广西区</option>
+			            <option value="海南省">海南省</option>
+			            <option value="重庆市">重庆市</option>
+			            <option value="四川省">四川省</option>
+			            <option value="贵州省">贵州省</option>
+			            <option value="云南省">云南省</option>
+			            <option value="西藏区">西藏区</option>
+			            <option value="陕西省">陕西省</option>
+			            <option value="甘肃省">甘肃省</option>
+			            <option value="青海省">青海省</option>
+			            <option value="宁夏区">宁夏区</option>
+			            <option value="新疆区">新疆区</option>
+			            <option value="台湾省">台湾省</option>
+			            <option value="香港特区">香港特区</option>
+			            <option value="澳门特区">澳门特区</option>
+            		</select>
+				</div>
+			</div>
+			<div class="line clearfix">
+				<div class="title">生日</div>
+				<div class="inline">
+					<input type="date" placeholder="点击选择日期" value="" class="date">
+				</div>
+			</div>
+		</main>
+		<section>
+			<input type="button" class="modification_btn" value="确认修改">
+		</section>
+		<footer></footer>
+	</div>
+</body>
+</html>

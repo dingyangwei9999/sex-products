@@ -1,0 +1,97 @@
+@charset "UTF-8";
+/*重置样式表*/
+/*==========样式重置===========*/
+html, body {
+  width: 100%;
+  height: 100%; }
+
+html {
+  font-size: 64px; }
+
+body, h1, h2, h3, h4, h5, h6, p, a, input, img, ul, li, ol, dl, dt, dd {
+  padding: 0;
+  margin: 0; }
+
+ul, ol {
+  list-style: none; }
+
+img {
+  display: block;
+  border: 0; }
+
+input {
+  outline: none; }
+
+body {
+  font-size: 12px; }
+
+i, em {
+  font-style: normal; }
+
+a {
+  text-decoration: none;
+  color: #000; }
+
+img {
+  border: 0;
+  display: block; }
+
+* {
+  box-sizing: border-box; }
+
+.clearfix:after {
+  content: "";
+  clear: both;
+  display: block;
+  height: 0;
+  overflow: hidden;
+  visibility: hidden; }
+
+#container {
+  height: 100%;
+  display: flex;
+  flex-direction: column; }
+
+@media screen and (min-width: 640px) {
+  #container > footer {
+    font-size: 36px; }
+  #container > footer {
+    font-size: 60px; } }
+
+body {
+  background: #f2f2f2; }
+  body article form {
+    width: 100%;
+    position: relative;
+    top: 3.28125rem; }
+    body article form div {
+      background: #fff; }
+    body article form .phone, body article form .password, body article form .password2 {
+      height: 1.5rem;
+      width: 89%;
+      margin-left: 5.5%;
+      margin-right: 5.5%;
+      border: none;
+      font-size: 12px; }
+    body article form .phone {
+      border-bottom: 0.03125rem solid #ccc; }
+    body article form .password {
+      border-bottom: 0.03125rem solid #ccc; }
+    body article form p {
+      margin-top: 0.59375rem;
+      padding-left: 5.5%;
+      font-size: 12px;
+      color: #bebebe; }
+      body article form p span {
+        margin-left: 0.46875rem; }
+    body article form .register_btn {
+      width: 89%;
+      height: 1.25rem;
+      margin-top: 0.859375rem;
+      margin-left: 5.5%;
+      margin-right: 5.5%;
+      color: #fff;
+      background: #00b5ca;
+      border: none;
+      border-radius: 0.15625rem;
+      font-size: 12px; }

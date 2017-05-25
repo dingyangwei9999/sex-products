@@ -27,20 +27,31 @@ exports.Register = function(app){
 
 
 	app.post('/login', urlencodedParser, function(request, response){
-		db.exists('sert', request.body,['name','password'], function(data){
+		db.exists('sexUser', request.body,['phone','password'], function(data){
 			
 			if(data.length > 0){
-				request.session.name = request.body.name;
+				request.session.phone = request.body.phone;
 				response.send(apiResult(true))
-                //console.log(request.session,request.body.name);
+                //console.log(request.session,request.body.phone);
 			} else {
-				response.send(apiResult(false, '用户名错误'));
+				response.send(apiResult(false, '手机号或者密码有误'));
 			}
 		})
 	});
 
-	app.get('/register', function(request, response){
-		response.send('account register');
+	app.post('/register',urlencodedParser, function(request, response){
+		console.log(request.body)
+		db.exists('sexUser', request.body,['phone'], function(data){
+			
+			if(data.length > 0){
+				request.session.phone = request.body.phone;
+				response.send(apiResult(true,'该手机号已被注册过'))
+                //console.log(request.session,request.body.phone);
+			} else {
+				db.save('sexUser', request.body);
+				response.send(apiResult(false));
+			}
+		})
 	});
 
 	app.get('/logout', function(request, response){

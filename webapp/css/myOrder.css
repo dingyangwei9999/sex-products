@@ -1,0 +1,200 @@
+@charset "UTF-8";
+/*重置样式表*/
+/*==========样式重置===========*/
+html, body {
+  width: 100%;
+  height: 100%; }
+
+html {
+  font-size: 64px; }
+
+body, h1, h2, h3, h4, h5, h6, p, a, input, img, ul, li, ol, dl, dt, dd {
+  padding: 0;
+  margin: 0; }
+
+ul, ol {
+  list-style: none; }
+
+img {
+  display: block;
+  border: 0; }
+
+input {
+  outline: none; }
+
+body {
+  font-size: 12px; }
+
+i, em {
+  font-style: normal; }
+
+a {
+  text-decoration: none;
+  color: #000; }
+
+img {
+  border: 0;
+  display: block; }
+
+* {
+  box-sizing: border-box; }
+
+.clearfix:after {
+  content: "";
+  clear: both;
+  display: block;
+  height: 0;
+  overflow: hidden;
+  visibility: hidden; }
+
+#container {
+  height: 100%;
+  display: flex;
+  flex-direction: column; }
+
+@media screen and (min-width: 640px) {
+  #container > footer {
+    font-size: 36px; }
+  #container > footer {
+    font-size: 60px; } }
+
+#container {
+  background: #efefef; }
+  #container header {
+    height: 1.25rem;
+    line-height: 1.25rem;
+    background: #f9f9f9;
+    border-bottom: 0.03125rem solid #e8e8e8;
+    position: relative;
+    font-size: 16px; }
+    #container header p {
+      text-align: center; }
+    #container header span {
+      position: absolute;
+      width: 1.25rem;
+      text-align: center;
+      font-size: 22px; }
+  #container section {
+    height: 1.1875rem;
+    background: #fff;
+    display: flex; }
+    #container section div {
+      flex: 1; }
+      #container section div a {
+        display: block;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        line-height: 1.1875rem;
+        color: #666;
+        text-decoration: none;
+        font-size: 14px; }
+      #container section div .active {
+        color: #ff771b;
+        border-bottom: 2px solid #ff771b; }
+  #container .main {
+    flex: 1;
+    overflow-y: auto;
+    display: none; }
+    #container .main .nothing {
+      margin-top: 1.25rem;
+      text-align: center;
+      color: #ccc; }
+      #container .main .nothing .iconfont {
+        font-size: 100px; }
+      #container .main .nothing p {
+        font-size: 16px; }
+      #container .main .nothing span {
+        font-size: 10px;
+        display: inline-block;
+        margin-bottom: 0.9375rem; }
+      #container .main .nothing .btn_buybuybuy {
+        display: inline-block;
+        padding: 0.25rem;
+        border: 0.03125rem solid #ccc;
+        font-size: 18px;
+        color: #000; }
+    #container .main .order_main {
+      width: 100%;
+      background: #fff;
+      padding: 0px 3%;
+      margin-top: 16px;
+      border-bottom: 1px solid #D93600;
+      border-top: 1px solid #D93600; }
+      #container .main .order_main .title {
+        height: 42px;
+        width: 100%;
+        border-bottom: 1px solid #e2e2e2;
+        font-size: 14px;
+        line-height: 42px;
+        color: #666; }
+        #container .main .order_main .title span {
+          height: 42px;
+          width: auto;
+          float: right;
+          color: #ff771b; }
+      #container .main .order_main .goods {
+        height: 71px;
+        width: 100%;
+        padding: 10px 0px;
+        border-bottom: 1px solid #eaeaea; }
+        #container .main .order_main .goods > div {
+          float: left; }
+          #container .main .order_main .goods > div img {
+            width: 48px;
+            height: 48px; }
+          #container .main .order_main .goods > div .name {
+            margin-left: 10px; }
+        #container .main .order_main .goods .price {
+          float: right;
+          color: #666;
+          font-size: 14px;
+          text-align: right; }
+      #container .main .order_main .total {
+        height: 42px;
+        width: 100%;
+        border-bottom: 1px solid #e2e2e2;
+        font-size: 14px;
+        color: #999;
+        line-height: 42px;
+        text-align: right; }
+      #container .main .order_main .sub {
+        height: 50px;
+        width: 100%; }
+        #container .main .order_main .sub div {
+          float: right; }
+        #container .main .order_main .sub .sub1 {
+          height: 30px;
+          width: auto;
+          padding: 0px 10px;
+          border: 1px solid #ff771b;
+          float: right;
+          border-radius: 5px;
+          line-height: 30px;
+          font-size: 14px;
+          margin: 10px 5px 10px 0px;
+          color: #fff;
+          background: #ff771b; }
+        #container .main .order_main .sub .sub2 {
+          height: 30px;
+          width: auto;
+          padding: 0px 10px;
+          border: 1px solid #5f6e8b;
+          float: right;
+          border-radius: 5px;
+          line-height: 30px;
+          font-size: 14px;
+          margin: 10px 5px 10px 0px;
+          color: #5f6e8b;
+          position: relative; }
+          #container .main .order_main .sub .sub2 select {
+            width: 80px;
+            height: 30px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            background: #fff; }
+  #container footer {
+    height: 1.125rem;
+    background: pink; }
