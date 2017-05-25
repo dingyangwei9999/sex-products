@@ -102,7 +102,8 @@ img {
   #container .main .banner {
     height: 5.1875rem; }
     #container .main .banner .swiper-slide img {
-      width: 100%; }
+      width: 100%;
+      height: 100%; }
   #container .main .nav-list {
     height: 2.09375rem;
     display: -webkit-flex;
