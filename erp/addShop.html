@@ -49,7 +49,7 @@
     <ul class="am-nav am-nav-pills am-topbar-nav admin-header-list">
 
    <li class="am-dropdown tognzhi" data-am-dropdown>
-  <button class="am-btn am-btn-primary am-dropdown-toggle am-btn-xs am-radius am-icon-bell-o" data-am-dropdown-toggle> 消息管理<span class="am-badge am-badge-danger am-round">0</span></button>
+  <button class="am-btn am-btn-primary am-dropdown-toggle am-btn-xs am-radius am-icon-bell-o" data-am-dropdown-toggle> 消息管理<span class="am-badge am-badge-danger am-round">6</span></button>
   <ul class="am-dropdown-content">
   	
   	
@@ -111,12 +111,12 @@
 <div class="nav-navicon admin-main admin-sidebar">
     
     
-    <div class="sideMenu am-icon-dashboard showAccount" style="color:#aeb2b7; margin: 10px 0 0 0;"></div>
+    <div class="sideMenu am-icon-dashboard" style="color:#aeb2b7; margin: 10px 0 0 0;"> 欢迎系统管理员：admin</div>
     <div class="sideMenu">
       <h3 class="am-icon-flag"><em></em> <a href="#">商品管理</a></h3>
       <ul>
-        <li><a href="listShop.html">商品列表</a></li>
-        <li class="func" dataType='html' dataLink='msn.htm' iconImg='images/msn.gif'><a style="color:#FF6C60">添加新商品</a></li>
+        <li>商品列表</li>
+        <li class="func" dataType='html' dataLink='msn.htm' iconImg='images/msn.gif'><a href="">添加新商品</a></li>
         <li>商品分类</li>
         <li>用户评论</li>
         <li>商品回收站</li>
@@ -219,55 +219,55 @@
         <div class="am-form-group am-cf">
           <div class="zuo">商品名称：</div>
           <div class="you">
-            <input type="text" class="am-input-sm" id="title" placeholder="请输入商品名称">
+            <input type="text" class="am-input-sm" id="title" placeholder="请输入标题">
           </div>
         </div>
         <div class="am-form-group am-cf">
           <div class="zuo">价格：</div>
           <div class="you">
-            <input type="text" class="am-input-sm" id="price" placeholder="请输入价格">
+            <input type="text" class="am-input-sm" id="price" placeholder="请输入标题">
           </div>
         </div>
         <div class="am-form-group am-cf">
           <div class="zuo">原价：</div>
           <div class="you">
-            <input type="text" class="am-input-sm" id="ori_price" placeholder="请输入原价">
+            <input type="text" class="am-input-sm" id="ori_price" placeholder="请输入标题">
           </div>
         </div>
         <div class="am-form-group am-cf">
           <div class="zuo">运费：</div>
           <div class="you">
-            <input type="text" class="am-input-sm" id="freight" placeholder="请输入运费">
+            <input type="text" class="am-input-sm" id="freight" placeholder="请输入标题">
           </div>
         </div>
         <div class="am-form-group am-cf">
           <div class="zuo">已售：</div>
           <div class="you">
-            <input type="text" class="am-input-sm" id="sales" placeholder="请输入已售">
+            <input type="text" class="am-input-sm" id="sales" placeholder="请输入标题">
           </div>
         </div>
         <div class="am-form-group am-cf">
           <div class="zuo">库存：</div>
           <div class="you">
-            <input type="text" class="am-input-sm" id="repertory" placeholder="请输入库存">
+            <input type="text" class="am-input-sm" id="repertory" placeholder="请输入标题">
           </div>
         </div>
         <div class="am-form-group am-cf">
           <div class="zuo">关键词：</div>
           <div class="you">
-            <input type="text" class="am-input-sm" id="keyword" placeholder="请输入关键词（使用逗号或者空格分隔）">
+            <input type="text" class="am-input-sm" id="keyword" placeholder="请输入关键词">
           </div>
         </div>
          <div class="am-form-group am-cf">
           <div class="zuo">类别：</div>
           <div class="you">
-            <input type="text" class="am-input-sm" id="classify" placeholder="请输入类别    （使用逗号或者空格分隔）">
+            <input type="text" class="am-input-sm" id="classify" placeholder="请输入关键词">
           </div>
         </div>
         <div class="am-form-group am-cf">
           <div class="zuo">描述：</div>
           <div class="you">
-            <textarea class="" rows="2" id="description" placeholder="请输入对商品的描述"></textarea>
+            <textarea class="" rows="2" id="description"></textarea>
           </div>
         </div>
         <div class="am-cf btn_input">
@@ -284,28 +284,25 @@
             <input type="file" name="bannerImg" id="input">
             <input type="file" name="bannerImg" id="input">
             <input type="file" name="bannerImg" id="input">
-            <input type="file" name="bannerImg" id="input">
-            <input type="file" name="bannerImg" id="input">
-            <p class="am-form-help">请选择要上传的文件...  注意：最多只能上传8张图片</p>
             <!-- <p class="am-form-help">请选择要上传的文件...</p> -->
           </div>
         </div>
          <div class="am-form-group am-cf btn_input">
           <div class="zuo">列表图：</div>
-          <div class="you js_addinput">
+          <div class="you">
             <input type="file" name="listImg" id="input">
             <input type="file" name="listImg" id="input">
             <input type="file" name="listImg" id="input">
             <input type="file" name="listImg" id="input">
             <input type="file" name="listImg" id="input">
             <input type="file" name="listImg" id="input">
-            <p class="am-form-help js_addImg">请选择要上传的文件... 注意：最多只能上传20张图片  点击我添加剩余图片</p>
+            <!-- <p class="am-form-help">请选择要上传的文件...</p> -->
           </div>
         </div>
              
         <div class="am-form-group am-cf">
           <div class="you" style="margin-left: 11%;">
-              <span class="am-btn am-btn-success am-radius">仅发布</span>&nbsp;   &nbsp; <span class="am-btn am-btn-secondary am-radius">发布并刷新当前页面</span>
+              <span class="am-btn am-btn-success am-radius">发布并关闭窗口</span>&nbsp;  &raquo; &nbsp; <span class="am-btn am-btn-secondary am-radius">发布并继续发布</span>
 
           </div>
         </div>

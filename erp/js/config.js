@@ -4,8 +4,7 @@ require.config({
 		"jqueryCookie" : "../../lib/jquery.cookie",
 		"lazyload" : "../../lib/jquery.lazyload",
 		"form" : "../../libs/jquery/jquery.form",
-		"global" : "../../libs/common/global",
-		"particleground" : "../../libs/jquery/jquery.particleground"
+		"global" : "../../libs/common/global"
 	},
 	shim : {
 		"jqueryCookie" : ["jquery"],
@@ -13,8 +12,7 @@ require.config({
 		"app" : ['jquery','amazeui.min'],
 		"amazeui.min" : ['jquery'],
 		"form" : ["jquery"],
-		"common" : ["jquery","app"],
-		"particleground" : ["jquery"]
+		"common" : ["jquery","app"]
 	}
 });
 

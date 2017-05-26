@@ -1,0 +1,476 @@
+@charset "UTF-8";
+.clearfix:after {
+  content: "";
+  clear: both;
+  display: block;
+  height: 0;
+  overflow: hidden;
+  visibility: hidden; }
+
+#container {
+  height: 100%;
+  display: flex;
+  flex-direction: column; }
+
+@media screen and (min-width: 640px) {
+  #container > footer {
+    font-size: 36px; }
+  #container > footer {
+    font-size: 60px; } }
+
+/*重置样式表*/
+/*==========样式重置===========*/
+html, body {
+  width: 100%;
+  height: 100%; }
+
+html {
+  font-size: 64px; }
+
+body, h1, h2, h3, h4, h5, h6, p, a, input, img, ul, li, ol, dl, dt, dd {
+  padding: 0;
+  margin: 0; }
+
+ul, ol {
+  list-style: none; }
+
+img {
+  display: block;
+  border: 0; }
+
+input {
+  outline: none; }
+
+body {
+  font-size: 12px; }
+
+i, em {
+  font-style: normal; }
+
+a {
+  text-decoration: none;
+  color: #000; }
+
+img {
+  border: 0;
+  display: block; }
+
+* {
+  box-sizing: border-box; }
+
+.toTop {
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: 50%;
+  background: #888888;
+  position: fixed;
+  right: 0.375rem;
+  bottom: 1.25rem;
+  opacity: 0.5;
+  display: none; }
+  .toTop .iconfont {
+    line-height: 1.25rem;
+    font-size: 25px;
+    color: #fff;
+    opacity: 0.3;
+    margin-left: 0.21875rem; }
+
+#container .searchFirst {
+  position: absolute;
+  padding-left: 10%;
+  width: 100%;
+  height: 1.125rem;
+  z-index: 99; }
+  #container .searchFirst .iconfont {
+    position: absolute;
+    z-index: 100;
+    top: 25%;
+    left: 11%;
+    color: #ccc; }
+  #container .searchFirst .searchfix {
+    width: 25%;
+    height: 0.8125rem;
+    border-radius: 0.46875rem;
+    border: 0;
+    margin-top: 0.15625rem;
+    text-align: center; }
+
+#container .main {
+  background: #F5F5F5;
+  flex: 1;
+  overflow-y: auto; }
+  #container .main .banner {
+    height: 5.1875rem; }
+    #container .main .banner .swiper-slide img {
+      width: 100%;
+      height: 100%; }
+  #container .main .nav-list {
+    height: 2.09375rem;
+    display: -webkit-flex;
+    background: #fff;
+    padding-top: 0.15625rem; }
+  #container .main .first {
+    flex: 1;
+    text-align: center; }
+    #container .main .first a .iconfont {
+      font-size: 28px;
+      color: #FDC132; }
+    #container .main .first p {
+      color: #BABABA; }
+  #container .main .second {
+    flex: 1;
+    text-align: center; }
+    #container .main .second a .iconfont {
+      font-size: 28px;
+      color: #FE7676; }
+    #container .main .second p {
+      color: #BABABA; }
+  #container .main .third {
+    flex: 1;
+    text-align: center; }
+    #container .main .third a .iconfont {
+      font-size: 28px;
+      color: #DBEA69; }
+    #container .main .third p {
+      color: #BABABA; }
+  #container .main .forth {
+    flex: 1;
+    text-align: center; }
+    #container .main .forth a .iconfont {
+      font-size: 28px;
+      color: #14E0AD; }
+    #container .main .forth p {
+      color: #BABABA; }
+
+#container .false-sale {
+  height: 1.125rem;
+  background: #fff;
+  margin-top: 0.1875rem;
+  line-height: 1.125rem; }
+  #container .false-sale h3 {
+    font-weight: 200;
+    width: 48%;
+    float: left;
+    margin-left: 0.15625rem; }
+    #container .false-sale h3 span {
+      color: #FD19AE; }
+  #container .false-sale .sale-time {
+    height: 1.125rem;
+    width: 30%;
+    float: left;
+    padding-top: 0.09375rem; }
+    #container .false-sale .sale-time span {
+      display: inline-block;
+      width: 0.6875rem;
+      height: 0.625rem;
+      border: 0.03125rem solid #999;
+      font-size: 0.375rem;
+      line-height: 0.625rem;
+      text-align: center;
+      color: #FD19AE; }
+  #container .false-sale a {
+    margin-left: 0.625rem;
+    color: #7E7E7E; }
+
+#container .time_product {
+  height: 4.5rem;
+  background: #fff; }
+  #container .time_product ul {
+    display: -webkit-flex;
+    height: 4.5rem; }
+    #container .time_product ul li {
+      flex: 1; }
+      #container .time_product ul li img {
+        width: 2.5rem;
+        height: 2.5rem; }
+      #container .time_product ul li p {
+        text-align: center; }
+      #container .time_product ul li .save {
+        color: red; }
+
+#container .hot_product {
+  height: 9.9375rem;
+  background: #fff;
+  margin-top: 0.1875rem; }
+  #container .hot_product h3 {
+    font-weight: 200;
+    height: 1.125rem;
+    width: 96%;
+    float: left;
+    margin-left: 0.15625rem;
+    line-height: 1.125rem; }
+    #container .hot_product h3 a {
+      float: right;
+      color: #7E7E7E; }
+  #container .hot_product .picture a {
+    float: left;
+    display: block;
+    margin-left: 0.15625rem; }
+  #container .hot_product .picture .first {
+    width: 63.5%;
+    height: 4.53125rem; }
+    #container .hot_product .picture .first img {
+      width: 6.34375rem;
+      height: 4.21875rem; }
+  #container .hot_product .picture .second {
+    width: 31%;
+    height: 4.53125rem; }
+    #container .hot_product .picture .second img {
+      width: 3.125rem;
+      height: 4.21875rem; }
+  #container .hot_product .picture .third {
+    width: 31%;
+    height: 4.53125rem; }
+    #container .hot_product .picture .third img {
+      width: 3.125rem;
+      height: 4.21875rem; }
+  #container .hot_product .picture .forth {
+    width: 31%;
+    height: 4.53125rem; }
+    #container .hot_product .picture .forth img {
+      width: 3.125rem;
+      height: 4.21875rem; }
+  #container .hot_product .picture .fifth {
+    width: 31%;
+    height: 4.53125rem; }
+    #container .hot_product .picture .fifth img {
+      width: 3.125rem;
+      height: 4.21875rem; }
+
+#container .condom_product {
+  height: 10rem;
+  background: #fff; }
+  #container .condom_product h3 {
+    font-weight: 200;
+    height: 1.125rem;
+    width: 96%;
+    float: left;
+    margin-left: 0.15625rem;
+    line-height: 1.125rem; }
+    #container .condom_product h3 a {
+      float: right;
+      color: #7E7E7E; }
+  #container .condom_product .pictures a {
+    float: left;
+    display: block;
+    margin-left: 0.15625rem; }
+  #container .condom_product .pictures .first {
+    width: 63.5%;
+    height: 4.53125rem; }
+    #container .condom_product .pictures .first img {
+      width: 6.34375rem;
+      height: 4.21875rem; }
+  #container .condom_product .pictures .second {
+    width: 31%;
+    height: 4.53125rem; }
+    #container .condom_product .pictures .second img {
+      width: 3.125rem;
+      height: 4.21875rem; }
+  #container .condom_product .pictures .third {
+    width: 31%;
+    height: 4.59375rem; }
+    #container .condom_product .pictures .third img {
+      width: 3.125rem;
+      height: 4.21875rem; }
+  #container .condom_product .pictures .forth {
+    width: 31%;
+    height: 4.59375rem; }
+    #container .condom_product .pictures .forth img {
+      width: 3.125rem;
+      height: 4.21875rem; }
+  #container .condom_product .pictures .fifth {
+    width: 31%;
+    height: 4.59375rem; }
+    #container .condom_product .pictures .fifth img {
+      width: 3.125rem;
+      height: 4.21875rem; }
+
+#container .female_product {
+  height: 10rem;
+  background: #fff; }
+  #container .female_product h3 {
+    font-weight: 200;
+    height: 1.125rem;
+    width: 96%;
+    float: left;
+    margin-left: 0.15625rem;
+    line-height: 1.125rem; }
+    #container .female_product h3 a {
+      float: right;
+      color: #7E7E7E; }
+  #container .female_product .picture1 a {
+    float: left;
+    display: block;
+    margin-left: 0.15625rem; }
+  #container .female_product .picture1 .first {
+    width: 63.5%;
+    height: 4.53125rem; }
+    #container .female_product .picture1 .first img {
+      width: 6.34375rem;
+      height: 4.21875rem; }
+  #container .female_product .picture1 .second {
+    width: 31%;
+    height: 4.53125rem; }
+    #container .female_product .picture1 .second img {
+      width: 3.125rem;
+      height: 4.21875rem; }
+  #container .female_product .picture1 .third {
+    width: 31%;
+    height: 4.59375rem; }
+    #container .female_product .picture1 .third img {
+      width: 3.125rem;
+      height: 4.21875rem; }
+  #container .female_product .picture1 .forth {
+    width: 31%;
+    height: 4.59375rem; }
+    #container .female_product .picture1 .forth img {
+      width: 3.125rem;
+      height: 4.21875rem; }
+  #container .female_product .picture1 .fifth {
+    width: 31%;
+    height: 4.59375rem; }
+    #container .female_product .picture1 .fifth img {
+      width: 3.125rem;
+      height: 4.21875rem; }
+
+#container .male_product {
+  height: 10.5375rem;
+  background: #fff; }
+  #container .male_product h3 {
+    font-weight: 200;
+    height: 1.125rem;
+    width: 96%;
+    float: left;
+    margin-left: 0.15625rem;
+    line-height: 1.125rem; }
+    #container .male_product h3 a {
+      float: right;
+      color: #7E7E7E; }
+  #container .male_product .picture2 a {
+    float: left;
+    display: block;
+    margin-left: 0.15625rem; }
+  #container .male_product .picture2 .first {
+    width: 63.5%;
+    height: 4.53125rem; }
+    #container .male_product .picture2 .first img {
+      width: 6.34375rem;
+      height: 4.21875rem; }
+  #container .male_product .picture2 .second {
+    width: 31%;
+    height: 4.53125rem; }
+    #container .male_product .picture2 .second img {
+      width: 3.125rem;
+      height: 4.21875rem; }
+  #container .male_product .picture2 .third {
+    width: 31%;
+    height: 4.59375rem; }
+    #container .male_product .picture2 .third img {
+      width: 3.125rem;
+      height: 4.21875rem; }
+  #container .male_product .picture2 .forth {
+    width: 31%;
+    height: 4.59375rem; }
+    #container .male_product .picture2 .forth img {
+      width: 3.125rem;
+      height: 4.21875rem; }
+  #container .male_product .picture2 .fifth {
+    width: 31%;
+    height: 4.59375rem; }
+    #container .male_product .picture2 .fifth img {
+      width: 3.125rem;
+      height: 4.21875rem; }
+
+#container .you_like {
+  height: 29.375rem;
+  background: #F0F0F0; }
+  #container .you_like h3 {
+    height: 1.25rem;
+    background: #F0F0F0;
+    line-height: 1.25rem;
+    text-align: center;
+    font-weight: bold;
+    color: #999999; }
+  #container .you_like .prlist {
+    float: left;
+    display: block;
+    height: 7.34375rem;
+    width: 48%;
+    margin: 0.8%;
+    background: #fff; }
+    #container .you_like .prlist a img {
+      width: 100%;
+      height: 4.75rem; }
+    #container .you_like .prlist .detail {
+      text-indent: 1%; }
+    #container .you_like .prlist .price {
+      color: red;
+      margin-top: 0.5625rem;
+      margin-left: 0.15625rem; }
+      #container .you_like .prlist .price .sale {
+        color: #ccc;
+        margin-left: 1.09375rem; }
+
+.warp {
+  width: 100%;
+  background: #eeeeee;
+  height: 100%;
+  display: none; }
+  .warp .newWwarp {
+    height: 1.4375rem;
+    background: #fff;
+    display: -webkit-flex; }
+    .warp .newWwarp .close {
+      width: 15%;
+      height: 1.4375rem;
+      padding-left: 2%; }
+      .warp .newWwarp .close .iconfont {
+        font-size: 30px;
+        color: #999999;
+        line-height: 1.4375rem; }
+    .warp .newWwarp .searchs {
+      padding-top: 0.3125rem;
+      width: 85%; }
+      .warp .newWwarp .searchs .searchText {
+        width: 90%;
+        height: 0.8125rem;
+        border: 0;
+        border-radius: 0.15625rem;
+        background: #F2F2F2;
+        text-indent: 5%; }
+    .warp .newWwarp .searchSubmit {
+      position: absolute;
+      right: 10%;
+      top: 0.46875rem;
+      color: #999999; }
+  .warp .hotSearch {
+    width: 100%;
+    background: #eeeeee;
+    height: 0.78125rem;
+    line-height: 0.78125rem;
+    border-top: 1px solid #c7c7c7;
+    color: #666;
+    text-align: left;
+    text-indent: 2%;
+    clear: both; }
+  .warp .searchKeyword {
+    width: 100%;
+    height: 2.5rem;
+    background: #fff;
+    padding: 2% 15%; }
+    .warp .searchKeyword a {
+      display: block;
+      width: 1.875rem;
+      height: 0.6875rem;
+      border: 0.03125rem solid #ccc;
+      border-radius: 0.625rem;
+      float: left;
+      text-align: center;
+      line-height: 0.625rem;
+      font-size: 12px;
+      margin-left: 0.3125rem;
+      margin-bottom: 0.3125rem;
+      color: #999999; }
+
+.footer .shouye a i, .footer .shouye a span {
+  color: #FD19AE; }

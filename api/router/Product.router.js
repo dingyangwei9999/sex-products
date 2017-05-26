@@ -25,7 +25,7 @@ exports.Register = function(app){
   //上传图片用到的
   //upload.array('photos', 12)  备份
   var cpUpload =  upload.fields([{ name: 'preview', maxCount: 1 }, { name: 'bannerImg', maxCount: 8 }, { name: 'listImg', maxCount: 20 }]);
-  app.post('/upload', urlencodedParser,cpUpload, function(request, response) {
+	app.post('/upload', urlencodedParser,cpUpload, function(request, response) {
 
     //所有上传图片的集合(类型为obj) 格式{[{},{}]}
     var imgFilesObj = request.files;
@@ -54,12 +54,12 @@ exports.Register = function(app){
     newShopObj.bannerImg = bannerImgArr;
     newShopObj.listImg = listImgArr;
 
-    console.log(newShopObj);
+		console.log(newShopObj);
     //写入数据库
-    db.save('shopInfo',newShopObj);   
+    db.save('shopInfo',newShopObj); 	
     //响应
-    response.send('{"status":true,"message":"上传成功"}'); 
-  });
+	 	response.send('{"status":true,"message":"上传成功"}'); 
+	});
   //备份 (仅添加数据无上传图片)
   // app.post('/upload', urlencodedParser, function(request,response) {
   //   // console.log(request.body.newShop);
@@ -112,54 +112,107 @@ exports.Register = function(app){
     arr = arr.toString();
     // var arr = request.body.keyword.split(',');
     var Reg = new RegExp(arr);
-  console.log(arr,Reg);
+  console.log(arr.toString());
     db.existsSingle('shopInfo',request.body,Reg,function(result){
       console.log(result);
       response.send(JSON.stringify(result));
     });
   });
 
-  //删除商品
-    app.post('/delProducts',urlencodedParser,function(request, response){
-    console.log(request.body);
-    //判断是否删除了商品
-    var isDelete = false;
-    //首先通过id查找数据库
-    db.exists('shopInfo',{},[],function(result){
-      result.forEach(function(item){
-        //找到，删除商品
-        if(item._id == request.body._id){
-          db.delByProductsObj('shopInfo',item,function(){
-          });
-          //已经删除商品
-          isDelete = true;
-          return false;
-        }
+
+
+  
+
+   // 获取我的资料的数据
+  app.post('/classify_hot', urlencodedParser, function(request, response){
+    // console.log(request.body.a)
+    if (request.body.a==1) {
+      db.getProByClass('shopInfo',"热门专区",function(result){
+        response.send(result);
       });
+      }
+    else if (request.body.a==2) {
+      db.getProByClass_orderprice('shopInfo',"热门专区",function(result){
+        response.send(result);
+      });
+      }
+    else if (request.body.a==3) {
+      db.getProByClass_ordersales('shopInfo',"热门专区",function(result){
+        response.send(result);
+      });
+      }
+  });
+  app.post('/classify_condom', urlencodedParser, function(request, response){
+    // console.log(request.body.a)
+    if (request.body.a==1) {
+      db.getProByClass('shopInfo',"套套专区",function(result){
+        // console.log(result)
+        response.send(result);
+      });
+      }
+    else if (request.body.a==2) {
+      db.getProByClass_orderprice('shopInfo',"套套专区",function(result){
+        response.send(result);
+      });
+      }
+    else if (request.body.a==3) {
+      db.getProByClass_ordersales('shopInfo',"套套专区",function(result){
+        response.send(result);
+      });
+      }
+  });
+  app.post('/classify_male', urlencodedParser, function(request, response){
+    // console.log(request.body.a)
+    if (request.body.a==1) {
+      db.getProByClass('shopInfo',"男性专区",function(result){
+        // console.log(result)
+        response.send(result);
+      });
+      }
+    else if (request.body.a==2) {
+      db.getProByClass_orderprice('shopInfo',"男性专区",function(result){
+        response.send(result);
+      });
+      }
+    else if (request.body.a==3) {
+      db.getProByClass_ordersales('shopInfo',"男性专区",function(result){
+        response.send(result);
+      });
+      }
+  });
+  app.post('/classify_female', urlencodedParser, function(request, response){
+    // console.log(request.body.a)
+    if (request.body.a==1) {
+      db.getProByClass('shopInfo',"女性专区",function(result){
+        // console.log(result)
+        response.send(result);
+      });
+      }
+    else if (request.body.a==2) {
+      db.getProByClass_orderprice('shopInfo',"女性专区",function(result){
+        response.send(result);
+      });
+      }
+    else if (request.body.a==3) {
+      db.getProByClass_ordersales('shopInfo',"女性专区",function(result){
+        response.send(result);
+      });
+      }
+  });
+  app.post('/classify', urlencodedParser, function(request, response){
+    db.getProduct('shopInfo',function(result){
+      response.send(result);
     });
-    //返回删除状态
-    !isDelete ? response.send(JSON.stringify({status:true,message:"删除成功"})):response.send(JSON.stringify({status:false,message:"删除失败"}));
   });
 
-  //修改商品数据
-  app.post('/updataProducts',urlencodedParser,function(request, response){
-    console.log(JSON.parse(request.body.data));
-    //需要修改的数据
-    var data = JSON.parse(request.body.data);
-    //根据id是否查询得到商品
-    var isUpdate = false;
-
-    db.exists('shopInfo',{},[],function(result){
-      result.forEach(function(item){
-        if(item._id == request.body._id){
-          isUpdate = true;
-           db.updateProducts('shopInfo',item,data);
-          return false;
-        }
-      });
-    });
-
-    //返回修改状态
-    !isUpdate ? response.send(JSON.stringify({status:true,message:"修改成功"})):response.send(JSON.stringify({status:false,message:"修改失败"}));
+  // 设置跨域访问
+  app.all('*', function(req, res, next) {
+      res.header("Access-Control-Allow-Origin", "*");
+      res.header("Access-Control-Allow-Headers", "X-Requested-With");
+      res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
+      res.header("X-Powered-By",' 3.2.1')
+      // res.header("Content-Type", "application/json;charset=utf-8");
+      next();
   });
+
 }

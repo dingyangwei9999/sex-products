@@ -64,20 +64,195 @@ body {
 
 header {
   height: 1.40625rem;
-  border-bottom: 1px solid red; }
+  border-bottom: 1px solid #E3E3E3; }
   header h3 {
     display: inline-block;
     font-weight: normal;
     font-size: 16px;
-    line-height: 1.40625rem;
+    line-height: 1.375rem;
     margin-left: 0.171875rem; }
     header h3 .iconfont {
       font-size: 14px; }
   header p {
     font-size: 14px;
     float: right;
-    line-height: 0.484375rem;
-    margin: 0.109375rem 0 0 0.25rem;
-    padding: 0 0.15625rem;
+    line-height: 0.9375rem;
+    margin: 0.15625rem 0 0 0.25rem;
+    padding: 0 0.3125rem;
     border: 1px solid #E3E3E3;
-    border-radius: 0.078125rem; }
+    border-radius: 0.15625rem;
+    background-color: #fff; }
+
+main {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden; }
+  main .no_shop {
+    display: none; }
+    main .no_shop .icon-gouwuche1 {
+      font-size: 2.5rem;
+      color: #CCC;
+      padding-top: 1.9375rem;
+      text-align: center; }
+    main .no_shop p {
+      text-align: center;
+      padding-top: 0.3125rem;
+      font-size: 16px;
+      color: #ccc; }
+      main .no_shop p span {
+        font-size: 12px; }
+    main .no_shop div {
+      display: flex; }
+      main .no_shop div h2 {
+        flex: 1;
+        font-size: 16px;
+        text-align: center;
+        background-color: #EEE;
+        margin: 0.78125rem 0.3125rem;
+        line-height: 1.25rem;
+        border-radius: 0.15625rem;
+        border: 1px solid #D4D4D4; }
+  main li {
+    display: table;
+    width: 100%;
+    height: 3.125rem;
+    padding: 0.3125rem 0;
+    border-bottom: 1px solid #ddd; }
+    main li div:nth-of-type(1) {
+      display: table-cell;
+      width: 0.9375rem;
+      vertical-align: middle;
+      text-align: center; }
+    main li div:nth-of-type(2) {
+      display: table-cell;
+      height: 2.5rem;
+      width: auto; }
+      main li div:nth-of-type(2) img {
+        display: table-cell;
+        width: 2.5rem;
+        height: 2.5rem;
+        float: left; }
+      main li div:nth-of-type(2) h2 {
+        display: table-cell;
+        width: 3.75rem;
+        overflow: hidden;
+        padding: 0 0.3125rem; }
+      main li div:nth-of-type(2) .ctrl {
+        width: 2.5rem; }
+        main li div:nth-of-type(2) .ctrl p {
+          text-align: right;
+          margin-bottom: 0.15625rem; }
+        main li div:nth-of-type(2) .ctrl .price {
+          color: #666; }
+        main li div:nth-of-type(2) .ctrl .freight {
+          color: #999;
+          text-decoration: line-through; }
+      main li div:nth-of-type(2) .num {
+        width: 3.125rem;
+        border: 1px solid #E2E2E2; }
+        main li div:nth-of-type(2) .num span {
+          float: left;
+          width: 0.8125rem;
+          height: 0.875rem;
+          line-height: 0.875rem;
+          background-color: #EEE;
+          font-weight: bolder; }
+        main li div:nth-of-type(2) .num input {
+          border: none;
+          float: left;
+          width: 0.8125rem;
+          height: 0.875rem;
+          text-align: center; }
+
+section {
+  background-color: #EEE; }
+  section > p {
+    height: 1.71875rem;
+    line-height: 1.71875rem;
+    display: inline-block;
+    position: relative;
+    font-size: 14px;
+    padding: 0 0 0 1.15625rem; }
+    section > p i {
+      position: absolute;
+      left: 0.3125rem;
+      top: 0.5rem; }
+  section > h2 {
+    float: right;
+    height: 1.25rem;
+    line-height: 1.25rem;
+    background-color: #E43A3D;
+    margin: 0.25rem 0.3125rem 0 0;
+    padding: 0 0.3125rem;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 14px; }
+    section > h2 span {
+      font-size: 14px; }
+  section .mess {
+    float: right;
+    margin: 0.25rem 0.625rem 0 0; }
+    section .mess p {
+      font-size: 14px; }
+      section .mess p .total {
+        color: #E43A3D; }
+        section .mess p .total:before {
+          content: '￥'; }
+    section .mess .calc_freight {
+      color: #999; }
+
+.dialog {
+  display: none; }
+  .dialog .layer {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.4); }
+  .dialog .tips {
+    height: 4.75rem;
+    width: 9.125rem;
+    background: #fff;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 20;
+    margin: -3.125rem -4.5625rem;
+    border-radius: 3px;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    padding: 0.625rem 0.625rem 0.3125rem 0.625rem; }
+    .dialog .tips .title {
+      height: 2.8125rem;
+      width: 7.8125rem;
+      font-size: 16px;
+      color: #676767; }
+    .dialog .tips .sub {
+      height: 0.9375rem;
+      width: 7.8125rem; }
+      .dialog .tips .sub nav {
+        height: 0.9375rem;
+        width: auto;
+        padding: 0 0.3125rem;
+        margin: 0 0.0625rem;
+        font-size: 16px;
+        line-height: 0.9375rem;
+        float: right;
+        color: #5e7199; }
+
+i.check {
+  display: inline-block;
+  background: url("../css/imgs/check.png") center no-repeat;
+  background-size: 0.6875rem 0.6875rem;
+  border-radius: 50%;
+  width: 0.6875rem;
+  height: 0.6875rem; }
+
+i.checkon {
+  display: inline-block;
+  background: url("../css/imgs/check_on.png") center no-repeat;
+  background-size: 0.6875rem 0.6875rem;
+  border-radius: 50%;
+  width: 0.6875rem;
+  height: 0.6875rem; }

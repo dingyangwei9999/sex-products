@@ -25,34 +25,22 @@ exports.Register = function(app){
 		saveUninitialized: true
 	}));
 
-// sexUser是客户注册登录的集合名（表名）
+
 	app.post('/login', urlencodedParser, function(request, response){
-		db.exists('sexUser', request.body,['phone','password'], function(data){
+		db.exists('sert', request.body,['name','password'], function(data){
 			
 			if(data.length > 0){
-				request.session.phone = request.body.phone;
-				response.send(apiResult(true,'',data))
-                //console.log(request.session,request.body.phone);
+				request.session.name = request.body.name;
+				response.send(apiResult(true))
+                //console.log(request.session,request.body.name);
 			} else {
-				response.send(apiResult(false, '手机号或者密码有误'));
+				response.send(apiResult(false, '用户名错误'));
 			}
 		})
 	});
 
-// 客户端注册 普通用户
-	app.post('/register',urlencodedParser, function(request, response){
-		console.log(request.body)
-		db.exists('sexUser', request.body,['phone'], function(data){
-			
-			if(data.length > 0){
-				request.session.phone = request.body.phone;
-				response.send(apiResult(true,'该手机号已被注册过'))
-                //console.log(request.session,request.body.phone);
-			} else {
-				db.save('sexUser', request.body);
-				response.send(apiResult(false));
-			}
-		})
+	app.get('/register', function(request, response){
+		response.send('account register');
 	});
 
 	app.get('/logout', function(request, response){
@@ -61,20 +49,6 @@ exports.Register = function(app){
 
 	app.get('/getsession', function(request, response){
 		response.send(apiResult(request.session.name != null, null, request.session.name));
-	});
-
-	// sexAdmin是管理员登录的集合名（表名）
-	app.post('/loginAdmin', urlencodedParser, function(request, response){
-		db.exists('sexAdmin', request.body,['adminAccounts','password'], function(data){
-			console.log(request.body);
-			if(data.length > 0){
-				request.session.adminAccounts = request.body.adminAccounts;
-				response.send(apiResult(true,'',data))
-                //console.log(request.session,request.body.adminAccounts);
-			} else {
-				response.send(apiResult(false, '管理员帐号不正确或者密码有误'));
-			}
-		})
 	});
     
    /* //设置跨域访问

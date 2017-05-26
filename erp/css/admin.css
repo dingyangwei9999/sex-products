@@ -65,58 +65,10 @@
 * table.html css
 */
 
-/*.table-main{font-size: 1.4rem;padding: .5rem}
+.table-main{font-size: 1.4rem;padding: .5rem}
 .table-main button{background: #fff}
 .table-check{width: 30px}
-.table-id{width: 70px}
-.table-title{width: 50px}*/
-
-
-
-
-
-
-
-
-/*表头布局*/
-.table-check{width: 30px;}
-.preview{width: 70px;}
-._id{width: 50px;}
-.title{width: 160px;}
-.price{width: 50px;}
-.ori_price{width: 50px;}
-.repertory{width: 50px;}
-.sales{width: 50px;}
-.freight{width: 50px;}
-.classify{width: 130px;}
-.keyword{width: 130px;}
-.delete{width: 50px;}
-
-
-
-/*表体布局修改*/
-#resetSty{
-		padding:0.4rem;
-}
-#t_preview{
-	height:45px;
-	padding:0;
-	text-align: center;
-}
-#t_preview img{
-	width: 45px;
-	height: 45px;
-}
-._id a{
-	display: inline-block; 
-	width: 55px;
-	overflow: hidden;
-	text-overflow: ellipsis;
-}
-
-
-
-
+.table-id{width: 50px}
 
 @media only screen and (max-width: 640px){.table-select{margin-top: 10px;margin-left: 5px}
 }
