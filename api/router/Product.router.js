@@ -162,4 +162,88 @@ exports.Register = function(app){
     //返回修改状态
     !isUpdate ? response.send(JSON.stringify({status:true,message:"修改成功"})):response.send(JSON.stringify({status:false,message:"修改失败"}));
   });
+
+
+     // 获取我的资料的数据
+  app.post('/classify_hot', urlencodedParser, function(request, response){
+    // console.log(request.body.a)
+    if (request.body.a==1) {
+      db.getProByClass('shopInfo',"热门商品",function(result){
+        response.send(result);
+      });
+      }
+    else if (request.body.a==2) {
+      db.getProByClass_orderprice('shopInfo',"热门商品",function(result){
+        response.send(result);
+      });
+      }
+    else if (request.body.a==3) {
+      db.getProByClass_ordersales('shopInfo',"热门商品",function(result){
+        response.send(result);
+      });
+      }
+  });
+  app.post('/classify_condom', urlencodedParser, function(request, response){
+    // console.log(request.body.a)
+    if (request.body.a==1) {
+      db.getProByClass('shopInfo',"套套专区",function(result){
+        // console.log(result)
+        response.send(result);
+      });
+      }
+    else if (request.body.a==2) {
+      db.getProByClass_orderprice('shopInfo',"套套专区",function(result){
+        response.send(result);
+      });
+      }
+    else if (request.body.a==3) {
+      db.getProByClass_ordersales('shopInfo',"套套专区",function(result){
+        response.send(result);
+      });
+      }
+  });
+  app.post('/classify_male', urlencodedParser, function(request, response){
+    // console.log(request.body.a)
+    if (request.body.a==1) {
+      db.getProByClass('shopInfo',"男性专区",function(result){
+        // console.log(result)
+        response.send(result);
+      });
+      }
+    else if (request.body.a==2) {
+      db.getProByClass_orderprice('shopInfo',"男性专区",function(result){
+        response.send(result);
+      });
+      }
+    else if (request.body.a==3) {
+      db.getProByClass_ordersales('shopInfo',"男性专区",function(result){
+        response.send(result);
+      });
+      }
+  });
+  app.post('/classify_female', urlencodedParser, function(request, response){
+    // console.log(request.body.a)
+    if (request.body.a==1) {
+      db.getProByClass('shopInfo',"女性专区",function(result){
+        // console.log(result)
+        response.send(result);
+      });
+      }
+    else if (request.body.a==2) {
+      db.getProByClass_orderprice('shopInfo',"女性专区",function(result){
+        response.send(result);
+      });
+      }
+    else if (request.body.a==3) {
+      db.getProByClass_ordersales('shopInfo',"女性专区",function(result){
+        response.send(result);
+      });
+      }
+  });
+  app.post('/classify', urlencodedParser, function(request, response){
+    db.getProduct('shopInfo',function(result){
+      response.send(result);
+    });
+  });
+
 }

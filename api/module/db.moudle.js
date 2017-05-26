@@ -172,6 +172,88 @@ var updateProducts = function(_collection,data,needUpdata){
 	})
 }
 
+
+var getProduct = function(_collection, callback){
+	db.open(function(error, db){
+		if(error){
+			console.log('connect db:', error);
+		}
+        db.collection(_collection, function(error, collection){
+            if(error){
+                console.log(error)
+            } else {
+                collection.find().toArray(function(err, pro){
+                	    // var reg = new RegExp("^.*"+keyword+"\.*$","i");
+    					// collection.find({name:{$regex:reg}}).toArray(function(err, docs){
+   						//  response.send(docs);
+                    callback(pro);
+                });
+            }
+        });
+        db.close();
+	})	
+};
+var getProByClass_orderprice = function(_collection, typename, callback){
+	db.open(function(error, db){
+		if(error){
+			console.log('connect db:', error);
+		}
+        db.collection(_collection, function(error, collection){
+            if(error){
+                console.log(error)
+            } else {
+                collection.find({"classify":typename}).sort({"price":1}).toArray(function(err, pro){
+                	    // var reg = new RegExp("^.*"+keyword+"\.*$","i");
+    					// collection.find({name:{$regex:reg}}).toArray(function(err, docs){
+   						//  response.send(docs);
+                    callback(pro);
+                });
+            }
+        });
+        db.close();
+	})	
+};
+var getProByClass_ordersales = function(_collection, typename, callback){
+	db.open(function(error, db){
+		if(error){
+			console.log('connect db:', error);
+		}
+        db.collection(_collection, function(error, collection){
+            if(error){
+                console.log(error)
+            } else {
+                collection.find({"classify":typename}).sort({"sales":-1}).toArray(function(err, pro){
+                	    // var reg = new RegExp("^.*"+keyword+"\.*$","i");
+    					// collection.find({name:{$regex:reg}}).toArray(function(err, docs){
+   						//  response.send(docs);
+                    callback(pro);
+                });
+            }
+        });
+        db.close();
+	})	
+};
+
+var getProByClass = function(_collection, typename, callback){
+	db.open(function(error, db){
+		if(error){
+			console.log('connect db:', error);
+		}
+        db.collection(_collection, function(error, collection){
+            if(error){
+                console.log(error)
+            } else {
+                collection.find({"classify":typename}).toArray(function(err, pro){
+                	    // var reg = new RegExp("^.*"+keyword+"\.*$","i");
+    					// collection.find({name:{$regex:reg}}).toArray(function(err, docs){
+   						//  response.send(docs);
+                    callback(pro);
+                });
+            }
+        });
+        db.close();
+	})	
+};
 exports.exists = exists;
 exports.save = save;
 exports.del = del;
@@ -180,6 +262,11 @@ exports.existsSingle = existsSingle;
 exports.delByProductsObj = delByProductsObj;
 exports.updateProducts = updateProducts;
 
+
+exports.getProByClass = getProByClass;
+exports.getProduct = getProduct;
+exports.getProByClass_orderprice=getProByClass_orderprice;
+exports.getProByClass_ordersales=getProByClass_ordersales;
 
 
  
