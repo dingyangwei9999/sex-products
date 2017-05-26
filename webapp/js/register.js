@@ -41,6 +41,7 @@ require(['config'],function(){
 					}
 					else{
 						alert('恭喜您，已注册成功');
+						window.location.href = "login.html";
 					}
 				})
 			})

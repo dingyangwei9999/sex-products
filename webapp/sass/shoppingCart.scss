@@ -8,12 +8,12 @@ body{
 // 顶部
 header{
 	height: 1.40625rem;
-	border-bottom: 1px solid red;
+	border-bottom: 1px solid #E3E3E3;
 	h3{
 		display: inline-block;
 		font-weight: normal;
 		font-size:16px;
-		line-height: 1.40625rem;
+		line-height: 1.375rem;
 		margin-left: 0.171875rem;
 		.iconfont{
 			font-size: 14px;
@@ -22,13 +22,225 @@ header{
 	p{
 		font-size: 14px;
 		float: right;
-		line-height: 0.484375rem;
-		margin:0.109375rem 0 0 0.25rem;
-		padding:0 0.15625rem;
+		line-height: 0.9375rem;
+		margin:0.15625rem 0 0 0.25rem;
+		padding:0 0.3125rem;
 		border:1px solid #E3E3E3;
-		border-radius: 0.078125rem;
+		border-radius: 0.15625rem;
+		background-color: #fff;
 	}
 }
+
+main{
+	flex:1;
+	overflow-y: auto;
+	overflow-x:hidden; 
+	//无购车物时样式
+	.no_shop{
+		display: none;
+		.icon-gouwuche1{
+			font-size: 2.5rem;
+			color:#CCC;
+			padding-top: 1.9375rem;
+			text-align: center;
+		}
+		p{
+			text-align: center;
+			padding-top: 0.3125rem;
+			font-size: 16px;
+			color:#ccc;
+			span{
+				font-size: 12px;
+			}
+		}
+		div{
+			display: flex;
+			h2{
+				// display: inline-block;
+				flex:1;
+				font-size: 16px;
+				text-align: center;
+				background-color: #EEE;
+				margin:0.78125rem 0.3125rem;
+				line-height: 1.25rem;
+				border-radius: 0.15625rem;
+				border:1px solid #D4D4D4;
+			}
+		}
+	}
+	//购物车商品样式
+	li{
+		display: table;
+		width: 100%;
+		height: 3.125rem;
+		padding:0.3125rem 0;
+		border-bottom: 1px solid #ddd;
+		// 左边点击按钮
+		div:nth-of-type(1){
+			display: table-cell;
+			width: 0.9375rem;
+			vertical-align: middle;
+			text-align: center;
+		}
+		//右边商品信息
+		div:nth-of-type(2){
+			display: table-cell;
+			height: 2.5rem;
+			width: auto;
+			img{
+				display: table-cell;
+				width: 2.5rem;
+				height: 2.5rem;
+				float: left;
+			}
+			h2{
+				display: table-cell;
+				width: 3.75rem;
+				overflow: hidden;
+				padding:0 0.3125rem;
+			}
+			//价格
+			.ctrl{
+				width: 2.5rem;
+				p{
+					text-align: right;
+					margin-bottom: 0.15625rem;
+				}
+				.price{
+					color:#666;
+				}
+				.freight{
+					color:#999;
+					text-decoration: line-through;
+				}
+			}
+			//控制数量
+			.num{
+				width:3.125rem;
+				border:1px solid #E2E2E2;
+				span{
+					float: left;
+					width: 0.8125rem;
+					height: 0.875rem;
+					line-height: 0.875rem;
+					background-color: #EEE;
+					font-weight: bolder;
+				}
+				input{
+					border:none;
+					float: left;
+					width: 0.8125rem;
+					height: 0.875rem;
+					text-align: center;
+				}
+			}
+		}
+	}
+}
+//底部结算
+section{
+	background-color: #EEE;
+	>p{
+		height: 1.71875rem;
+		line-height:  1.71875rem;
+		display: inline-block;
+		position: relative;
+		font-size: 14px;
+		padding:0 0 0 1.15625rem;
+		i{		
+			position: absolute;
+			left:0.3125rem;
+			top:0.5rem;
+			// background: url('../css/imgs/spriteSheet.png') no-repeat 0 0;	
+		}
+	}
+	>h2{
+		float: right;
+		height: 1.25rem;
+		line-height: 1.25rem;
+		background-color: #E43A3D;
+		margin: 0.25rem 0.3125rem 0 0;
+		padding:0 0.3125rem;
+		border-radius: 5px;
+		color:#fff;
+		font-size: 14px;
+		span{
+			font-size: 14px;
+		}
+	}
+	.mess{
+		float: right;
+		margin: 0.25rem 0.625rem 0 0;
+		p{
+			font-size: 14px;
+			.total{
+				color:#E43A3D;
+				&:before{
+					content: '￥';
+				}
+			}
+		}
+		.calc_freight{
+			color:#999;
+		}
+	}
+}
+//弹窗提示
+.dialog{
+	display: none;
+	.layer{
+		height: 100%;
+		width: 100%;
+		position: fixed;
+		top: 0;
+		left: 0;
+		z-index: 10;
+		background-color: rgba(0,0,0,.4);
+	}
+	.tips{
+		// position: fixed;
+		// z-index: 20;
+		// top:50%;
+		// left:50%;
+		// background-color: #fff;
+		// margin:-4.5625rem 0 0 -2.375rem;
+		// width: 9.125rem;
+		// height: 4.75rem;
+	    height: 4.75rem;
+	    width: 9.125rem;
+	    background: #fff;
+	    position: fixed;
+	    top: 50%;
+	    left: 50%;
+	    z-index: 20;
+	    margin: -3.125rem -4.5625rem;
+	    border-radius: 3px;
+	    border: 1px solid rgba(255,255,255,0.6);
+	    padding: 0.625rem 0.625rem 0.3125rem 0.625rem;
+	    .title{
+    	    height: 2.8125rem;
+		    width: 7.8125rem;
+		    font-size: 16px;
+		    color: #676767;
+	    }
+	    .sub{
+	    	height: 0.9375rem;
+   			width: 7.8125rem;
+   			nav{
+   				height: 0.9375rem;
+			    width: auto;
+			    padding: 0 0.3125rem;
+			    margin: 0 0.0625rem;
+			    font-size: 16px;
+			    line-height: 0.9375rem;
+			    float: right;
+			    color: #5e7199;
+   			}
+	    }
+	}
+}
+
+
 // html {
 // 	font-size: 62.5%;
 // }
@@ -54,3 +266,22 @@ header{
 // max-width: 640px;
 // }
 // }
+//勾选框公共样式
+//未选中
+i.check{
+	display: inline-block;
+	background: url('../css/imgs/check.png') center no-repeat;
+	background-size: 0.6875rem 0.6875rem;
+	border-radius: 50%;
+	width: 0.6875rem;
+	height: 0.6875rem;
+}
+//选中时
+i.checkon{
+	display: inline-block;
+	background: url('../css/imgs/check_on.png') center no-repeat;
+	background-size: 0.6875rem 0.6875rem;
+	border-radius: 50%;
+	width: 0.6875rem;
+	height: 0.6875rem;
+}

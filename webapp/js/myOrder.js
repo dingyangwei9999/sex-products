@@ -1,6 +1,7 @@
 require(['config'],function(){
 	require(['jquery','global'],function(){
 		$(function(){
+			$('footer').load('footer.html');
 			// 点击左上角 <  返回历史列表中 上一个url
 			$('.back').click(function(){
 				history.back();

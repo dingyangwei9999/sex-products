@@ -4,12 +4,338 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" id="vp" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<title>首页</title>
-	<script type="text/javascript">
-		var wd = document.documentElement.clientWidth*window.devicePixelRatio/10;
-		document.getElementsByTagName("html")[0].style.fontSize = wd + "px";
-	</script>
+	<link rel="stylesheet" href="css/index.css">
+	<link rel="stylesheet" href="css/iconfont/iconfont.css">
+	<link rel="stylesheet" href="../libs/Swiper-3.4.2/dist/css/swiper.min.css">
+	<link rel="stylesheet" href="css/footer.css">
+	<script src="../libs/jquery/require.js" data-main="js/index.js"></script>
+	<script src="http://g.tbcdn.cn/mtb/lib-flexible/0.3.4/??flexible_css.js,flexible.js"></script>
+
 </head>
 <body>
-
+	<!-- 返回顶部的点击按钮 -->
+	<div class="toTop">
+		<i class="iconfont icon-zuoqianfang"></i>
+	</div>
+	<div class="warp">
+		<div class="newWwarp">
+			<div class="close">			
+				<i class="iconfont icon-cha" id="closeBtn"></i>
+			</div>
+			<div class="searchs">
+				<form action="" method="post">
+					<input type="text" name="keyword" class="searchText"
+					placeholder="情趣内衣">
+					<div class="searchSubmit"
+					type="submit">
+						<i class="iconfont icon-sousuo-sousuo"></i>
+					</div>
+				</form>
+			</div>
+		</div>
+		<p class="hotSearch">热搜</p>
+		<div class="searchKeyword">
+			<a href="">安全套</a>
+			<a href="">振动棒</a>
+			<a href="">飞机杯</a>
+			<a href="">缩阴</a>
+			<a href="">延时</a>
+			<a href="">勃起</a>
+		</div>
+	</div>
+	<div id="container">
+ 		<!-- 头部的布局 -->
+ 		<div class="searchFirst">
+ 			<i class="iconfont icon-sousuo-sousuo"></i>
+ 			<input type="text" class="searchfix" placeholder="宝贝">
+ 		</div>
+ 	<!-- 	<div class="search">
+ 			<div class="icon">
+ 				<i class="iconfont icon-sex"></i>
+ 			</div>
+ 			<div class="search-main">
+ 				<i class="iconfont icon-sousuo-sousuo"></i>
+ 				<input type="text" class="searchfix" placeholder="寻找宝贝店铺">
+ 			</div>
+ 		</div> -->
+ 		<!-- 中心内容的布局 -->
+ 		<div class="main">
+ 		<!-- 轮播图 -->
+ 			<div class="swiper-container banner">
+			    <div class="swiper-wrapper">
+			        <div class="swiper-slide"><img src="imgs/dbda125085.jpg" alt=""></div>
+			        <div class="swiper-slide"><img src="imgs/94cb71ed11.jpg" alt=""></div>
+			        <div class="swiper-slide"><img src="imgs/4fd1849954.jpg" alt=""></div>
+			        <div class="swiper-slide"><img src="imgs/f8f2311b46.jpg" alt=""></div>
+			    </div>
+			    <!-- 如果需要分页器 -->
+			    <div class="swiper-pagination"></div>
+			</div>
+	 		<div class="nav-list">
+	 			<div class="first">
+	 				<a href="http://localhost:888/webapp/html/classify.html">
+	 					<i class="iconfont icon-shangpinfenlei-copy"></i>
+	 				</a>
+	 				<p>商品分类</p>
+	 			</div>
+	 			<div class="second">
+	 				<a href="http://localhost:888/webapp/html/classify_hot.html">
+	 					<i class="iconfont icon-remai"></i>
+	 				</a>
+	 				<p>热卖单品</p>
+	 			</div>
+	 			<div class="third">
+	 				<a href="">
+	 					<i class="iconfont icon-tehuijingxuan"></i>
+	 				</a>
+	 				<p>APP特惠</p>
+	 			</div>
+	 			<div class="forth">		
+		 			<a href="">
+		 				<i class="iconfont icon-xueyuan"></i>
+		 			</a>
+		 			<p>春水院</p>
+	 			</div>	
+	 		</div>
+	 		<!-- 限时抢购 -->
+	 		<div class="false-sale">
+	 			<h3>限时抢购&nbsp;&nbsp;▪&nbsp;&nbsp;	<span>距本场结束</span>
+	 			</h3>
+	 			<div class="sale-time">
+	 				<span class="hour"></span>&nbsp;:
+	 				<span class="min"></span>&nbsp;:
+	 				<span class="sec"></span>
+	 			</div>
+	 			<a href="">全部&nbsp;&nbsp;>
+	 			</a>
+	 		</div>
+	 		<!-- 限时抢购的商品 -->
+	 		<div class="time_product">
+	 			<ul>
+	 				<!-- <li>
+	 					<img src="imgs/505095.jpg" alt="">
+	 					<p>￥1</p>
+	 					<p><s>￥19</s></p>
+	 					<p class="save">立省18元</p>
+	 				</li>
+	 				<li>
+	 					<img src="imgs/505095.jpg" alt="">
+	 					<p>￥1</p>
+	 					<p><s>￥19</s></p>
+	 					<p class="save">立省18元</p>
+	 				</li>
+	 				<li>
+	 					<img src="imgs/505095.jpg" alt="">
+	 					<p>￥1</p>
+	 					<p><s>￥19</s></p>
+	 					<p class="save">立省18元</p>
+	 				</li>
+	 				<li>
+	 					<img src="imgs/505095.jpg" alt="">
+	 					<p>￥1</p>
+	 					<p><s>￥19</s></p>
+	 					<p class="save">立省18元</p>
+	 				</li> -->
+	 			</ul>
+	 		</div>
+	 		<!-- 热门专区 -->
+	 		<div class="hot_product">
+	 			<h3>热门专区
+					<a href="http://localhost:888/webapp/html/classify_hot.html">更多&nbsp;&nbsp;>
+	 				</a>
+	 			</h3>
+	 			<div class="picture">
+		 			<!-- <a href="" class="first">
+		 				<img src="imgs/505095.jpg" alt="">
+		 			</a>
+		 			<a href="" class="second">
+		 				<img src="imgs/505095.jpg" alt="">
+		 			</a>
+		 			<a href="" class="third">
+		 				<img src="imgs/505095.jpg" alt="">
+		 			</a>
+		 			<a href="" class="forth">
+		 				<img src="imgs/505095.jpg" alt="">
+		 			</a>
+		 			<a href="" class="fifth">
+		 				<img src="imgs/505095.jpg" alt="">
+		 			</a> -->
+	 			</div>
+	 		</div>
+	 		<!-- 套套专区 -->
+	 		<div class="condom_product">
+	 			<h3>套套专区
+					<a href="http://localhost:888/webapp/html/classify_condom.html">更多&nbsp;&nbsp;>
+	 				</a>
+	 			</h3>
+	 			<div class="pic">
+		 			<div class="pictures">
+		 			<!-- <a href="" class="first">
+		 				<img src="imgs/505095.jpg" alt="">
+		 			</a>
+		 			<a href="" class="second">
+		 				<img src="imgs/505095.jpg" alt="">
+		 			</a>
+		 			<a href="" class="third">
+		 				<img src="imgs/505095.jpg" alt="">
+		 			</a>
+		 			<a href="" class="forth">
+		 				<img src="imgs/505095.jpg" alt="">
+		 			</a>
+		 			<a href="" class="fifth">
+		 				<img src="imgs/505095.jpg" alt="">
+		 			</a> -->
+	 			</div>
+	 			</div>
+	 		</div>
+	 		<!-- 女性专区 -->
+	 		<div class="female_product">
+	 			<h3>女性专区
+					<a href="http://localhost:888/webapp/html/classify_female.html">更多&nbsp;&nbsp;>
+	 				</a>
+	 			</h3>
+	 			<div class="pic">
+		 			<div class="picture1">
+		 			<!-- <a href="" class="first">
+		 				<img src="imgs/505095.jpg" alt="">
+		 			</a>
+		 			<a href="" class="second">
+		 				<img src="imgs/505095.jpg" alt="">
+		 			</a>
+		 			<a href="" class="third">
+		 				<img src="imgs/505095.jpg" alt="">
+		 			</a>
+		 			<a href="" class="forth">
+		 				<img src="imgs/505095.jpg" alt="">
+		 			</a>
+		 			<a href="" class="fifth">
+		 				<img src="imgs/505095.jpg" alt="">
+		 			</a> -->
+	 				</div>
+	 			</div>
+	 		</div>
+	 		<!-- 男性专区 -->
+	 		<div class="male_product">
+	 			<h3>男性专区
+					<a href="http://localhost:888/webapp/html/classify_male.html">更多&nbsp;&nbsp;>
+	 				</a>
+	 			</h3>
+	 			<div class="pic">
+		 			<div class="picture2">
+		 			<!-- <a href="" class="first">
+		 				<img src="imgs/505095.jpg" alt="">
+		 			</a>
+		 			<a href="" class="second">
+		 				<img src="imgs/505095.jpg" alt="">
+		 			</a>
+		 			<a href="" class="third">
+		 				<img src="imgs/505095.jpg" alt="">
+		 			</a>
+		 			<a href="" class="forth">
+		 				<img src="imgs/505095.jpg" alt="">
+		 			</a>
+		 			<a href="" class="fifth">
+		 				<img src="imgs/505095.jpg" alt="">
+		 			</a> -->
+	 			</div>
+	 			</div>
+	 		</div>
+	 		<!-- 大家都在买 -->
+	 		<div class="you_like">
+	 			<h3>
+	 				—— 猜你喜欢 ——
+	 			</h3>
+	 			<!-- <div class="prlist">
+	 				<a href="">
+	 					<img src="imgs/505095.jpg" alt="">
+	 					<p class="detail">【买一送一】火枪手让你收不了的爽</p>
+	 					<p class="price">￥199
+							<span class="sale">
+								已售：&nbsp;2111
+							</span>
+	 					</p>
+	 				</a>
+	 			</div>
+	 			<div class="prlist">
+	 				<a href="">
+	 					<img src="imgs/505095.jpg" alt="">
+	 					<p class="detail">【买一送一】火枪手让你收不了的爽</p>
+	 					<p class="price">￥199
+							<span class="sale">
+								已售：&nbsp;2111
+							</span>
+	 					</p>
+	 				</a>
+	 			</div>
+	 			<div class="prlist">
+	 				<a href="">
+	 					<img src="imgs/505095.jpg" alt="">
+	 					<p class="detail">【买一送一】火枪手让你收不了的爽</p>
+	 					<p class="price">￥199
+							<span class="sale">
+								已售：&nbsp;2111
+							</span>
+	 					</p>
+	 				</a>
+	 			</div>
+	 			<div class="prlist">
+	 				<a href="">
+	 					<img src="imgs/505095.jpg" alt="">
+	 					<p class="detail">【买一送一】火枪手让你收不了的爽</p>
+	 					<p class="price">￥199
+							<span class="sale">
+								已售：&nbsp;2111
+							</span>
+	 					</p>
+	 				</a>
+	 			</div>
+	 			<div class="prlist">
+	 				<a href="">
+	 					<img src="imgs/505095.jpg" alt="">
+	 					<p class="detail">【买一送一】火枪手让你收不了的爽</p>
+	 					<p class="price">￥199
+							<span class="sale">
+								已售：&nbsp;2111
+							</span>
+	 					</p>
+	 				</a>
+	 			</div>
+	 			<div class="prlist">
+	 				<a href="">
+	 					<img src="imgs/505095.jpg" alt="">
+	 					<p class="detail">【买一送一】火枪手让你收不了的爽</p>
+	 					<p class="price">￥199
+							<span class="sale">
+								已售：&nbsp;2111
+							</span>
+	 					</p>
+	 				</a>
+	 			</div>
+	 			<div class="prlist">
+	 				<a href="">
+	 					<img src="imgs/505095.jpg" alt="">
+	 					<p class="detail">【买一送一】火枪手让你收不了的爽</p>
+	 					<p class="price">￥199
+							<span class="sale">
+								已售：&nbsp;2111
+							</span>
+	 					</p>
+	 				</a>
+	 			</div>
+	 			<div class="prlist">
+	 				<a href="">
+	 					<img src="imgs/505095.jpg" alt="">
+	 					<p class="detail">【买一送一】火枪手让你收不了的爽</p>
+	 					<p class="price">￥199
+							<span class="sale">
+								已售：&nbsp;2111
+							</span>
+	 					</p>
+	 				</a>
+	 			</div> -->
+	 		</div>
+ 		</div>
+ 		<div class="footer"></div>
+ 	</div>
 </body>
 </html>

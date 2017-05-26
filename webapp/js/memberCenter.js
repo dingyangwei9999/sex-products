@@ -1,6 +1,7 @@
 require(['config'],function(){
 	require(['jquery','global'],function(){
 		$(function(){
+			$('footer').load('footer.html');
 			$.post(erp.baseUrl +  'getmyProfile',{},function(response){
 				console.log(response)
 
@@ -22,6 +23,28 @@ require(['config'],function(){
 			$('.myDress').click(function(){
 				window.location.href='address.html';
 			})
+
+			// 点击 购物车,跳转
+			$('.myCarList').click(function(){
+				window.location.href='shoppingCart.html';
+			})
+
+			// // 点击 gouwu,跳转
+			// $('.myCarList').click(function(){
+			// 	window.location.href='shoppingCart.html';
+			// })
+
+
+
+
+
+
+
+
+
+
+
+
 
 			// 点击 我的订单，跳转 订单界面
 			$('.orderTop').click(function(e){

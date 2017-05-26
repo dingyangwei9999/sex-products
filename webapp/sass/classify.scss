@@ -1,0 +1,162 @@
+@import 'base';
+@import 'common';
+// @import 'footer';
+
+.header{
+	position: relative;
+	h2{
+		height:1.21875rem;
+		font-size:13px;
+		
+		// background-color: #FAFCFC;
+		background-color: $main_color;
+		color: #fff;
+		border-bottom: 0.03125rem solid #E8E8E8;
+		text-align: center;
+		line-height: 1.21875rem;
+	}
+	.back{
+		// float: left;
+		height: 1.21875rem;
+		width: 1.5625rem;
+		position: absolute;
+		left: 0;
+		text-decoration: none;
+		i{
+			height: 100%;
+			line-height: 1.21875rem;
+			font-size: 20px;
+			color: #fff;
+		}
+	}
+	.homepage{
+		// float: right;
+		height: 1.21875rem;
+		width: 1.21875rem;
+		position: absolute;
+		right: 0;
+		text-decoration: none;
+		i{
+			height: 100%;
+			line-height: 1.31875rem;
+			font-size: 20px;
+			color: #fff;
+		}
+	}
+	.buycar{
+		// float: right;
+		height: 1.21875rem;
+		width: 1.21875rem;
+		position: absolute;
+		right: 1.5625rem;
+		text-decoration: none;
+		i{
+			height: 100%;
+			line-height: 1.21875rem;
+			font-size: 20px;
+			color: #fff;
+		}
+	}
+}
+.main{
+	flex:1;
+
+	display: flex;
+	.classfy_name{
+		float: left;
+		width: 22%;
+		height: 100%;
+		background-color: #eee;
+		ul{
+			.active{background-color: #fff;}
+			li{
+				height: 1.84375rem;
+				line-height: 1.84375rem;
+				text-align: center;
+				font-size: 5px;
+				border-bottom: 0.03125rem solid #fff;
+				// color: $main_color;
+				font-weight: bold;
+				color: #6767fe;
+				i{
+					font-size: 6px;
+					margin-right: 1px;
+
+				}
+			}
+		}
+	}
+	.pro_show{
+		overflow: hidden;
+		flex:1;
+		overflow-y: auto;
+		overflow-x: hidden;
+		float: right;
+		width: 78%;
+		// height: 100%;
+		padding: 0 0.4rem ;
+
+		.proarea{
+	
+			overflow: hidden;
+
+			p{
+			overflow: hidden;
+			.morepro{
+				display: block;
+				float: right;
+				height: 0.925rem;
+				line-height: 0.625rem;
+				font-size: 8px;
+				color: $main_color;
+				// font-weight: bold;
+				}
+			}
+			.everypro{
+				float: left;
+				width: 3.125rem;
+				height: 5.0rem;
+				margin-left: 0.03125rem;
+				margin-right: 0.305rem;
+				// margin-left: 40px;
+				margin-bottom: 0.3125rem;
+				// border-left: 1px solid #ccc;
+				box-shadow: 1px 3px 10px 2px #eee;
+				a{
+					img{
+					width: 3.125rem;
+					height: 3.125rem;
+					}
+				}
+				.productname{
+					color: #333;
+				    font-size: 5px;
+				    margin-top: 0.3125rem;
+				    text-align: center;
+				    padding: 0 0.0625rem;
+				    display:block;white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+				}
+				.productprice{
+					float: right;
+					color: $main_color;
+					height: 20px;
+					line-height: 0.625rem;
+				    font-size: 9px;
+				    margin-top: 0.15625rem;
+				    // padding-right: 0.0625rem;
+				}
+				p>span{color: #000;}
+				// p>span{
+				//     	// float: right;
+				//     	text-align: right;
+				//     	color: #999;
+	   //  				font-size: 4px;
+	   // 					// padding-right: 0.15625rem;
+				// }
+			}
+		}
+	}
+}
+.footer .fenlei a i,.footer .fenlei a span{
+	color: $main_color;
+}
