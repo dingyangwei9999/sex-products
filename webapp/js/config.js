@@ -1,8 +1,8 @@
 require.config({
 	paths : {
-		"jquery" : "../../libs/jquery-3.1.1",
-		"jqueryCookie" : "../../libs/jquery.cookie",
-		"lazyload" : "../../libs/jquery.lazyload",
+		"jquery" : "../../libs/jquery/jquery-3.1.1",
+		"jqueryCookie" : "../../libs/jquery/jquery.cookie",
+		"lazyload" : "../../libs/jquery/jquery.lazyload",
 		"baseUrl" : "../../libs/common/global"
 	},
 	shim : {

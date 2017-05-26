@@ -1,7 +1,9 @@
 require(['config'],function(){
 	require(['jquery','baseUrl'],function(){
 		$('.foot').load('../html/footer.html');
-
+		$('.back').click(function(){
+		window.history.back(-1);
+		})
 		$('.zonghe').addClass('active');
 		//标签切换
 		var htmlNodes = '';  
@@ -9,10 +11,9 @@ require(['config'],function(){
 		$.post(erp.baseUrl +'classify_female',{a:1},function(response){
 				var arr = response;
 				var str = JSON.stringify(arr)
-				console.log(arr)
 				 // var htmlNodes = '';  
 	              for(var i = 0; i < arr.length; i ++){  
-	                  htmlNodes += '<li class="everypro"><a href=""><img src="../imgs/a01.jpg" alt=""></a><p class="productname">' + arr[i].title + '</p><p class="productprice">￥' + arr[i].price + '<span>已售：'+arr[i].sales+'</span></p></li>';  
+	                  htmlNodes += '<li class="everypro"><a href=""><img src="../../upload/listImg/'+arr[i].listImg+'" alt=""></a><p class="productname">' + arr[i].title + '</p><p class="productprice">￥' + arr[i].price + '<span>已售：'+arr[i].sales+'</span></p></li>';  
 	              }  
 
 	              $('.byall').append(htmlNodes);
@@ -32,14 +33,13 @@ require(['config'],function(){
 			$.post(erp.baseUrl +'classify_female',{a:2},function(response){
 				var arr = response;
 				var str = JSON.stringify(arr)
-				console.log(arr)
 				 // var htmlNodes = '';  
 	              for(var i = 0; i < arr.length; i ++){  
-	                  htmlNodes += '<li class="everypro"><a href=""><img src="../imgs/a01.jpg" alt=""></a><p class="productname">' + arr[i].title + '</p><p class="productprice">￥' + arr[i].price + '<span>已售：'+arr[i].sales+'</span></p></li>';  
+	                  htmlNodes += '<li class="everypro"><a href=""><img src="../../upload/listImg/'+arr[i].listImg+'" alt=""></a><p class="productname">' + arr[i].title + '</p><p class="productprice">￥' + arr[i].price + '<span>已售：'+arr[i].sales+'</span></p></li>';  
 	              }  
 
 	              $('.byprice').append(htmlNodes); 
-	              console.log(htmlNodes) 
+	              // console.log(htmlNodes) 
 
 	              htmlNodes = ''; 
 
@@ -59,10 +59,9 @@ require(['config'],function(){
 			$.post(erp.baseUrl +'classify_female',{a:3},function(response){
 				var arr = response;
 				var str = JSON.stringify(arr)
-				console.log(arr)
 				 // var htmlNodes = '';  
 	              for(var i = 0; i < arr.length; i ++){  
-	                  htmlNodes += '<li class="everypro"><a href=""><img src="../imgs/a01.jpg" alt=""></a><p class="productname">' + arr[i].title + '</p><p class="productprice">￥' + arr[i].price + '<span>已售：'+arr[i].sales+'</span></p></li>';  
+	                  htmlNodes += '<li class="everypro"><a href=""><img src="../../upload/listImg/'+arr[i].listImg+'" alt=""></a><p class="productname">' + arr[i].title + '</p><p class="productprice">￥' + arr[i].price + '<span>已售：'+arr[i].sales+'</span></p></li>';  
 	              }  
 
 	              $('.bysales').append(htmlNodes); 
@@ -84,10 +83,9 @@ require(['config'],function(){
 			$.post(erp.baseUrl +'classify_female',{a:1},function(response){
 				var arr = response;
 				var str = JSON.stringify(arr)
-				console.log(arr)
 				 // var htmlNodes = '';  
 	              for(var i = 0; i < arr.length; i ++){  
-	                  htmlNodes += '<li class="everypro"><a href=""><img src="../imgs/a01.jpg" alt=""></a><p class="productname">' + arr[i].title + '</p><p class="productprice">￥' + arr[i].price + '<span>已售：'+arr[i].sales+'</span></p></li>';  
+	                  htmlNodes += '<li class="everypro"><a href=""><img src="../../upload/listImg/'+arr[i].listImg+'" alt=""></a><p class="productname">' + arr[i].title + '</p><p class="productprice">￥' + arr[i].price + '<span>已售：'+arr[i].sales+'</span></p></li>';  
 	              }  
 	              $('.byall').append(htmlNodes);
 	              htmlNodes = '';  

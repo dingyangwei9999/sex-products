@@ -39,16 +39,16 @@ require(['config'],function(){
 				 var htmlNode3 = '';  
 				 var htmlNode4 = '';  
 	              for(var i = 0; i < classify1.length; i ++){  
-	                  htmlNode1 += '<div class="everypro"><a href=""><img src="../imgs/a01.jpg" alt=""></a><p class="productname">' + classify1[i].title + '</p><p class="productprice"><span>售价：</span>￥' + classify1[i].price + '&nbsp;</p></div>';  
+	                  htmlNode1 += '<div class="everypro"><a href=""><img src="../../upload/listImg/'+classify1[i].listImg+'" alt=""></a><p class="productname">' + classify1[i].title + '</p><p class="productprice"><span>售价：</span>￥' + classify1[i].price + '&nbsp;</p></div>';  
 	              }  
 	              for(var i = 0; i < classify2.length; i ++){  
-	                  htmlNode2 += '<div class="everypro"><a href=""><img src="../imgs/a01.jpg" alt=""></a><p class="productname">' + classify2[i].title + '</p><p class="productprice"><span>售价：</span>￥' + classify2[i].price + '&nbsp;</p></div>';  
+	                  htmlNode2 += '<div class="everypro"><a href=""><img src="../../upload/listImg/'+classify2[i].listImg+'" alt=""></a><p class="productname">' + classify2[i].title + '</p><p class="productprice"><span>售价：</span>￥' + classify2[i].price + '&nbsp;</p></div>';  
 	              }  
 	              for(var i = 0; i < classify3.length; i ++){  
-	                  htmlNode3 += '<div class="everypro"><a href=""><img src="../imgs/a01.jpg" alt=""></a><p class="productname">' + classify3[i].title + '</p><p class="productprice"><span>售价：</span>￥' + classify3[i].price + '&nbsp;</p></div>';  
+	                  htmlNode3 += '<div class="everypro"><a href=""><img src="../../upload/listImg/'+classify3[i].listImg+'" alt=""></a><p class="productname">' + classify3[i].title + '</p><p class="productprice"><span>售价：</span>￥' + classify3[i].price + '&nbsp;</p></div>';  
 	              }  
 	              for(var i = 0; i < classify4.length; i ++){  
-	                  htmlNode4 += '<div class="everypro"><a href=""><img src="../imgs/a01.jpg" alt=""></a><p class="productname">' + classify4[i].title + '</p><p class="productprice"><span>售价：</span>￥' + classify4[i].price + '&nbsp;</p></div>';  
+	                  htmlNode4 += '<div class="everypro"><a href=""><img src="../../upload/listImg/'+classify4[i].listImg+'" alt=""></a><p class="productname">' + classify4[i].title + '</p><p class="productprice"><span>售价：</span>￥' + classify4[i].price + '&nbsp;</p></div>';  
 	              }  
 
 	              $('.classify1').append(htmlNode1); 
@@ -85,7 +85,9 @@ require(['config'],function(){
 		// 		$('.datalist').append('<tr><td><input type="checkbox"></td><td><input type="text" class="content1" value="'+arr[i].id+'"></td><td><input type="text" class="content2" value="'+arr[i].imgurl+'"></td><td><input type="text" class="content3" value="'+arr[i].name+'"></td><td><input type="text" class="content4" value="'+arr[i].produce+'"></td><td><input type="text" class="content5" value="'+arr[i].price+'"></td><td><input type="text" class="content6" value="'+arr[i].specification+'"></td><td><button class="btn_add">添加</button></td><td><button class="btn_del">删除</button></td></tr>');
 		// 	}
 		// })
-
+	$('.back').click(function(){
+		window.history.back(-1);
+	})
 
 
 	$('.title').first().addClass('active');
