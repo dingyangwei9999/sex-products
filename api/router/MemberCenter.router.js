@@ -76,9 +76,24 @@ exports.Register = function(app){
 	// 修改收货管理地址
 	app.post('/Alteraddress', urlencodedParser, function(request, response){
 		
-		db.alter('address',request.body,['address','name','phoneNum','city'],'_id',function(result){
-			response.send(true);
-		});
+		 console.log(JSON.parse(request.body.data));
+	    //需要修改的数据
+	    var data = JSON.parse(request.body.data);
+	    // //根据id是否查询得到商品
+	    var isUpdate = false;
+
+	    db.exists('address',{},[],function(result){
+	      result.forEach(function(item){
+	        if(item._id == request.body._id){
+	          isUpdate = true;
+	           db.updateProducts('address',item,data);
+	          return false;
+	        }
+	      });
+	    });
+
+	    //返回修改状态
+	    !isUpdate ? response.send(apiResult(true, '修改成功')):response.send(apiResult(false, '修改失败'));
 	});
 
 

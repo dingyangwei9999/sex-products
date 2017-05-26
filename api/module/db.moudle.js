@@ -130,36 +130,6 @@ var del = function(_collection,data,arr,callback){
 };
 
 
-// 修改
-var alter = function(_collection,data,arr,key,callback){
-	db.open(function(error, db){
-		if(error){
-			console.log('connect db:', error);
-		}
-		//Account => 集合名（表名）
-
-		var obj = {};
-		arr.forEach(function (ele) {
-			obj[ele] = data[ele]? data[ele] : '';
-			
-        });
-	
-		db.collection(_collection,function(err,collection){
-			console.log({[key]:data[key]},{$set:obj});
-			// console.log({$set:obj})
-
-            collection.update({},{$set:obj },function(err,result){
-            // console.log(result);
-            // {$set:{number:3}}
-            
-            })
-        });
-
-		db.close();
-	})
-}
-
-
 // 提取
 var extract = function(_collection,callback){
 	db.open(function(error, db){

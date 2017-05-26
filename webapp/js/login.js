@@ -37,7 +37,10 @@ require(['config'],function(){
 					phone:$('.phone').val(),
 					password:$('.password').val()
 				},function(response){
+					var phoneNum = response.data[0].phone;
 					if(response.status){
+						sessionStorage.setItem('phone',phoneNum)
+						
 						// 登录成功 跳转主页
 						window.location.href = "../index.html"
 					}

@@ -96,17 +96,25 @@ require(['config'],function(){
 
 				if($('#mobileAlter').val()!=''){
 
-					$.post(erp.baseUrl+'Alteraddress',{
-						address:$('#addressAlter').val(),
-						name:$('#nameAlter').val(),
-						phoneNum:$('#mobileAlter').val(),
-						// shi:$('#shiAlter option:selected').text(),
-						// qu:$('#quAlter option:selected').text(),
-						city:$('#sel-provanceAlter option:selected').text(),
-						_id:quondamID
-					},function(response){
-
+					$.post(erp.baseUrl+'Alteraddress',
+						// address:$('#addressAlter').val(),
+						// name:$('#nameAlter').val(),
+						// phoneNum:$('#mobileAlter').val(),
+						// // shi:$('#shiAlter option:selected').text(),
+						// // qu:$('#quAlter option:selected').text(),
+						// city:$('#sel-provanceAlter option:selected').text()
 						
+						{"_id":quondamID,"data":JSON.stringify({
+							address:$('#addressAlter').val(),
+							name:$('#nameAlter').val(),
+							phoneNum:$('#mobileAlter').val(),
+							// shi:$('#shiAlter option:selected').text(),
+							// qu:$('#quAlter option:selected').text(),
+							city:$('#sel-provanceAlter option:selected').text()
+						})
+					},function(response){
+						alert(response.message)
+						// console.log(response)
 					})
 					
 					

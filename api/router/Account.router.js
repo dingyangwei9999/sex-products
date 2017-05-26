@@ -31,7 +31,7 @@ exports.Register = function(app){
 			
 			if(data.length > 0){
 				request.session.phone = request.body.phone;
-				response.send(apiResult(true))
+				response.send(apiResult(true,'',data))
                 //console.log(request.session,request.body.phone);
 			} else {
 				response.send(apiResult(false, '手机号或者密码有误'));
