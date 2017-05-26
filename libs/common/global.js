@@ -1,3 +1,7 @@
 var erp = erp || {};
 
-erp.baseUrl = 'http://localhost:888/';
+var base = 'http://localhost:888/';
+
+erp.baseUrl = base;
+erp.webappUrl = base+'webapp';
+erp.htmlUrl = base+'webapp/html/';
