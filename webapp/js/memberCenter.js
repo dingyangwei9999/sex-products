@@ -11,22 +11,22 @@ require(['config'],function(){
 
 			//点击左上角的X，跳转主页 
 			$('.topExit').click(function(){
-				window.location.href='../index.html';
+				window.location.href=erp.htmlUrl+'../index.html';
 			})
 
 			// 点击'设置图标' 和 '我的资料'，跳转我的资料的界面
 			$('.myData,.personalDataSet').click(function(){
-				window.location.href='myProfile.html';
+				window.location.href=erp.htmlUrl+'myProfile.html';
 			})
 
 			// 点击 收货管理地址,跳转
 			$('.myDress').click(function(){
-				window.location.href='address.html';
+				window.location.href=erp.htmlUrl+'address.html';
 			})
 
 			// 点击 购物车,跳转
 			$('.myCarList').click(function(){
-				window.location.href='shoppingCart.html';
+				window.location.href=erp.htmlUrl+'shoppingCart.html';
 			})
 
 			// // 点击 gouwu,跳转
@@ -35,7 +35,7 @@ require(['config'],function(){
 			// })
 
 
-
+			
 
 
 
@@ -48,20 +48,20 @@ require(['config'],function(){
 
 			// 点击 我的订单，跳转 订单界面
 			$('.orderTop').click(function(e){
-				window.location.href='myOrder.html?i=0';
+				window.location.href=erp.htmlUrl+'myOrder.html?i=0';
 			})
 			
 			$('.daifukuan').click(function(){
-				window.location.href='myOrder.html?i=1';
+				window.location.href=erp.htmlUrl+'myOrder.html?i=1';
 			})
 			$('.daifahuo').click(function(){
-				window.location.href='myOrder.html?i=2';
+				window.location.href=erp.htmlUrl+'myOrder.html?i=2';
 			})
 			$('.daishouhuo').click(function(){
-				window.location.href='myOrder.html?i=3';
+				window.location.href=erp.htmlUrl+'myOrder.html?i=3';
 			})
 			$('.daituikuan').click(function(){
-				window.location.href='myOrder.html?i=4';
+				window.location.href=erp.htmlUrl+'myOrder.html?i=4';
 			})
 			
 
@@ -74,3 +74,9 @@ require(['config'],function(){
 		})
 	})
 })
+
+
+
+
+
+
