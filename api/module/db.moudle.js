@@ -176,7 +176,6 @@ exports.exists = exists;
 exports.save = save;
 exports.del = del;
 exports.extract = extract;
-exports.alter = alter;
 exports.existsSingle = existsSingle;
 exports.delByProductsObj = delByProductsObj;
 exports.updateProducts = updateProducts;
