@@ -1,7 +1,7 @@
 require(['config'],function(){
 	require(['jquery','swiper','global'],function(){
 		$(function(){
-			$('.footer').load('html/footer.html');
+			// $('.footer').load('html/footer.html');
 			//轮播图
 			var mySwiper=new Swiper('.swiper-container',{
 				loop : true,
@@ -14,7 +14,7 @@ require(['config'],function(){
 			var $sec=$('.sec')
 
 			var end = Date.parse('2017/5/27 07:34:10');
-			console.log(end)
+			
 
 			// 页面进入时先执行一次
 			// 显示时间
@@ -120,7 +120,7 @@ require(['config'],function(){
 				async:false,
 				success:function(response){
 					var res = response.map(function(item){
-						console.log(item)
+						
 						var reduce=parseInt(item.ori_price - item.price);
 						return `
 							<li>
@@ -141,53 +141,92 @@ require(['config'],function(){
 			$.ajax({
 				url: erp.baseUrl + 'getProductsByArr',
 				type: 'post',
-				data: {"classify":'热门专区'},
+				data: {},
 				dataType: 'json',
 				async:false,
 				success:function(response){
+					console.log(response)
 					var a;
+					//热门
+					var $hot = $('<div/>').addClass('hot_product')
+					var $h3 = $('<h3>')
+					//套套
+					var $condom = $('<div/>').addClass('condom_product')
+					var $h3 = $('<h3>')
+
+					$h3.text('热门专区')
+					var $picture=$('<div/>').addClass('picture')
+					$hot.prepend($h3)
+					$h3.after($picture)
+			
 					var hot = response.map(function(item,index){
-						switch(index){
-							case 0:
-							a = 'first';
-							break; 
-							case 1:
-							a = 'second';
-							break;
+						if(response[index].classify == '热门专区'){
+							
+							switch(index){
+								case 3:
+								a = 'first';
+								break; 
+								case 4:
+								a = 'second';
+								break;
+							}
+							return `<a href="http://localhost:888/webapp/html/detail.html?_id=${item._id}" class="${a}">
+			 				<img src="../../upload/${item.listImg[0]}" alt="">
+			 						</a>`
+						}else if(response[index].classify == '套套专区'){
+							console.log(index)
+
+							switch(index){
+								case 8:
+								a = 'first';
+								break; 
+								case 9:
+								a = 'second';
+								break;
+							}
+							return `<a href="http://localhost:888/webapp/html/detail.html?_id=${item._id}" class="${a}">
+			 				<img src="../../upload/${item.listImg[0]}" alt="">
+			 						</a>`
 						}
-						return `<a href="http://localhost:888/webapp/html/detail.html?_id=${item._id}" class="${a}">
-		 				<img src="../../upload/${item.listImg[0]}" alt="">
-		 						</a>`
 					}).join('')
-					$('.picture').append(hot)
+					$picture.append(hot)
+					$('.time_product').after($hot)
 				}
 			})
 
 			//套套专区数据写入
-			$.ajax({
-				url: erp.baseUrl + 'getProductsByArr',
-				type: 'post',
-				data: {"classify":'套套专区'},
-				dataType: 'json',
-				async:false,
-				success:function(response){
-					var a;
-					var condom = response.map(function(item,index){
-						switch(index){
-							case 0:
-							a = 'first';
-							break; 
-							case 1:
-							a = 'second';
-							break;
-						}
-						return `<a href="http://localhost:888/webapp/html/detail.html?_id=${item._id}" class="${a}">
-		 				<img src="../../upload/${item.listImg[0]}" alt="">
-		 			</a>`
-					}).join('')
-					$('.pictures').append(condom)
-				}
-			})
+			// $.ajax({
+			// 	url: erp.baseUrl + 'getProductsByArr',
+			// 	type: 'post',
+			// 	data: {"classify":'套套专区'},
+			// 	dataType: 'json',
+			// 	async:false,
+			// 	success:function(response){
+			// 		var a;
+			// 		// var $condom=$('<div/>').addClass('condom_product')
+			// 		// var $h3=$('<h3>')
+			// 		// $h3.text('套套专区')
+			// 		// var $picture=$('<div/>').addClass('pictures')
+			// 		// $hot.prepend($h3)
+			// 		// $h3.after($pictures)
+
+			// 		var condom = response.map(function(item,index){
+			// 			switch(index){
+			// 				case 0:
+			// 				a = 'first';
+			// 				break; 
+			// 				case 1:
+			// 				a = 'second';
+			// 				break;
+			// 			}
+			// 			return `<a href="http://localhost:888/webapp/html/detail.html?_id=${item._id}" class="${a}">
+		 // 				<img src="../../upload/${item.listImg[0]}" alt="">
+		 // 			</a>`
+			// 		}).join('')
+			// 		$('.pictures').append(condom)
+			// 		// $('.time_product').after($condom)
+			// 	}
+			// })
 
 			//女性专区数据写入
 			$.ajax({
@@ -251,7 +290,7 @@ require(['config'],function(){
 				dataType: 'json',
 				async:false,
 				success:function(response){
-					console.log(response)
+				
 					var all = response.map(function(item){	
 						var sale = '已售' + ' ' + item.sales;			
 						return `<div class="prlist">
