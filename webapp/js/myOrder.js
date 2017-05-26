@@ -51,7 +51,24 @@ require(['config'],function(){
 					name:'情趣内衣',
 					price:'181.00',
 					qty:'2',
-				}	
+				},
+				{
+					orderNum:'订单号：SH201705241948110212',
+					orderStatus:'待付款',
+					img:'../imgs/1.jpg',
+					name:'博士男根',
+					price:'38.00',
+					qty:'1',
+				},
+				{
+					orderNum:'订单号：SH201705241948110213',
+					orderStatus:'待付款',
+					img:'../imgs/2.jpg',
+					name:'情趣内衣',
+					price:'181.00',
+					qty:'2',
+				}
+
 			]
 			// i是五个界面的调取数据之一
 			if( arr[0] != null){

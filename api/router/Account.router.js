@@ -25,7 +25,7 @@ exports.Register = function(app){
 		saveUninitialized: true
 	}));
 
-
+// sexUser是客户注册登录的集合名（表名）
 	app.post('/login', urlencodedParser, function(request, response){
 		db.exists('sexUser', request.body,['phone','password'], function(data){
 			

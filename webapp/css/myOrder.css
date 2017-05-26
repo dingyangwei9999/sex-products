@@ -91,7 +91,7 @@ img {
         font-size: 14px; }
       #container section div .active {
         color: #ff771b;
-        border-bottom: 2px solid #ff771b; }
+        border-bottom: 0.0625rem solid #ff771b; }
   #container .main {
     flex: 1;
     overflow-y: auto;
@@ -118,78 +118,78 @@ img {
       width: 100%;
       background: #fff;
       padding: 0px 3%;
-      margin-top: 16px;
-      border-bottom: 1px solid #D93600;
-      border-top: 1px solid #D93600; }
+      margin-top: 0.3125rem;
+      border-bottom: 0.03125rem solid #D93600;
+      border-top: 0.03125rem solid #D93600; }
       #container .main .order_main .title {
-        height: 42px;
+        height: 1.3125rem;
         width: 100%;
-        border-bottom: 1px solid #e2e2e2;
+        border-bottom: 0.03125rem solid #e2e2e2;
         font-size: 14px;
-        line-height: 42px;
+        line-height: 1.1875rem;
         color: #666; }
         #container .main .order_main .title span {
-          height: 42px;
+          height: 1.1875rem;
           width: auto;
           float: right;
           color: #ff771b; }
       #container .main .order_main .goods {
-        height: 71px;
+        height: 2.03125rem;
         width: 100%;
-        padding: 10px 0px;
-        border-bottom: 1px solid #eaeaea; }
+        padding: 0.3125rem 0px;
+        border-bottom: 0.03125rem solid #eaeaea; }
         #container .main .order_main .goods > div {
           float: left; }
           #container .main .order_main .goods > div img {
-            width: 48px;
-            height: 48px; }
+            width: 1.3125rem;
+            height: 1.3125rem; }
           #container .main .order_main .goods > div .name {
-            margin-left: 10px; }
+            margin-left: 0.25rem; }
         #container .main .order_main .goods .price {
           float: right;
           color: #666;
           font-size: 14px;
           text-align: right; }
       #container .main .order_main .total {
-        height: 42px;
+        height: 1.1875rem;
         width: 100%;
-        border-bottom: 1px solid #e2e2e2;
+        border-bottom: 0.03125rem solid #e2e2e2;
         font-size: 14px;
         color: #999;
-        line-height: 42px;
+        line-height: 1.1875rem;
         text-align: right; }
       #container .main .order_main .sub {
-        height: 50px;
+        height: 1.40625rem;
         width: 100%; }
         #container .main .order_main .sub div {
           float: right; }
         #container .main .order_main .sub .sub1 {
-          height: 30px;
+          height: 0.9375rem;
           width: auto;
-          padding: 0px 10px;
-          border: 1px solid #ff771b;
+          padding: 0px 0.3125rem;
+          border: 0.03125rem solid #ff771b;
           float: right;
-          border-radius: 5px;
-          line-height: 30px;
+          border-radius: 0.15625rem;
+          line-height: 0.9375rem;
           font-size: 14px;
-          margin: 10px 5px 10px 0px;
+          margin: 0.3125rem 0.15625rem 0.3125rem 0px;
           color: #fff;
           background: #ff771b; }
         #container .main .order_main .sub .sub2 {
-          height: 30px;
+          height: 0.9375rem;
           width: auto;
-          padding: 0px 10px;
-          border: 1px solid #5f6e8b;
+          padding: 0px 0.3125rem;
+          border: 0.03125rem solid #5f6e8b;
           float: right;
-          border-radius: 5px;
-          line-height: 30px;
+          border-radius: 0.15625rem;
+          line-height: 0.9375rem;
           font-size: 14px;
-          margin: 10px 5px 10px 0px;
+          margin: 0.3125rem 0.15625rem 0.3125rem 0px;
           color: #5f6e8b;
           position: relative; }
           #container .main .order_main .sub .sub2 select {
-            width: 80px;
-            height: 30px;
+            width: 2.1875rem;
+            height: 0.875rem;
             position: absolute;
             top: 0;
             left: 0;
