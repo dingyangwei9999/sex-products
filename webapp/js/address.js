@@ -1,7 +1,7 @@
 require(['config'],function(){
 	require(['jquery','global'],function(){
 		$(function(){
-			var quondamResponse;
+			var quondamID;
 			$.post(erp.baseUrl +  'getaddress',{},function(response){
 				// console.log(response)
 				// 生成 存储的地址信息记录
@@ -41,8 +41,10 @@ require(['config'],function(){
 				// 点击收货地址右边的'设置'图标  
 				$('.edit').click(function(){
 						alter();
+						// console.log(response)
+						
 						var idx=$(this).parents('.adressRecord')[0].className.substr(-1,1)
-						quondamResponse=response[idx];
+						quondamID=response[idx]._id;
 						$('#addressAlter').val(response[idx]['address']),
 						$('#nameAlter').val(response[idx]['name']),
 						$('#mobileAlter').val(response[idx]['phoneNum']),
@@ -50,7 +52,7 @@ require(['config'],function(){
 						// $('#quAlter option:selected').text(response[idx]['qu']),
 						$('#sel-provanceAlter option:selected').text(response[idx]['city'])
 
-						console.log(quondamResponse)
+						
 				})
 
 
@@ -94,11 +96,6 @@ require(['config'],function(){
 
 				if($('#mobileAlter').val()!=''){
 
-					// $.post(erp.baseUrl+'Alteraddress',quondamResponse,function(response){
-					// 	if()
-						
-					// })
-
 					$.post(erp.baseUrl+'Alteraddress',{
 						address:$('#addressAlter').val(),
 						name:$('#nameAlter').val(),
@@ -106,15 +103,16 @@ require(['config'],function(){
 						// shi:$('#shiAlter option:selected').text(),
 						// qu:$('#quAlter option:selected').text(),
 						city:$('#sel-provanceAlter option:selected').text(),
-						yuanlaide:quondamResponse
+						_id:quondamID
 					},function(response){
-						// alert(response.message);
-						location.reload();
+
+						
 					})
 					
 					
 				}
 				backAddress();
+				location.reload();
 			})
 
 			//取消按钮

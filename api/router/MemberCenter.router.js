@@ -33,9 +33,10 @@ exports.Register = function(app){
 			if(data.length > 0){
 				request.session.phone = request.body.phone;
 				response.send(apiResult(true))
-                //console.log(request.session,request.body.phone);
+
 			} else {
-				db.del('myProfile',function(result){
+				db.del('myProfile',{},[],function(result){
+
 					if(result){
 						db.save('myProfile', request.body);
 					}
@@ -48,7 +49,7 @@ exports.Register = function(app){
 
 	// 获取我的资料的数据
 	app.post('/getmyProfile', urlencodedParser, function(request, response){
-		db.extract('myProfile',function(result){
+		db.exists('myProfile',request.body,[],function(result){
 			response.send(result);
 		});
 
@@ -62,7 +63,6 @@ exports.Register = function(app){
 	});
 	// 获取收货管理地址
 	app.post('/getaddress', urlencodedParser, function(request, response){
-		console.log(request.body)
 		db.extract('address',function(result){
 			response.send(result);
 		});
@@ -75,25 +75,10 @@ exports.Register = function(app){
 	});
 	// 修改收货管理地址
 	app.post('/Alteraddress', urlencodedParser, function(request, response){
-		console.log(request.body.name);
-		for(var attr in request.body){
-			console.log('----',attr,typeof attr);
-		}
-		try{
-
-		console.log(request.body['yuanlaide[_id]']);
-		}catch(err){
-			console.log('error');
-		}
-		response.send();
-		// db.exists('address', request.body, ['address','name','phoneNum','city'],function(result){
-		// 	response.send('true');
-			
-
-		// })
-		// db.alter('address',request.body,['address','name','phoneNum','city'],function(result){
-		// 	response.send(result);
-		// });
+		
+		db.alter('address',request.body,['address','name','phoneNum','city'],'_id',function(result){
+			response.send(true);
+		});
 	});
 
 
