@@ -40,7 +40,6 @@ require(['config'],function(){
 					var phoneNum = response.data[0].phone;
 					if(response.status){
 						sessionStorage.setItem('phone',phoneNum)
-						
 						// 登录成功 跳转主页
 						window.location.href = "../index.html"
 					}

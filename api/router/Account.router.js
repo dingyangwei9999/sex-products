@@ -39,6 +39,7 @@ exports.Register = function(app){
 		})
 	});
 
+// 客户端注册 普通用户
 	app.post('/register',urlencodedParser, function(request, response){
 		console.log(request.body)
 		db.exists('sexUser', request.body,['phone'], function(data){
@@ -60,6 +61,20 @@ exports.Register = function(app){
 
 	app.get('/getsession', function(request, response){
 		response.send(apiResult(request.session.name != null, null, request.session.name));
+	});
+
+	// sexAdmin是管理员登录的集合名（表名）
+	app.post('/loginAdmin', urlencodedParser, function(request, response){
+		db.exists('sexAdmin', request.body,['adminAccounts','password'], function(data){
+			console.log(request.body);
+			if(data.length > 0){
+				request.session.adminAccounts = request.body.adminAccounts;
+				response.send(apiResult(true,'',data))
+                //console.log(request.session,request.body.adminAccounts);
+			} else {
+				response.send(apiResult(false, '管理员帐号不正确或者密码有误'));
+			}
+		})
 	});
     
    /* //设置跨域访问

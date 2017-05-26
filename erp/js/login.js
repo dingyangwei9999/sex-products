@@ -21,7 +21,21 @@ require(['config'],function(){
 					return false;
 				}else{
 					//通过则跳转页面
-					window.location.href="listShop.html";
+					$.post(erp.baseUrl +  'loginAdmin',{
+						adminAccounts:$('.account').val(),
+						password:$('.password').val()
+					},function(response){
+						console.log(response);
+						var accountNum = response.data[0].adminAccounts;
+						if(response.status){
+							sessionStorage.setItem('account',accountNum)
+							// 登录成功 跳转主页
+							window.location.href = "listShop.html"
+						}
+						else{
+							alert(response.message)
+						}
+					});
 				}
 			});
 		});

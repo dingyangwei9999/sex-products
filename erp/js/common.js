@@ -8,3 +8,9 @@ $(".sideMenu").slide({
 	defaultPlay:true,//默认是否执行效果（默认true）
 	returnDefault:true //鼠标从.sideMen移走后返回默认状态（默认false）
 });
+var account = sessionStorage.getItem('account');
+$('.showAccount').text('欢迎系统管理员：' + account);
+console.log(account);
+// if(account){
+// 	window.location.href = "login.html";
+// }
