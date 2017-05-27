@@ -3,13 +3,11 @@ require(['config'],function(){
 		// 收藏
 		$('.move_fav').click(function(){
 			$('.dialog').show();
-			console.log(99)
 		})
 		// session
-		// sessionStoroge.getItem(key){	
-		// }
+		var data_car = window.sessionStorage.getItem('key');
+		console.log(data_car)	
 
-		
 		// 返回上一级按钮
 		$('.icon-jinlingyingcaiicon01').click(function(){
 			window.history.back(-1);
