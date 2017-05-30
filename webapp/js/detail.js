@@ -89,13 +89,30 @@ require(['config'],function(){
 
 		// session函数的封装 session购物车的存储
 		function shop_session(){
-			shopCartObj={
-		 		count:i,
-		 	}
-		 console.log(555);
-
-			// window.sessionStorage.setItem('key',shopCartObj);
-			// console.log(sessionStorage.setItem('key',data_key))
+			//获得sessionStorage中的商品信息
+			var goods = sessionStorage.getItem('goods');
+			//假如有则解析，没有则给空数组
+			goods = goods ? JSON.parse(goods) : [];
+			//是否找到商品
+			var hasGoods = false;
+			//遍历查找商品
+			for(var foo=0; foo<goods.length; foo++){
+				if(goods[foo]._id === data_name){
+					hasGoods = true;
+					goods[foo].count = i;
+					break;
+				}
+			}
+			//没有该商品则创建该商品id和数量
+			if(!hasGoods){
+				var shopCartObj = {
+					_id:data_name,
+			 		count:i
+			 	}
+			 	goods.push(shopCartObj);
+			}
+			//存入sessionStorage中
+			window.sessionStorage.setItem('goods',JSON.stringify(goods));
 	 	}
 
 		// 加入购物车
@@ -126,7 +143,7 @@ require(['config'],function(){
 				url: erp.baseUrl + 'getProductsById',
 				type: 'post',
 				// data: {'_id':data_name},
-				 data: {'_id':'59278dc5386c5904e0a0ede8'},
+				data: {'_id':data_name},
 				dataType: 'json',
 				success:function(response){
 					// xxx=response.;

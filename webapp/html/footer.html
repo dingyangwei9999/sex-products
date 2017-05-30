@@ -6,31 +6,32 @@
 	<title>footer</title>
 	<link rel="stylesheet" type="text/css" href="../css/footer.css">
 	<link rel="stylesheet" href="../css/iconfont/iconfont.css">
-	<script src="http://g.tbcdn.cn/mtb/lib-flexible/0.3.4/??flexible_css.js,flexible.js"></script> 
+	<script src="http://g.tbcdn.cn/mtb/lib-flexible/0.3.4/??flexible_css.js,flexible.js"></script>
+	<script src="../../libs/common/global.js"></script>
 </head>
 <body>
 	<div class="footer">
 		<ul>
 			<li class="shouye">
-				<a href="http://localhost:888/webapp/index.html">
+				<a>
 					<i class="iconfont icon-shouye"></i>
 					<span>首页</span>
 				</a>
 			</li>
 			<li class="fenlei">
-				<a href="http://localhost:888/webapp/html/classify.html">
+				<a>
 					<i class="iconfont icon-fenlei"></i>
 					<span>分类</span>
 				</a>
 			</li>
 			<li class="gouwuche">
-				<a href="http://localhost:888/webapp/html/shoppingCart.html">
+				<a>
 					<i class="iconfont icon-gouwuche1"></i>
 					<span>购物车</span>
 				</a>
 			</li>
 			<li class="geren">
-				<a >	
+				<a>	
 				<!-- href="" -->
 					<i class="iconfont icon-huiyuanzhongxin"></i>
 					<span>个人中心</span>
@@ -39,13 +40,16 @@
 		</ul>
 	</div>
 	<script>
+		$(".shouye a").attr('href',erp.webappUrl + 'index.html');
+		$(".fenlei a").attr('href',erp.htmlUrl + 'classify.html');
+		$(".gouwuche a").attr('href',erp.htmlUrl + 'shoppingCart.html');
 		$('.geren').on('click',function(){
 	 	 	var key = window.sessionStorage.getItem('phone');
 	 		if (key) {
-	 			location.href="memberCenter4.html"
+	 			location.href = erp.htmlUrl + "memberCenter.html";
 	 		}else{
 
-	 			location.href="login.html"
+	 			location.href = erp.htmlUrl + "login.html";
 	 		}
 	 		// console.log(111)
 	 	 })

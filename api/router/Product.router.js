@@ -80,16 +80,10 @@ exports.Register = function(app){
   app.post('/getProductsById',urlencodedParser,function(request, response){
     console.log('request.body--------',request.body._id);
 
-    // var searchArr = [];
-    // for(var attr in request.body){
-    //   searchArr.push(attr);
-    // }
-
-     // console.log(searchArr);
-    //根据id是否查询得到商品
     var isFinded = false;
     db.exists('shopInfo',{},[],function(result){
       result.forEach(function(item){
+        //根据id是否查询得到商品
         if(item._id == request.body._id){
           isFinded = true;
           response.send(JSON.stringify(item));
@@ -100,24 +94,51 @@ exports.Register = function(app){
     });
   });
 
-  //传入数组查询商品分类和关键字
+  //传入字符串查询商品分类和关键字
   app.post('/getProductsByArr',urlencodedParser,function(request, response){
     console.log(request.body);
-    // var arr = ['keyword','classify'];
+
     var arr = [];
+    //根据前端数据添加进数据
     for(var attr in request.body){
       console.log(attr);
       arr.push(request.body[attr]);
     }
     arr = arr.toString();
-    // var arr = request.body.keyword.split(',');
     var Reg = new RegExp(arr);
-  console.log(arr,Reg);
+    console.log(arr,Reg);
     db.existsSingle('shopInfo',request.body,Reg,function(result){
       console.log(result);
       response.send(JSON.stringify(result));
     });
   });
+
+  //查找商品信息，可以限制数量，可以排序
+  app.post('/getProductsAdvanced',urlencodedParser,function(request, response){
+    console.log('====',request.body);
+
+    console.log('===',typeof request.body.sort);
+    var arr = [];
+    //根据前端数据添加进数据
+    for(var attr in request.body){
+      console.log(attr);
+      if(!(attr === 'limit' || attr === 'skip' || attr ==='sort')){
+        arr.push(request.body[attr]);
+      }
+    }
+    console.log('arr,',arr);
+    arr = arr.toString();
+    if(arr === ""){
+      arr = /\d\D/;
+    }
+    var Reg = new RegExp(arr);
+    console.log(arr,Reg);
+    db.getProductFilter('shopInfo', request.body, Reg, request.body.skip, request.body.limit, request.body.sort,function(result){
+      console.log(result);
+      response.send(JSON.stringify(result));
+    });
+  });
+
 
   //删除商品
     app.post('/delProducts',urlencodedParser,function(request, response){
@@ -146,12 +167,14 @@ exports.Register = function(app){
     console.log(JSON.parse(request.body.data));
     //需要修改的数据
     var data = JSON.parse(request.body.data);
-    //根据id是否查询得到商品
+    //是否修改成功
     var isUpdate = false;
 
     db.exists('shopInfo',{},[],function(result){
       result.forEach(function(item){
+        //根据id是否查询得到商品
         if(item._id == request.body._id){
+          //修改成功
           isUpdate = true;
            db.updateProducts('shopInfo',item,data);
           return false;
@@ -161,6 +184,31 @@ exports.Register = function(app){
 
     //返回修改状态
     !isUpdate ? response.send(JSON.stringify({status:true,message:"修改成功"})):response.send(JSON.stringify({status:false,message:"修改失败"}));
+  });
+
+  //查找专区个数，分类个数
+  app.post('/getBaseInfo', urlencodedParser, function(request, response) {
+    // console.log('----',request.body);
+    var arr = [];
+    for(var attr in request.body){
+      arr.push(attr);
+    }
+    db.exists('shopManage',request.body,arr,function(result){
+      console.log(result);
+      response.send(result);
+    });
+  });
+
+  //修改专区个数，分类个数
+  app.post('/updateBaseInfo', urlencodedParser, function(request, response) {
+    console.log('----',request.body);
+    var obj = {};
+    for(var attr in request.body){
+      obj[attr] = JSON.parse(request.body[attr]);
+    }
+    console.log('=====',obj);
+    db.updateProducts('shopManage',{},obj);
+    response.send(apiResult(true,'修改成功'));
   });
 
 

@@ -4,6 +4,7 @@ require(['config'],function(){
 	//动态加载数据
 		$.post(erp.baseUrl +'classify',{},function(response){
 				var arr = response;
+				console.log(arr)
 				var classify1=[];
 				var classify2=[];
 				var classify3=[];

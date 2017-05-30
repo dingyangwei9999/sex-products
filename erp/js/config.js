@@ -13,7 +13,7 @@ require.config({
 		"app" : ['jquery','amazeui.min'],
 		"amazeui.min" : ['jquery'],
 		"form" : ["jquery"],
-		"common" : ["jquery","app"],
+		"common" : ["jquery","app","global"],
 		"particleground" : ["jquery"]
 	}
 });

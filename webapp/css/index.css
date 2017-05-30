@@ -104,6 +104,8 @@ img {
     #container .main .banner .swiper-slide img {
       width: 100%;
       height: 100%; }
+    #container .main .banner .swiper-pagination .swiper-pagination-bullet-active {
+      background: #FD19AE; }
   #container .main .nav-list {
     height: 2.09375rem;
     display: -webkit-flex;
@@ -187,6 +189,54 @@ img {
         text-align: center; }
       #container .time_product ul li .save {
         color: red; }
+
+#container .prefectureDiv {
+  background: #fff;
+  margin-top: 0.15625rem; }
+  #container .prefectureDiv h3 {
+    font-weight: 200;
+    height: 1.125rem;
+    width: 96%;
+    float: left;
+    margin-left: 0.15625rem;
+    line-height: 1.125rem; }
+    #container .prefectureDiv h3 a {
+      float: right;
+      color: #7E7E7E; }
+  #container .prefectureDiv .picture1 a {
+    float: left;
+    display: block;
+    margin-left: 0.15625rem; }
+  #container .prefectureDiv .picture1 .first {
+    width: 63.5%;
+    height: 4.53125rem; }
+    #container .prefectureDiv .picture1 .first img {
+      width: 6.34375rem;
+      height: 4.21875rem; }
+  #container .prefectureDiv .picture1 .second {
+    width: 31%;
+    height: 4.53125rem; }
+    #container .prefectureDiv .picture1 .second img {
+      width: 3.125rem;
+      height: 4.21875rem; }
+  #container .prefectureDiv .picture1 .third {
+    width: 31%;
+    height: 4.59375rem; }
+    #container .prefectureDiv .picture1 .third img {
+      width: 3.125rem;
+      height: 4.21875rem; }
+  #container .prefectureDiv .picture1 .forth {
+    width: 31%;
+    height: 4.59375rem; }
+    #container .prefectureDiv .picture1 .forth img {
+      width: 3.125rem;
+      height: 4.21875rem; }
+  #container .prefectureDiv .picture1 .fifth {
+    width: 31%;
+    height: 4.59375rem; }
+    #container .prefectureDiv .picture1 .fifth img {
+      width: 3.125rem;
+      height: 4.21875rem; }
 
 #container .hot_product {
   height: 9.9375rem;
@@ -382,7 +432,6 @@ img {
       height: 4.21875rem; }
 
 #container .you_like {
-  height: 29.375rem;
   background: #F0F0F0; }
   #container .you_like h3 {
     height: 1.25rem;

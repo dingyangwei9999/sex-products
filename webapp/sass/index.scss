@@ -80,6 +80,11 @@
 					height: 100%;
 				}
 			}
+			.swiper-pagination{
+				.swiper-pagination-bullet-active{
+					background:$main_color;
+				}
+			}
 		}
 		.nav-list{
 			height: 2.09375rem;
@@ -193,6 +198,73 @@
 			}
 		}
 	}
+
+	//专区公共样式
+	.prefectureDiv{
+		background: #fff;
+		margin-top: 0.15625rem;
+		h3{
+			font-weight: 200;
+			height: 1.125rem;
+			width: 96%;
+			float: left;
+			margin-left: 0.15625rem;
+			line-height: 1.125rem;
+			a{
+				float: right;
+				color: #7E7E7E;
+			}
+		}
+		.picture1 a{
+			float: left;
+			display: block;
+			margin-left: 0.15625rem;
+		}
+		.picture1{
+			.first{
+				width: 63.5%;
+				height: 4.53125rem;
+				img{
+					width: 6.34375rem;
+					height: 4.21875rem;
+				}
+			}
+			.second{
+				width: 31%;
+				height: 4.53125rem;
+				img{
+					width: 3.125rem;
+					height: 4.21875rem;
+				}
+			}
+			.third{
+				width: 31%;
+				height: 4.59375rem;
+				img{
+					width: 3.125rem;
+					height: 4.21875rem;
+				}
+			}
+			.forth{
+				width: 31%;
+				height: 4.59375rem;
+				img{
+					width: 3.125rem;
+					height: 4.21875rem;
+				}
+			}
+			.fifth{
+				width: 31%;
+				height: 4.59375rem;
+				img{
+					width: 3.125rem;
+					height: 4.21875rem;
+				}
+			}
+		}
+	}
+
+
 	//热门专区
 	.hot_product{
 		height: 9.9375rem;
@@ -452,7 +524,7 @@
 	}
 	//大家都在买
 	.you_like{
-		height: 29.375rem;
+		// height: 29.375rem;
 		background: #F0F0F0;
 		h3{
 			height: 1.25rem;

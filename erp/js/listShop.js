@@ -119,6 +119,7 @@ require(['config'],function(){
                 <td class="freight"><input type="text" name="" value="${elem.freight}" id="resetSty"></td>
                 <td class="classify"><input type="text" name="" value="${elem.classify}" id="resetSty"></td>
                 <td class="keyword"><input type="text" name="" value="${elem.keyword}" id="resetSty"></td>
+                 <td class="prefecture"><input type="text" name="" value="${elem.prefecture}" id="resetSty"></td>
                 <td class="t_del"><span class="am-btn am-btn-default am-btn-xs am-text-danger am-round" id="btn_del"><i class="am-icon-trash-o"></i></span></td>
               </tr>
 						`;
