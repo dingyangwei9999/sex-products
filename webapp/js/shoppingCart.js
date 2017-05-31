@@ -150,14 +150,14 @@ require(['config'],function(){
 			sessionStorage.setItem('goods',JSON.stringify(goods));
 			console.log(sessionStorage.getItem('goods'));
 		}
-		// 把数据写入session传到我的订单
-		function indentData(){
-			var indent = sessionStorage.getItem('indent');
-			var indentObj={
+		// // 把数据写入session传到我的订单
+		// function indentData(){
+		// 	var indent = sessionStorage.getItem('indent');
+		// 	var indentObj={
 
-			}
-			window.sessionStorage.setItem('indent',JSON.stringify(indent))
-		}
+		// 	}
+		// 	window.sessionStorage.setItem('indent',JSON.stringify(indent))
+		// }
 			
 			
 		
