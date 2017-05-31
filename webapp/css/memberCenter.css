@@ -60,55 +60,37 @@ img {
 
 #container {
   background: #F6F6F6; }
-  #container header {
+  #container header .title {
     width: 100%;
-    background: #3A393E;
-    height: 1.375rem;
-    line-height: 1.375rem;
-    color: #fff; }
-    #container header .topExit {
-      display: inline-block;
-      padding-left: 0.5rem;
-      width: 1.5rem;
-      height: 1.375rem; }
-    #container header .topTitle {
-      font-size: 16px;
-      margin-left: 0.3125rem; }
-    #container header .topList {
-      display: block;
-      width: 0.9375rem;
-      float: right; }
+    height: 2.1875rem;
+    background: #FFBFBF;
+    padding-top: 0.4375rem; }
+    #container header .title div {
+      float: left; }
+    #container header .title .headPortrait {
+      width: 1.71875rem;
+      height: 1.5625rem;
+      background: #FFBFFF;
+      margin-left: 0.46875rem; }
+    #container header .title .identity {
+      margin-left: 0.4375rem;
+      color: #fff; }
+      #container header .title .identity p {
+        font-size: 16px;
+        line-height: 0.8125rem; }
+      #container header .title .identity span {
+        font-size: 12px;
+        line-height: 0.46875rem; }
+    #container header .title .personalDataSet {
+      float: right;
+      margin-right: 0.4375rem; }
+      #container header .title .personalDataSet span {
+        font-size: 26px;
+        color: #fff; }
   #container main {
     flex: 1;
     overflow-y: auto;
     height: 37.5rem; }
-    #container main .title {
-      width: 100%;
-      height: 2.1875rem;
-      background: #59B200;
-      padding-top: 0.4375rem; }
-      #container main .title div {
-        float: left; }
-      #container main .title .headPortrait {
-        width: 1.71875rem;
-        height: 1.5625rem;
-        background: #DBDBEA;
-        margin-left: 0.46875rem; }
-      #container main .title .identity {
-        margin-left: 0.4375rem;
-        color: #fff; }
-        #container main .title .identity p {
-          font-size: 16px;
-          line-height: 0.8125rem; }
-        #container main .title .identity span {
-          font-size: 12px;
-          line-height: 0.46875rem; }
-      #container main .title .personalDataSet {
-        float: right;
-        margin-right: 0.4375rem; }
-        #container main .title .personalDataSet span {
-          font-size: 26px;
-          color: #fff; }
     #container main .integral {
       width: 100%;
       height: 1.40625rem;
