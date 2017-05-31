@@ -1,0 +1,148 @@
+@import 'base';
+@import 'common';
+// @import 'footer';
+// a:visited{text-decoration: none;}
+// a{text-decoration: none;}
+.header{
+	position: relative;
+	h2{
+		height:1.21875rem;
+		font-size:13px;
+		// background-color: #FAFCFC;
+		background-color: $main_color;
+		color: #fff;
+		border-bottom: 0.03125rem solid #E8E8E8;
+		text-align: center;
+		line-height: 1.21875rem;
+		.search_input{
+			// display: block;
+			width: 160px;
+			height: 22px;
+			font-size: 2px;
+			border-radius: 5px;
+			padding: 0 5px;
+			outline: none;
+		}
+	}
+	.back{
+		// float: left;
+		height: 1.21875rem;
+		width: 1.5625rem;
+		position: absolute;
+		left: 0;
+		text-decoration: none;
+		i{
+			height: 100%;
+			line-height: 1.21875rem;
+			font-size: 20px;
+			color: #fff;
+		}
+	}
+	.homepage{
+		// float: right;
+		height: 1.21875rem;
+		width: 1.21875rem;
+		position: absolute;
+		right: 0;
+		text-decoration: none;
+		i{
+			height: 100%;
+			line-height: 1.31875rem;
+			font-size: 20px;
+		color: #fff;
+		}
+	}
+	.fangdajing{
+		// float: right;
+		height: 1.21875rem;
+		width: 1.21875rem;
+		position: absolute;
+		right: 1.325rem;
+		text-decoration: none;
+		i{
+			height: 100%;
+			line-height: 1.21875rem;
+			font-size: 16px;
+		color: #fff;
+		}
+	}
+}
+
+.main{
+	overflow: hidden;
+	flex:1;
+	overflow-y: auto;
+	overflow-x: hidden;
+	// background-color: #FAFCFC;
+	.order{
+		display: flex;
+		flex-flow: wrap;
+
+		.active{border-bottom: 2px solid $main_color;}
+
+		li{
+			flex:1;
+			height: 1.21875rem;
+			padding-top: 0.15625rem;
+			text-align: center;
+			background-color: #fff;
+			border-bottom: 0.03125rem solid #E8E8E8;
+			a{
+				display: block;
+				width: 2.5rem;
+				height: 1.0625rem;
+				margin: 0 auto;
+				line-height: 0.9375rem;
+				font-size: 12px;
+				text-decoration: none;
+			}
+		}
+	}
+	.pro_area{
+		padding: 0.625rem 0.7375rem;
+		display: flex;
+		flex-flow: wrap;
+		justify-content:space-between;
+		// background-color: #f5f5f5;
+		.everypro{
+			width: 45%;
+			float: left;
+			text-align: center;
+			background-color: #fff;
+			margin-bottom: 0.55rem;
+			box-shadow: 4px 4px 18px 4px #eee;
+			a{
+				display: block;
+				width: 3.125rem;
+				height: 3.125rem;
+				margin: 0 auto;
+				img{
+				width: 3.125rem;
+				height: 3.125rem;
+				}
+			}
+			.productname{
+					color: #333;
+				    font-size: 5px;
+				    margin-top: 0.3125rem;
+				    text-align: center;
+				    padding: 0 0.0625rem;
+				    display:block;white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+				}
+			.productprice{
+					// float: right;
+					color: $main_color;
+					height: 20px;
+					line-height: 0.625rem;
+				    font-size: 9px;
+				    margin-top: 0.15625rem;
+				    padding: 0 0.0625rem;
+
+				    span{
+				    	float: right;
+				    	color: #a8a8a8;
+				    }
+			}
+		}
+	}
+}

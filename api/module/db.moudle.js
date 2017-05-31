@@ -262,6 +262,3 @@ exports.getProduct = getProduct;
 exports.getProByClass_orderprice=getProByClass_orderprice;
 exports.getProByClass_ordersales=getProByClass_ordersales;
 
-
-
- 

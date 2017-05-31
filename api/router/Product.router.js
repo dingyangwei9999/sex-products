@@ -212,21 +212,21 @@ exports.Register = function(app){
   });
 
 
-     // 获取我的资料的数据
+     // 获取我的资料的数据 各分类的数据
   app.post('/classify_hot', urlencodedParser, function(request, response){
     // console.log(request.body.a)
     if (request.body.a==1) {
-      db.getProByClass('shopInfo',"热门商品",function(result){
+      db.getProByClass('shopInfo',"热门专区",function(result){
         response.send(result);
       });
       }
     else if (request.body.a==2) {
-      db.getProByClass_orderprice('shopInfo',"热门商品",function(result){
+      db.getProByClass_orderprice('shopInfo',"热门专区",function(result){
         response.send(result);
       });
       }
     else if (request.body.a==3) {
-      db.getProByClass_ordersales('shopInfo',"热门商品",function(result){
+      db.getProByClass_ordersales('shopInfo',"热门专区",function(result){
         response.send(result);
       });
       }

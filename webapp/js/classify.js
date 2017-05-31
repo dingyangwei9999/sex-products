@@ -10,7 +10,7 @@ require(['config'],function(){
 				var classify3=[];
 				var classify4=[];
 				// var str = JSON.stringify(arr)
-				// console.log(arr);
+				console.log(arr);
 				// console.log(arr[0].classify);
 				for(var i = 0; i < arr.length; i ++){ 
 					if($.inArray("热门专区", arr[i].classify)>-1){
@@ -30,11 +30,6 @@ require(['config'],function(){
 				// console.log(classify2);
 				// console.log(classify3);
 				// console.log(classify4);
-
-
-				// collection:'ifo'
-				// 名字写入
-				// $('.identity .name').text(response[0].nickname)
 				 var htmlNode1 = '';  
 				 var htmlNode2 = '';  
 				 var htmlNode3 = '';  
@@ -59,33 +54,7 @@ require(['config'],function(){
 
 		});
 				
-//           // dataType: 'json',  
-//           success: function (data) {  
-//               //字符串拼接  
-//              // console.log(pro);
-//              // var ifo = eval('('+pro+')');
-//              console.log(data);
 
-//               // var htmlNodes = '';  
-//               // for(var i = 0; i < {pro}.length; i ++){  
-//               //     htmlNodes += '<figcaption><strong>' + {pro}[i].title + '</strong><p>' + {pro}[i].description + '</p></figcaption></figure>';  
-//               // }  
-
-//               // $('.classify1').append(htmlNodes);  
-//           }  
-//           error: function(){
-//           	alert("error");
-//           }
-//  		});  
-
-		// $("input[name='focusIn']").focus();
-		// $.post('/classify',{collection:'ifo'},function(response){
-		// 	var arr = response;
-		// 	var str = JSON.stringify(arr)
-		// 	for(i=0;i<arr.length;i++){
-		// 		$('.datalist').append('<tr><td><input type="checkbox"></td><td><input type="text" class="content1" value="'+arr[i].id+'"></td><td><input type="text" class="content2" value="'+arr[i].imgurl+'"></td><td><input type="text" class="content3" value="'+arr[i].name+'"></td><td><input type="text" class="content4" value="'+arr[i].produce+'"></td><td><input type="text" class="content5" value="'+arr[i].price+'"></td><td><input type="text" class="content6" value="'+arr[i].specification+'"></td><td><button class="btn_add">添加</button></td><td><button class="btn_del">删除</button></td></tr>');
-		// 	}
-		// })
 	$('.back').click(function(){
 		window.history.back(-1);
 	})
