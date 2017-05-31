@@ -269,4 +269,33 @@ exports.getProByClass_orderprice=getProByClass_orderprice;
 exports.getProByClass_ordersales=getProByClass_ordersales;
 
 
- 
+// var existsSingle = function(_collection, data, arr, callback){
+// 	db.open(function(error, db){
+// 		if(error){
+// 			console.log('connect db:', error);
+// 		}
+// 		//Account => 集合名（表名）
+// 		// var obj = {};
+// 		// arr.forEach(function (ele) {
+// 		// 	obj[ele] = data[ele]? data[ele] : '';
+//   //       });
+// 		var obj = {};
+// 		for(var attr in data){
+// 			obj[attr] = arr;
+// 		}
+// 		// obj.keyword = arr;
+// 		// obj[ele] = data[ele]? data[ele] : '';
+//         db.collection(_collection, function(error, collection){
+//             if(error){
+//                 console.log(error)
+//             } else {
+//             	console.log('obj:',obj);
+//                 collection.find(obj).toArray(function(err, docs){
+//                     callback(docs);
+//                 });
+//             }
+//         });
+//         db.close();
+		
+// 	})	
+// };
