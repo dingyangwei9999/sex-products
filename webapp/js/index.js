@@ -13,7 +13,7 @@ require(['config'],function(){
 			var $min=$('.min')
 			var $sec=$('.sec')
 
-			var end = Date.parse('2017/5/27 07:34:10');
+			var end = Date.parse('2017/5/28 07:34:10');
 			
 
 			// 页面进入时先执行一次
@@ -141,7 +141,7 @@ require(['config'],function(){
 			$.ajax({
 				url: erp.baseUrl + 'getProductsByArr',
 				type: 'post',
-				data: {},
+				data: {"classify":'热门专区'},
 				dataType: 'json',
 				async:false,
 				success:function(response){
@@ -150,45 +150,26 @@ require(['config'],function(){
 					//热门
 					var $hot = $('<div/>').addClass('hot_product')
 					var $h3 = $('<h3>')
-					//套套
-					var $condom = $('<div/>').addClass('condom_product')
-					var $h3 = $('<h3>')
-
 					$h3.text('热门专区')
 					var $picture=$('<div/>').addClass('picture')
 					$hot.prepend($h3)
 					$h3.after($picture)
 			
 					var hot = response.map(function(item,index){
-						if(response[index].classify == '热门专区'){
 							
 							switch(index){
-								case 3:
+								case 0:
 								a = 'first';
 								break; 
-								case 4:
+								case 1:
 								a = 'second';
 								break;
-							}
 							return `<a href="http://localhost:888/webapp/html/detail.html?_id=${item._id}" class="${a}">
 			 				<img src="../../upload/${item.listImg[0]}" alt="">
 			 						</a>`
-						}else if(response[index].classify == '套套专区'){
-							console.log(index)
-
-							switch(index){
-								case 8:
-								a = 'first';
-								break; 
-								case 9:
-								a = 'second';
-								break;
 							}
-							return `<a href="http://localhost:888/webapp/html/detail.html?_id=${item._id}" class="${a}">
-			 				<img src="../../upload/${item.listImg[0]}" alt="">
-			 						</a>`
-						}
 					}).join('')
+					console.log(item)
 					$picture.append(hot)
 					$('.time_product').after($hot)
 				}
