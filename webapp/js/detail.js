@@ -50,14 +50,15 @@ require(['config'],function(){
 		})
 		 // 收藏按钮
 		var btn_like=$('.like');
-		btn_like.click(function(){
-			var yRgb ="#FD19AE";
-			if(!$('.like .iconfont').hasClass("yRgb") ){
-				$('.like .iconfont').css('color',yRgb); 
-			}else{
-				$('.like .iconfont').css('color','#fff'); 
-			}
-	 	});
+	 	var flag =0;
+	 	btn_like.click(function(){
+	 		flag++;
+	 		if(flag%2===1){
+	 			$('.like .iconfont').css('color','#FD19AE'); 
+	 		}else{
+	 			$('.like .iconfont').css('color','#666666');
+	 		}
+	 	})
 
 		 // 加入购物车
 		var btn_addshoppCart=$('.addCart');
@@ -125,7 +126,7 @@ require(['config'],function(){
 		 	$('#staNum').text(`数量为 ${i}`);
 		 	$('.good_choose').on('click',function(){
 		 		console.log(i)
-			$('#bottom_total').text(i);
+				$('#bottom_total').text(i);
 			})
 			shop_session();
 		})
@@ -134,32 +135,30 @@ require(['config'],function(){
 		btn_evenmore.on('click',function(){
 			$('.hide_fun').toggle();
 		})
-		var xxx;
+		var shop_preview;
 		// 拿取传参的参数
 		var data_name = location.search.substring(1).slice(4);
-		// var data_name='59278dc5386c5904e0a0ede8';
 		// 数据的拿取
 		$.ajax({
 				url: erp.baseUrl + 'getProductsById',
 				type: 'post',
-				// data: {'_id':data_name},
 				data: {'_id':data_name},
 				dataType: 'json',
 				success:function(response){
-					// xxx=response.;
+					shop_preview = response.preview;
 					console.log(response);
 					// 轮播图
 					response.bannerImg.forEach(function(item,index){
 						var pic= `
 			 				<div class="swiper-slide">
-			 					<img src="../../upload/${item}">
+			 					<img src="${erp.baseUrl}upload/${item}">
 			 				</div>
 			 				
 			 				`;
 			 			$('.swiper-wrapper').append(pic);
 					});
 					// 底部图片的显示
-					// $('.info_left').append(`<img src="../../upload/response.">`)
+					$('.info_left').append(`<img src="${erp.baseUrl}upload/${response.preview}">`);
 			 		// 标题
 			 		$('.good_title').text(response.title);
 			 		// 价格
@@ -178,7 +177,7 @@ require(['config'],function(){
 			 		response.listImg.forEach(function(item,index){
 			 			console.log(item)
 				 		var listImg =`
-				 				<img src="../../upload/${item}">
+				 				<img src="${erp.baseUrl}upload/${item}">
 				 		`
 				 		$('#con_1').append(listImg);
 			 		})
@@ -191,7 +190,6 @@ require(['config'],function(){
 			});
 		// 跳转到登录页面
 	 	$('.detail_buy').on('click',function(){
-	 		// window.sessionStorage.setItem('phone',"333")
 	 	 	var key = window.sessionStorage.getItem('phone');
 	 		if (key) {
 	 			location.href="shoppingCart.html"

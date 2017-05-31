@@ -25,7 +25,7 @@ require(['config'],function(){
 								<i class="checkon"></i>
 							</div>		
 							<div>
-								<img src="../../upload/${response.preview}">
+								<img src="${erp.baseUrl}upload/${response.preview}">
 								<h2>${response.title}</h2>
 								<div class="ctrl">
 									<p class="price">${Number(response.price).toFixed(2)}</p>
@@ -150,69 +150,16 @@ require(['config'],function(){
 			sessionStorage.setItem('goods',JSON.stringify(goods));
 			console.log(sessionStorage.getItem('goods'));
 		}
-		// // 左边的点击按钮
-		// $('.check').click(function(){
-		// 	if($('.pic_cart i').hasClass("check")){//如果当前隐藏  
-		//       	$('.pic_cart i').removeClass().addClass('checkon');
-	 //        }else{ 
-		//        	$('.pic_cart i').removeClass().addClass('check');
-	 //    	}
-		// });
+		// 把数据写入session传到我的订单
+		function indentData(){
+			var indent = sessionStorage.getItem('indent');
+			var indentObj={
 
-		// $(function() {
-		// 			total();
-		// 			adddel();
-		// 				//全选
-		// 			$('.check_all' ).click(function() {
-		// 				all = $(this).prop("checked")
-		// 				$(".Each").each(function() {
-		// 					$(this).prop("checked", all);
-		// 				})
-		// 			})
-		// })
-	 	// // 合计
-	 // 	function total() {
-	 // 		console.log('total');
-		// 		var sum = 0;
-		// 		$(".total").each(function() {
-		// 			console.log($('.price').text());
-		// 			sum += parseFloat($('.price').text());
-		// 			console.log(sum)	
-		// 			$(".total").text(sum);
-
-		// 		})
-		// 	}
-		// function adddel(){
-		// 	//小计和加减
-		// 	$(".plus").each(function() {
-		// 		$(this).click(function() {
-		// 			// console.log($(this))
-		// 			var $multi	 = 0;
-		// 			var vall = $(this).prev().val();
-		// 			vall++;
-		// 			$(this).prev().val(vall);
-		// 			$multi = parseFloat(vall) * parseFloat($(this).parent().prev().text());
-		// 			$(this).parent().next().text(Math.round($multi));
-		// 			total();
-		// 		})
-
-		// 	})
-		// 	//减
-		// 	$(".sub").each(function() {
-		// 		$(this).click(function() {
-		// 			var $multi1 = 0;
-		// 			var vall1 = $(this).next().val();
-		// 			vall1--;
-		// 			if(vall1 <= 0) {
-		// 				vall1 = 1;
-		// 			}
-		// 			$(this).next().val(vall1);
-		// 			$multi1 = parseFloat(vall1) * parseFloat($(this).parent().prev().text());
-		// 			$(this).parent().next().text(Math.round($multi1));
-		// 			total();
-		// 		})
-
-		// 	})
-		// 	}
+			}
+			window.sessionStorage.setItem('indent',JSON.stringify(indent))
+		}
+			
+			
+		
 	});
 });
