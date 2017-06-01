@@ -1,6 +1,6 @@
 require(['config'],function(){
-	require(['jquery','baseUrl'],function(){
-		$('.foot').load('../html/footer.html');
+	require(['jquery','global'],function(){
+		$('.foot').load(erp.htmlUrl+'footer.html');
 	//动态加载数据
 		$.post(erp.baseUrl +'classify',{},function(response){
 				var arr = response;
@@ -35,16 +35,16 @@ require(['config'],function(){
 				 var htmlNode3 = '';  
 				 var htmlNode4 = '';  
 	              for(var i = 0; i < classify1.length; i ++){  
-	                  htmlNode1 += '<div class="everypro"><a href="http://localhost:888/webapp/detail.html/?_id='+classify1[i]._id+'"><img src="../../upload/'+classify1[i].listImg+'" alt=""></a><p class="productname">' + classify1[i].title + '</p><p class="productprice"><span>售价：</span>￥' + classify1[i].price + '&nbsp;</p></div>';  
+	                  htmlNode1 += '<div class="everypro"><a href="detail.html?_id='+classify1[i]._id+'"><img src="../../upload/'+classify1[i].preview+'" alt=""></a><p class="productname">' + classify1[i].title + '</p><p class="productprice"><span>售价：</span>￥' + classify1[i].price + '&nbsp;</p></div>';  
 	              }  
 	              for(var i = 0; i < classify2.length; i ++){  
-	                  htmlNode2 += '<div class="everypro"><a href="http://localhost:888/webapp/detail.html/?_id='+classify2[i]._id+'"><img src="../../upload/'+classify2[i].listImg+'" alt=""></a><p class="productname">' + classify2[i].title + '</p><p class="productprice"><span>售价：</span>￥' + classify2[i].price + '&nbsp;</p></div>';  
+	                  htmlNode2 += '<div class="everypro"><a href="detail.html?_id='+classify2[i]._id+'"><img src="../../upload/'+classify2[i].preview+'" alt=""></a><p class="productname">' + classify2[i].title + '</p><p class="productprice"><span>售价：</span>￥' + classify2[i].price + '&nbsp;</p></div>';  
 	              }  
 	              for(var i = 0; i < classify3.length; i ++){  
-	                  htmlNode3 += '<div class="everypro"><a href="http://localhost:888/webapp/detail.html/?_id='+classify3[i]._id+'"><img src="../../upload/'+classify3[i].listImg+'" alt=""></a><p class="productname">' + classify3[i].title + '</p><p class="productprice"><span>售价：</span>￥' + classify3[i].price + '&nbsp;</p></div>';  
+	                  htmlNode3 += '<div class="everypro"><a href="detail.html?_id='+classify3[i]._id+'"><img src="../../upload/'+classify3[i].preview+'" alt=""></a><p class="productname">' + classify3[i].title + '</p><p class="productprice"><span>售价：</span>￥' + classify3[i].price + '&nbsp;</p></div>';  
 	              }  
 	              for(var i = 0; i < classify4.length; i ++){  
-	                  htmlNode4 += '<div class="everypro"><a href="http://localhost:888/webapp/detail.html/?_id='+classify4[i]._id+'"><img src="../../upload/'+classify4[i].listImg+'" alt=""></a><p class="productname">' + classify4[i].title + '</p><p class="productprice"><span>售价：</span>￥' + classify4[i].price + '&nbsp;</p></div>';  
+	                  htmlNode4 += '<div class="everypro"><a href="detail.html?_id='+classify4[i]._id+'"><img src="../../upload/'+classify4[i].preview+'" alt=""></a><p class="productname">' + classify4[i].title + '</p><p class="productprice"><span>售价：</span>￥' + classify4[i].price + '&nbsp;</p></div>';  
 	              }  
 
 	              $('.classify1').append(htmlNode1); 
@@ -58,8 +58,22 @@ require(['config'],function(){
 	$('.back').click(function(){
 		window.history.back(-1);
 	})
+	$(".homepage").attr('href',erp.webappUrl + 'index.html');
+	$(".buycar").attr('href',erp.htmlUrl + 'shoppingCart.html');
+	$('.classify1').find('.morepro').click(function(){
+			window.location.href=erp.htmlUrl+"classify_hot.html";
+	})
+	$('.classify2').find('.morepro').click(function(){
+			window.location.href=erp.htmlUrl+"classify_condom.html";
+	})
 
+	$('.classify3').find('.morepro').click(function(){
+			window.location.href=erp.htmlUrl+"classify_male.html";
+	})
 
+	$('.classify4').find('.morepro').click(function(){
+			window.location.href=erp.htmlUrl+"classify_female.html";
+	})
 	$('.title').first().addClass('active');
 	//左侧tab标签切换
 	$('.title').click(function(){

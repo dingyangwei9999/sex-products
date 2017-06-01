@@ -2,8 +2,10 @@ require(['config'],function(){
 	require(['jquery','baseUrl'],function(){
 		$('.foot').load('../html/footer.html');
 		$('.back').click(function(){
-		window.history.back(-1);
+			window.history.back(-1);
 		})
+		$(".homepage").attr('href',erp.webappUrl + 'index.html');
+		$(".buycar").attr('href',erp.htmlUrl + 'shoppingCart.html');
 		$('.zonghe').addClass('active');
 		//标签切换
 		var htmlNodes = '';  
