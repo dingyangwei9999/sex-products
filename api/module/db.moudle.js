@@ -46,28 +46,23 @@ var save = function(_collection, data){
 
 //查询商品分类classify和keyword
 var existsSingle = function(_collection, data, arr, callback){
+	var obj = {};
+	for(var attr in data){
+        if(!(attr === "fuzzy")){
+    	   	obj[attr] = arr;
+        }
+	}
 
-		//Account => 集合名（表名）
-		// var obj = {};
-		// arr.forEach(function (ele) {
-		// 	obj[ele] = data[ele]? data[ele] : '';
-  //       });
-		var obj = {};
-		for(var attr in data){
-			obj[attr] = arr;
-		}
-		// obj.keyword = arr;
-		// obj[ele] = data[ele]? data[ele] : '';
-        db.collection(_collection, function(error, collection){
-            if(error){
-                console.log(error)
-            } else {
-            	console.log('obj:',obj);
-                collection.find(obj).toArray(function(err, docs){
-                    callback(docs);
-                });
-            }
-        });
+    db.collection(_collection, function(error, collection){
+        if(error){
+            console.log(error)
+        } else {
+        	console.log('obj:',obj);
+            collection.find(obj).toArray(function(err, docs){
+                callback(docs);
+            });
+        }
+    });
 
 };
 
@@ -85,7 +80,7 @@ var getProductFilter = function(_collection, data, Reg,skip,limit, sort,callback
     try{
         sort = sort ? JSON.parse(sort) : {};
     }catch(error){
-        console.log('sort转换失败,取消排序',error);
+        console.log('sort转换失败,取消排序,错误信息：',error);
         sort = {};
     }
 
@@ -93,7 +88,7 @@ var getProductFilter = function(_collection, data, Reg,skip,limit, sort,callback
     var obj = {};
     for(var attr in data){
         //假如满足一下条件则跳过不加入obj中
-        if(!(attr === 'limit' || attr === 'skip' || attr ==='sort')){
+        if(!(attr === 'limit' || attr === 'skip' || attr ==='sort' || attr === "fuzzy")){
             obj[attr] = Reg;
         }
     }
@@ -199,38 +194,38 @@ var getProduct = function(_collection, callback){
         });
 
 };
-var getProByClass_orderprice = function(_collection, typename, callback){
+// var getProByClass_orderprice = function(_collection, classify, sortname, sortorder, callback){
 
-        db.collection(_collection, function(error, collection){
-            if(error){
-                console.log(error)
-            } else {
-                collection.find({"classify":typename}).sort({"price":1}).toArray(function(err, pro){
-                	    // var reg = new RegExp("^.*"+keyword+"\.*$","i");
-    					// collection.find({name:{$regex:reg}}).toArray(function(err, docs){
-   						//  response.send(docs);
-                    callback(pro);
-                });
-            }
-        });
+//         db.collection(_collection, function(error, collection){
+//             if(error){
+//                 console.log(error)
+//             } else {
+//                 collection.find({"classify":classify}).sort({sortname:sortorder}).toArray(function(err, pro){
+//                 	    // var reg = new RegExp("^.*"+keyword+"\.*$","i");
+//     					// collection.find({name:{$regex:reg}}).toArray(function(err, docs){
+//    						//  response.send(docs);
+//                     callback(pro);
+//                 });
+//             }
+//         });
 
-};
-var getProByClass_ordersales = function(_collection, typename, callback){
+// };
+// var getProByClass_ordersales = function(_collection, typename, callback){
 
-        db.collection(_collection, function(error, collection){
-            if(error){
-                console.log(error)
-            } else {
-                collection.find({"classify":typename}).sort({"sales":-1}).toArray(function(err, pro){
-                	    // var reg = new RegExp("^.*"+keyword+"\.*$","i");
-    					// collection.find({name:{$regex:reg}}).toArray(function(err, docs){
-   						//  response.send(docs);
-                    callback(pro);
-                });
-            }
-        });
+//         db.collection(_collection, function(error, collection){
+//             if(error){
+//                 console.log(error)
+//             } else {
+//                 collection.find({"classify":typename}).sort({"sales":-1}).toArray(function(err, pro){
+//                 	    // var reg = new RegExp("^.*"+keyword+"\.*$","i");
+//     					// collection.find({name:{$regex:reg}}).toArray(function(err, docs){
+//    						//  response.send(docs);
+//                     callback(pro);
+//                 });
+//             }
+//         });
 
-};
+// };
 
 var getProByClass = function(_collection, typename, callback){
 
@@ -259,9 +254,6 @@ exports.getProductFilter = getProductFilter;
 
 exports.getProByClass = getProByClass;
 exports.getProduct = getProduct;
-exports.getProByClass_orderprice=getProByClass_orderprice;
-exports.getProByClass_ordersales=getProByClass_ordersales;
+// exports.getProByClass_orderprice=getProByClass_orderprice;
+// exports.getProByClass_ordersales=getProByClass_ordersales;
 
-
-
- 

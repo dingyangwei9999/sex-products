@@ -114,7 +114,7 @@ require(['config'],function(){
 
 		    //nav-list的 a标签localhost更改为erp
 		    var $nav_list_A = $('.nav-list a');
-		    console.log($nav_list_A)
+		    // console.log($nav_list_A)
 		    $nav_list_A.each(function(index,item){
 				$(item).attr('href',erp.htmlUrl + $(item).attr('href'));
 		    });
@@ -175,6 +175,7 @@ require(['config'],function(){
 				success: function(response){
 				    //得到数据库中首页的专区
 	    			var prefecture = [];
+	    			console.log(response);
 	    			//遍历response以获得专区
 					response.forEach(function(item){
 						prefecture = item.prefecture;

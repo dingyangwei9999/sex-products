@@ -9,11 +9,6 @@ require(['config'],function(){
 				$('.identity .name').text(response[0].nickname)
 			});
 
-			//点击左上角的X，跳转主页 
-			$('.topExit').click(function(){
-				window.location.href=erp.htmlUrl+'../index.html';
-			})
-
 			// 点击'设置图标' 和 '我的资料'，跳转我的资料的界面
 			$('.myData,.personalDataSet').click(function(){
 				window.location.href=erp.htmlUrl+'myProfile.html';
@@ -35,17 +30,6 @@ require(['config'],function(){
 			// })
 
 
-			
-
-
-
-
-
-
-
-
-
-
 			// 点击 我的订单，跳转 订单界面
 			$('.orderTop').click(function(e){
 				window.location.href=erp.htmlUrl+'myOrder.html?i=0';
@@ -63,13 +47,6 @@ require(['config'],function(){
 			$('.daituikuan').click(function(){
 				window.location.href=erp.htmlUrl+'myOrder.html?i=4';
 			})
-			
-
-
-
-
-
-						
 			
 		})
 	})
