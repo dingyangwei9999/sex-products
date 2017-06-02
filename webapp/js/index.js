@@ -1,7 +1,7 @@
 require(['config'],function(){
 	require(['jquery','swiper','global'],function(){
 		$(function(){
-			// $('.footer').load('html/footer.html');
+			$('.footer').load(erp.htmlUrl+'footer.html');
 			//轮播图
 			var mySwiper=new Swiper('.swiper-container',{
 				loop : true,
@@ -77,7 +77,7 @@ require(['config'],function(){
 
 		        if (scrollTop>=100) {
 		        	$searchs.stop().animate({width:'90%'},500)
-		        	$search.css('backgroundColor','pink')
+		        	$search.css('backgroundColor',$main_color)
 		        }else{
 		        	$searchs.stop().animate({width:'25%'},500)
 		        	$search.css('backgroundColor','')
@@ -97,19 +97,27 @@ require(['config'],function(){
 		    $kuans.on('click',function(){    	
 		    	$container.fadeOut();
 		    	$warp.fadeIn();
-		    })
+		    });
 		    $close.click(function(){
 		    	$container.fadeIn();
 		    	$warp.fadeOut();
-		    })
+		    });
 
 		    //placeholder文字隐藏
 		    $('.searchText').click(function(){
 		    	$('.searchText').attr('placeholder','')
-		    })
+		    });
 		    $('.searchText').blur(function(){
 		    	$('.searchText').attr('placeholder','情趣内衣')
-		    })
+		    });
+
+
+		    //nav-list的 a标签localhost更改为erp
+		    var $nav_list_A = $('.nav-list a');
+		    console.log($nav_list_A)
+		    $nav_list_A.each(function(index,item){
+				$(item).attr('href',erp.htmlUrl + $(item).attr('href'));
+		    });
 
 		    //读取数据
 		    $.ajax({
@@ -117,15 +125,15 @@ require(['config'],function(){
 				type: 'post',
 				data: {"classify":'限时抢购'},
 				dataType: 'json',
-				async:false,
+				// async:false,
 				success:function(response){
 					var res = response.map(function(item){
 						
 						var reduce=parseInt(item.ori_price - item.price);
 						return `
 							<li>
-								<a href="http://localhost:888/webapp/html/detail.html?_id=${item._id}">
-									<img src="../../upload/${item.listImg[0]}" alt="">
+								<a href="${erp.htmlUrl}detail.html?_id=${item._id}">
+									<img src="../../upload/${item.preview}" alt="">
 								</a>
 			 					<p>￥${item.price}</p>
 			 					<p><s>￥${item.ori_price}</s></p>
@@ -135,12 +143,35 @@ require(['config'],function(){
 					}).join('')
 					$('.time_product ul').append(res)
 				}
-			})
+			});
 
-			//热门专区数据写入
+
+		    /*
+		    	getProductsAdvanced
+		    	查找商品信息，可以限制数量，可以排序，用于分页
+		        skip：查找起始位置 skip:1
+		        limit：得到结果的个数 limit:1
+		        sort：根据给定条件排序 1升序-1降序 (必须JSON.strigify否则后台parse出错,会取消排序
+		        格式："sotr":JSON.strigify({price:1}))
+    			省略则按数据库默认
+
+    			示例：
+		     */
+			// $.ajax({
+			// 	url: erp.baseUrl + 'getProductsAdvanced',
+			// 	type: 'post',
+			// 	dataType: 'json',
+			// 	data: {"classify":"女性","skip":1,"limit":5,"sort":JSON.stringify({price:1})},
+			// 	success: function(response){
+			// 		console.log(response)
+			// 	}
+			// });
+
+		    //发送请求，获取数据库中所有专区
 			$.ajax({
-				url: erp.baseUrl + 'getProductsByArr',
+				url: erp.baseUrl + 'getBaseInfo',
 				type: 'post',
+<<<<<<< HEAD
 				data: {"classify":'热门专区'},
 				dataType: 'json',
 				async:false,
@@ -172,26 +203,160 @@ require(['config'],function(){
 					console.log(item)
 					$picture.append(hot)
 					$('.time_product').after($hot)
+=======
+				dataType: 'json',
+				success: function(response){
+				    //得到数据库中首页的专区
+	    			var prefecture = [];
+	    			//遍历response以获得专区
+					response.forEach(function(item){
+						prefecture = item.prefecture;
+					});
+					prefecture.forEach(function(elem){
+						//此处elem就是需要查询专区 (如女性专区)
+						$.ajax({
+							url: erp.baseUrl + 'getProductsAdvanced',
+							type: 'post',
+							//limit为5 只拿5个数据
+							data: {"prefecture":elem,"limit":5},
+							dataType: 'json',
+							// async:false,
+							success:function(response){
+								var a;
+								var female =`
+								<div class="prefectureDiv">
+						 			<h3>${elem}
+										<a href="${erp.htmlUrl}classify_female.html">更多&nbsp;&nbsp;>
+						 				</a>
+						 			</h3>
+						 			<div class="pic">
+						 				<div class="picture1 clearfix">`;
+								female += response.map(function(item,index){
+									switch(index){
+										case 0:
+										a = 'first';
+										break; 
+										case 1:
+										a = 'second';
+										break;
+									}
+									return `
+				 						<a href="${erp.htmlUrl}detail.html?_id=${item._id}" class="${a}">
+					 						<img src="../../upload/${item.preview}" alt="">
+					 					</a>
+										`;
+								}).join('');
+								female += `</div></div></div>`;
+								$('.prefectureBox').append(female);
+							}
+						});
+					});
+>>>>>>> ac2ae12fbefd523bca478da05976f4fc0387dd59
 				}
-			})
+			});
 
-			//套套专区数据写入
+
+			// //热门专区数据写入
 			// $.ajax({
 			// 	url: erp.baseUrl + 'getProductsByArr',
 			// 	type: 'post',
-			// 	data: {"classify":'套套专区'},
+			// 	data: {},
 			// 	dataType: 'json',
-			// 	async:false,
+			// 	// async:false,
+			// 	success:function(response){
+			// 		console.log(response)
+			// 		var a;
+			// 		//热门
+			// 		var $hot = $('<div/>').addClass('hot_product')
+			// 		var $h3 = $('<h3>')
+			// 		//套套
+			// 		var $condom = $('<div/>').addClass('condom_product')
+			// 		var $h3 = $('<h3>')
+
+			// 		$h3.text('热门专区')
+			// 		var $picture=$('<div/>').addClass('picture')
+			// 		$hot.prepend($h3)
+			// 		$h3.after($picture)
+			
+			// 		var hot = response.map(function(item,index){
+			// 			if(response[index].classify == '热门专区'){
+							
+			// 				switch(index){
+			// 					case 3:
+			// 					a = 'first';
+			// 					break; 
+			// 					case 4:
+			// 					a = 'second';
+			// 					break;
+			// 				}
+			// 				return `<a href="${erp.htmlUrl}detail.html?_id=${item._id}" class="${a}">
+			//  				<img src="../../upload/${item.listImg[0]}" alt="">
+			//  						</a>`
+			// 			}else if(response[index].classify == '套套专区'){
+			// 				console.log(index)
+
+			// 				switch(index){
+			// 					case 8:
+			// 					a = 'first';
+			// 					break; 
+			// 					case 9:
+			// 					a = 'second';
+			// 					break;
+			// 				}
+			// 				return `<a href="${erp.htmlUrl}detail.html?_id=${item._id}" class="${a}">
+			//  				<img src="../../upload/${item.listImg[0]}" alt="">
+			//  						</a>`
+			// 			}
+			// 		}).join('')
+			// 		$picture.append(hot)
+			// 		$('.time_product').after($hot)
+			// 	}
+			// })
+
+			// //套套专区数据写入
+			// // $.ajax({
+			// // 	url: erp.baseUrl + 'getProductsByArr',
+			// // 	type: 'post',
+			// // 	data: {"classify":'套套专区'},
+			// // 	dataType: 'json',
+			// // 	async:false,
+			// // 	success:function(response){
+			// // 		var a;
+			// // 		// var $condom=$('<div/>').addClass('condom_product')
+			// // 		// var $h3=$('<h3>')
+			// // 		// $h3.text('套套专区')
+			// // 		// var $picture=$('<div/>').addClass('pictures')
+			// // 		// $hot.prepend($h3)
+			// // 		// $h3.after($pictures)
+
+			// // 		var condom = response.map(function(item,index){
+			// // 			switch(index){
+			// // 				case 0:
+			// // 				a = 'first';
+			// // 				break; 
+			// // 				case 1:
+			// // 				a = 'second';
+			// // 				break;
+			// // 			}
+			// // 			return `<a href="${erp.htmlUrl}detail.html?_id=${item._id}" class="${a}">
+		 // // 				<img src="../../upload/${item.listImg[0]}" alt="">
+		 // // 			</a>`
+			// // 		}).join('')
+			// // 		$('.pictures').append(condom)
+			// // 		// $('.time_product').after($condom)
+			// // 	}
+			// // })
+
+			// //女性专区数据写入
+			// $.ajax({
+			// 	url: erp.baseUrl + 'getProductsByArr',
+			// 	type: 'post',
+			// 	data: {"classify":'女性专区'},
+			// 	dataType: 'json',
+			// 	// async:false,
 			// 	success:function(response){
 			// 		var a;
-			// 		// var $condom=$('<div/>').addClass('condom_product')
-			// 		// var $h3=$('<h3>')
-			// 		// $h3.text('套套专区')
-			// 		// var $picture=$('<div/>').addClass('pictures')
-			// 		// $hot.prepend($h3)
-			// 		// $h3.after($pictures)
-
-			// 		var condom = response.map(function(item,index){
+			// 		var female = response.map(function(item,index){
 			// 			switch(index){
 			// 				case 0:
 			// 				a = 'first';
@@ -200,83 +365,56 @@ require(['config'],function(){
 			// 				a = 'second';
 			// 				break;
 			// 			}
-			// 			return `<a href="http://localhost:888/webapp/html/detail.html?_id=${item._id}" class="${a}">
+			// 			return `<a href="${erp.htmlUrl}detail.html?_id=${item._id}" class="${a}">
 		 // 				<img src="../../upload/${item.listImg[0]}" alt="">
 		 // 			</a>`
 			// 		}).join('')
-			// 		$('.pictures').append(condom)
-			// 		// $('.time_product').after($condom)
+			// 		$('.picture1').append(female)
 			// 	}
 			// })
 
-			//女性专区数据写入
-			$.ajax({
-				url: erp.baseUrl + 'getProductsByArr',
-				type: 'post',
-				data: {"classify":'女性专区'},
-				dataType: 'json',
-				async:false,
-				success:function(response){
-					var a;
-					var female = response.map(function(item,index){
-						switch(index){
-							case 0:
-							a = 'first';
-							break; 
-							case 1:
-							a = 'second';
-							break;
-						}
-						return `<a href="http://localhost:888/webapp/html/detail.html?_id=${item._id}" class="${a}">
-		 				<img src="../../upload/${item.listImg[0]}" alt="">
-		 			</a>`
-					}).join('')
-					$('.picture1').append(female)
-				}
-			})
+			// //男性专区数据写入
+			
+			// $.ajax({
+			// 	url: erp.baseUrl + 'getProductsByArr',
+			// 	type: 'post',
+			// 	data: {"classify":'男性专区'},
+			// 	dataType: 'json',
+			// 	// async:false,
+			// 	success:function(response){
+			// 		var a;
+			// 		var male = response.map(function(item,index){
+			// 			switch(index){
+			// 				case 0:
+			// 				a = 'first';
+			// 				break; 
+			// 				case 1:
+			// 				a = 'second';
+			// 				break;
+			// 			}
+			// 			return `<a href="${erp.htmlUrl}detail.html?_id=${item._id}" class="${a}">
+		 // 				<img src="../../upload/${item.listImg[0]}" alt="">
+		 // 			</a>`
+			// 		}).join('')
+			// 		$('.picture2').append(male)
+			// 	}
+			// })
 
-			//男性专区数据写入
+			// //猜你喜欢专区
 			
 			$.ajax({
-				url: erp.baseUrl + 'getProductsByArr',
+				url: erp.baseUrl + 'getProductsAdvanced',
 				type: 'post',
-				data: {"classify":'男性专区'},
+				data: {"limit":20},
 				dataType: 'json',
-				async:false,
-				success:function(response){
-					var a;
-					var male = response.map(function(item,index){
-						switch(index){
-							case 0:
-							a = 'first';
-							break; 
-							case 1:
-							a = 'second';
-							break;
-						}
-						return `<a href="http://localhost:888/webapp/html/detail.html?_id=${item._id}" class="${a}">
-		 				<img src="../../upload/${item.listImg[0]}" alt="">
-		 			</a>`
-					}).join('')
-					$('.picture2').append(male)
-				}
-			})
-
-			//猜你喜欢专区
-			
-			$.ajax({
-				url: erp.baseUrl + 'getProductsByArr',
-				type: 'post',
-				data: {"classify":'猜你喜欢'},
-				dataType: 'json',
-				async:false,
+				// async:false,
 				success:function(response){
 				
 					var all = response.map(function(item){	
 						var sale = '已售' + ' ' + item.sales;			
 						return `<div class="prlist">
-					 				<a href="http://localhost:888/webapp/html/detail.html?_id=${item._id}">
-					 					<img src="../../upload/${item.listImg[0]}" alt="">
+					 				<a href="${erp.htmlUrl}detail.html?_id=${item._id}">
+					 					<img src="../../upload/${item.preview}" alt="">
 					 					<p class="detail">${item.title}</p>
 					 					<p class="price">￥${item.price}
 											<span class="sale">

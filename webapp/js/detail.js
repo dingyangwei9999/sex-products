@@ -1,53 +1,10 @@
 require(['config'],function(){
-	require(['jquery','sideshow','global'],function(){
-		 // 页面之间传参
-		//  var data = location.search.substring(1);
-		// var arr = data.split('&');
-		// // 遍历数组
-		// var obj = {};
-		// arr.forEach(function(item){
-		// 	var arr = item.split('=');
-
-		// 	console.log(arr)
-		// 	obj[arr[0]] = decodeURI(arr[1]);
-		// });
-		// var obj = {
-		// 	_id:'59278dc5386c5904e0a0ede8'
-
-		// }
-		// $('.btn_car').click(function(){
-		// 	// 如何把对象作为参数传递到另外一个页面
-		// 	// '?name=meinv&age=18&gender=female'
-			
-		// 	var res = '?';
-		// 	for(var attr in obj){
-		// 		res += attr + '=' + obj[attr] + '&'
-		// 	}
-		// 	res = res.slice(0,-1);
-
-
-
-		// 	location.href="shoppingCart.html" + res
-
-		// })
-		
-		
+	require(['jquery','sideshow','global'],function(){		
 	 	// 跳转到购物车
 	 	$('.detail_cart').on('click',function(){
 	 		location.href="shoppingCart.html"
 	 	})
 
-	 	// 跳转到登录页面
-	 	$('.detail_buy').on('click',function(){
-	 		// window.sessionStorage.setItem('phone',"333")
-	 	 	var key = window.sessionStorage.getItem('phone');
-	 		if (key) {
-	 			location.href="shoppingCart.html"
-	 		}else{
-
-	 			location.href="login.html"
-	 		}
-	 	 })
 		$(document).scroll(function(){
 		 	if(scrollY>55){
 		 		$('.detail_head').css('background','rgba(237, 237, 237, 0.5)');
@@ -79,10 +36,6 @@ require(['config'],function(){
 			 $('.tab_con').eq(i).parents().children('.tab_con').hide();
 			 $('.tab_con').eq(i).show();
 		});
-
-
-
-
 		// 详情页背景颜色图
 		var btn_choose=$('.good_choose');
 		btn_choose.on('click',function(){
@@ -95,8 +48,6 @@ require(['config'],function(){
 			$('.detail_pic').hide();
 
 		})
-
-
 		 // 收藏按钮
 		var btn_like=$('.like');
 		btn_like.click(function(){
@@ -106,13 +57,11 @@ require(['config'],function(){
 			}else{
 				$('.like .iconfont').css('color','#fff'); 
 			}
-	 		// $('.like .iconfont').css('color','#FD19AE');
 	 	});
 
 		 // 加入购物车
 		var btn_addshoppCart=$('.addCart');
 		 // 点击加入购物车出现的小按钮
-		var shoppNum = $('#btn_addCart');
 	 	var i=0;
 	 	// 增加
 	 	$('#btn_add').on('click',function(){
@@ -130,33 +79,62 @@ require(['config'],function(){
 	 	// 确认按钮
 		$('.bottom_confim').click(function(){
 			$('#btn_addCart').text(i);
-			shoppNum.css('display','block');
+			$('#btn_addCart').css('display','block');
 			$('.detail_bottom').hide();
 			$('.detail_pic').hide();
 			//改变之后显示的数量
 			$('#staNum').text(`数量为 ${i}`);
+			shop_session();
 		})
+
+		// session函数的封装 session购物车的存储
+		function shop_session(){
+			//获得sessionStorage中的商品信息
+			var goods = sessionStorage.getItem('goods');
+			//假如有则解析，没有则给空数组
+			goods = goods ? JSON.parse(goods) : [];
+			//是否找到商品
+			var hasGoods = false;
+			//遍历查找商品
+			for(var foo=0; foo<goods.length; foo++){
+				if(goods[foo]._id === data_name){
+					hasGoods = true;
+					goods[foo].count = i;
+					break;
+				}
+			}
+			//没有该商品则创建该商品id和数量
+			if(!hasGoods){
+				var shopCartObj = {
+					_id:data_name,
+			 		count:i
+			 	}
+			 	goods.push(shopCartObj);
+			}
+			//存入sessionStorage中
+			window.sessionStorage.setItem('goods',JSON.stringify(goods));
+	 	}
+
 		// 加入购物车
 		btn_addshoppCart.on('click',function(){
 			i+=1;    
-		 	shoppNum.text(i);
+		 	$('#btn_addCart').text(i);
 		 	$('.pic_tu').text(i);
-		 	shoppNum.css('display','block');
+		 	$('#btn_addCart').css('display','block');
 		 	$('.success').show(200).delay(400).hide(300);
 		 	$('#staNum').text(`数量为 ${i}`);
 		 	$('.good_choose').on('click',function(){
 		 		console.log(i)
-				$('#bottom_total').text(i);
+			$('#bottom_total').text(i);
 			})
+			shop_session();
 		})
-
-
 		// 点击更多的按钮
 		var btn_evenmore = $('.btn_more');
 		btn_evenmore.on('click',function(){
 			$('.hide_fun').toggle();
 		})
-
+		var xxx;
 		// 拿取传参的参数
 		var data_name = location.search.substring(1).slice(4);
 		// var data_name='59278dc5386c5904e0a0ede8';
@@ -164,9 +142,11 @@ require(['config'],function(){
 		$.ajax({
 				url: erp.baseUrl + 'getProductsById',
 				type: 'post',
+				// data: {'_id':data_name},
 				data: {'_id':data_name},
 				dataType: 'json',
 				success:function(response){
+					// xxx=response.;
 					console.log(response);
 					// 轮播图
 					response.bannerImg.forEach(function(item,index){
@@ -178,7 +158,8 @@ require(['config'],function(){
 			 				`;
 			 			$('.swiper-wrapper').append(pic);
 					});
-
+					// 底部图片的显示
+					// $('.info_left').append(`<img src="../../upload/response.">`)
 			 		// 标题
 			 		$('.good_title').text(response.title);
 			 		// 价格
@@ -201,18 +182,24 @@ require(['config'],function(){
 				 		`
 				 		$('#con_1').append(listImg);
 			 		})
-
-
 		 			var mySwiper = new Swiper ('.swiper-container', {
-				    loop: true,  
-				    pagination: '.swiper-pagination', 
-				    autoplay:2000
+					    loop: true,  
+					    pagination: '.swiper-pagination', 
+					    autoplay:2000
 					}) ;
 				}
 			});
+		// 跳转到登录页面
+	 	$('.detail_buy').on('click',function(){
+	 		// window.sessionStorage.setItem('phone',"333")
+	 	 	var key = window.sessionStorage.getItem('phone');
+	 		if (key) {
+	 			location.href="shoppingCart.html"
+	 		}else{
 
+	 			location.href="login.html"
+	 		}
+	 	 })
 
-		// session
-		// sessionSorge.setItem(key,value)
 	});
 })

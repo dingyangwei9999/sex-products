@@ -72,7 +72,21 @@ exports.Register = function(app){
 				response.send(apiResult(true,'',data))
                 //console.log(request.session,request.body.adminAccounts);
 			} else {
-				response.send(apiResult(false, '管理员帐号不正确或者密码有误'));
+				response.send(apiResult(false, 管理员帐号));
+			}
+		})
+	});
+
+	// 后台注册 管理员用户
+	app.post('/registerAdmin',urlencodedParser, function(request, response){
+		console.log(request.body,'=====')
+		db.exists('sexAdmin', request.body,['adminAccounts'], function(data){
+			
+			if(data.length > 0){
+				response.send(apiResult(false,'已存在的管理员账号'))
+			} else {
+				db.save('sexAdmin', request.body);
+				response.send(apiResult(true,'添加管理员成功'));
 			}
 		})
 	});

@@ -19,7 +19,7 @@ require(['config'],function(){
 			$('.am-btn-success').click(sendDB);
 			//按钮:发布并刷新页面
 			$('.am-btn-secondary').click(function(){
-				sendDB() ? location.reload() : '';			
+				sendDB() ? location.reload() : '';	
 			});
 
 			function sendDB(){
@@ -28,9 +28,12 @@ require(['config'],function(){
 				var entering = true;
 				$($allInput).each(function(index,elem){
 					if($(elem).val()===''){
-						alert('请填写完整信息');
-						entering = false;
-						return false;
+						//若是分区跳过判断
+						if(!(elem.id === 'prefecture')){
+							alert('请填写完整信息');
+							entering = false;
+							return false;
+						}
 					}
 				});
 				if(!entering){
@@ -65,7 +68,6 @@ require(['config'],function(){
 					url: erp.baseUrl + 'upload',
 					success:function(data){
                         console.log(data);
-                        window.location.reload();
                     },
                     error:function(XmlHttpRequest,textStatus,errorThrown){
                         console.log(XmlHttpRequest);

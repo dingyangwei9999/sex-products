@@ -7,35 +7,10 @@
 
 	background:#F6F6F6;
 	header{
-		width:100%;
-		background:#3A393E;
-		height:1.375rem;
-		line-height:1.375rem;
-		color:#fff;	
-		.topExit{
-			display:inline-block;
-			padding-left:0.5rem;
-			width:1.5rem;
-			height:1.375rem;
-		}
-		.topTitle{
-			font-size:16px;
-			margin-left:0.3125rem;
-		}
-		.topList{
-			display:block;
-			width:0.9375rem;
-			float:right;
-		}	
-	}
-	main{
-		flex:1;
-		overflow-y:auto;
-		height:37.5rem;
 		.title{
 			width:100%;
 			height:2.1875rem;
-			background:#59B200;
+			background:#FFBFBF;
 			padding-top:0.4375rem;
 			div{
 				float:left;
@@ -43,7 +18,7 @@
 			.headPortrait{
 				width:1.71875rem;
 				height:1.5625rem;
-				background:#DBDBEA;
+				background:#FFBFFF;
 				margin-left:0.46875rem;
 			}
 			.identity{
@@ -67,6 +42,12 @@
 				}
 			}
 		}
+	}
+	main{
+		flex:1;
+		overflow-y:auto;
+		height:37.5rem;
+		
 		.integral{
 			width:100%;
 			height:1.40625rem;
