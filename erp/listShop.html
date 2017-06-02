@@ -60,12 +60,12 @@
 <div class="admin-biaogelist">
 	
     <div class="listbiaoti am-cf">
-      <ul class="am-icon-flag on"> 栏目名称</ul>
+      <ul class="am-icon-flag on"> 商品列表</ul>
       
       <dl class="am-icon-home" style="float: right;"> 当前位置： 首页 > <a href="#">商品列表</a></dl>
       
       <dl>
-        <button type="button" class="am-btn am-btn-danger am-round am-btn-xs am-icon-plus"> 添加产品</button>
+        <a class="am-btn am-btn-danger am-round am-btn-xs am-icon-plus" href="addShop.html"> 添加产品</a>
       </dl>
       
       
@@ -73,7 +73,8 @@
 	
 	<div class="am-btn-toolbars am-btn-toolbar am-kg am-cf">
   <ul>
-    <li>
+  <!-- 搜索细分 -->
+   <!--  <li>
       <div class="am-btn-group am-btn-group-xs">
         <select data-am-selected="{btnWidth: 90, btnSize: 'sm', btnStyle: 'default'}">
           <option value="b">产品分类</option>
@@ -105,8 +106,11 @@
         <option value="o">下架</option>
       </select>
       </div>
-    </li>
-    <li><input type="text" class="am-form-field am-input-sm am-input-xm js_keyword" placeholder="关键词搜索" /></li>
+    </li> -->
+    <li><input type="text" class="am-form-field am-input-sm am-input-xm js_keyword" placeholder="请输入搜索内容" /></li>
+<!--     <li><label><input type="radio" class="search_keyword" name="search" checked="true">搜关键词</label><label><input type="radio" class="search_classify" name="search">搜分类</label><label><input type="radio" class="search_keyword" name="search_prefecture">搜专区</label><label><input type="radio" class="search_keyword" name="search_title">搜商品名</label><label><input type="radio" class="search_keyword" name="search__id">搜ID</label>
+    <label><input type="radio" class="search_all" name="search__id">全局搜索</label></li> -->
+    <li><select id="select"><option value="keyword">关键词</option><option value="classify">分类</option><option value="prefecture">专区</option><option value="title">商品名</option><option value="_id">商品ID</option><option value="searchAll">全局搜索</option></select></li>
     <li><button type="button" class="am-btn am-radius am-btn-xs am-btn-success js_search" style="margin-top: -1px;">搜索</button></li>
   </ul>
 </div>

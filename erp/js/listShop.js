@@ -42,7 +42,6 @@ require(['config'],function(){
 					}
 				});
 			})
-			// '{'+[$key]+':'+$val+'}'
 			//input失去焦点修改数据库
 			.on('blur','input',function(){
 				console.log(this)
@@ -84,13 +83,26 @@ require(['config'],function(){
 			// 	}
 			// });
 			
-			//关键词搜索功能
+			//搜索功能
 			$('.js_search').on('click',function(){
-				var keyword = $('.js_keyword').val();
+				var keyword = $('input.js_keyword').val();
+				//获取select选择的option
+				var searchKey = $('#select').val();
+				//设置ajax请求发送的路由,默认不搜商品id
+				var router = 'getProductsByArr';
+				//设置是否开启全局搜索,默认取消
+				var fuzzy = false;
+
+				if(searchKey === "_id"){
+					router = 'getProductsById';
+				}else if(searchKey === "searchAll"){
+					fuzzy = true;
+				}
+				console.log(keyword,searchKey,router,fuzzy);
 				$.ajax({
-					url: erp.baseUrl + 'getProductsByArr',
+					url: erp.baseUrl + router,
 					type: 'post',
-					data: {"keyword":keyword},
+					data: {[searchKey]:keyword,"fuzzy":fuzzy},
 					dataType: 'json',
 					success:function(response){
 						console.log(response);
@@ -103,9 +115,19 @@ require(['config'],function(){
 
 			//向表体插入数据
 			function addProducts(data){
-				// console.log(data);
+				//判断data是否为数组，如果搜索的是商品ID，data类型为对象，为对象时push进arr,不为对象，引用给arr,arr肯定是数组，进行遍历
+				var arr = [];
+				if(data instanceof Array){
+					arr = data;
+				}else{
+					//查找商品ID时如果没找到则不push
+					if(data._id){
+						arr.push(data);
+					}
+				}
+				console.log('arr,',arr,'data',data,data instanceof Array);
 				$('#tbody').append(
-					data.map(function(elem, index) {
+					arr.map(function(elem, index) {
 						return `
 						<tr data-_id="${elem._id}">
                 <td class="t_check"><input type="checkbox" /></td>
