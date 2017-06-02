@@ -118,6 +118,10 @@ body::-webkit-scrollbar{
 				height: 2.5rem;
 				background: #fff;
 				border-radius: 0.15625rem;
+				>img{
+					height: 100%;
+					width: 100%;
+				}
 			}
 			.info_right{
 			    position: absolute;
@@ -180,11 +184,13 @@ body::-webkit-scrollbar{
 				    height:1.0625rem;
 				    float: right;
 				    margin-right: 0.3125rem;
-				    #btn_reduce{
+				    #btn_reduce,#btn_add{
 			    	    width: 1.09375rem;
 			    	    border: none;
 			    	    float: left;
+			    	    color: #333;
 						height: 1.0625rem;
+						background: #eee;
 				    }
 				    #bottom_total{
 			    	    width: 1.25rem;
@@ -195,14 +201,14 @@ body::-webkit-scrollbar{
 						line-height: 1rem;
 						float: left;
 				    }
-				    #btn_add{
-			    	    width: 1.09375rem;
-					    height: 1.0625rem;
-					    border: none;
-					    color: #333;
-					    float: right;
-					    background: #eee;
-				    }
+				    // #btn_add{
+			    	//     width: 1.09375rem;
+					   //  height: 1.0625rem;
+					   //  border: none;
+					   //  color: #333;
+					   //  float: right;
+					   //  background: #eee;
+				    // }
 				}				
 		    }
 		}
