@@ -8,21 +8,13 @@
 	h2{
 		height:1.21875rem;
 		font-size:13px;
+		
 		// background-color: #FAFCFC;
 		background-color: $main_color;
 		color: #fff;
 		border-bottom: 0.03125rem solid #E8E8E8;
 		text-align: center;
 		line-height: 1.21875rem;
-		.search_input{
-			// display: block;
-			width: 160px;
-			height: 22px;
-			font-size: 2px;
-			border-radius: 5px;
-			padding: 0 5px;
-			outline: none;
-		}
 	}
 	.back{
 		// float: left;
@@ -52,17 +44,17 @@
 		color: #fff;
 		}
 	}
-	.fangdajing{
+	.buycar{
 		// float: right;
 		height: 1.21875rem;
 		width: 1.21875rem;
 		position: absolute;
-		right: 1.325rem;
+		right: 1.5625rem;
 		text-decoration: none;
 		i{
 			height: 100%;
 			line-height: 1.21875rem;
-			font-size: 16px;
+			font-size: 20px;
 		color: #fff;
 		}
 	}

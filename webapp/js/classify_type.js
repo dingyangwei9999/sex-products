@@ -9,16 +9,9 @@ require(['config'],function(){
 		$('.zonghe').addClass('active');
 
 		var type_name = location.search.substring(7);
-		// type_name=decodeURI(type_name);
-		// console.log(type_name);
-		// $('.type_title span').text(type_name);
-
-
-
-		var session = window.sessionStorage.getItem('data')
-		var arrs = JSON.parse(session)
-		console.log(arrs)
-
+		type_name=decodeURI(type_name);
+		console.log(type_name);
+		$('.type_title span').text(type_name);
 
 		$.ajax({
 			url: erp.baseUrl + 'getProductsAdvanced',

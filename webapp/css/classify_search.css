@@ -68,13 +68,6 @@ img {
     border-bottom: 0.03125rem solid #E8E8E8;
     text-align: center;
     line-height: 1.21875rem; }
-    .header h2 .search_input {
-      width: 160px;
-      height: 22px;
-      font-size: 2px;
-      border-radius: 5px;
-      padding: 0 5px;
-      outline: none; }
   .header .back {
     height: 1.21875rem;
     width: 1.5625rem;
@@ -97,16 +90,16 @@ img {
       line-height: 1.31875rem;
       font-size: 20px;
       color: #fff; }
-  .header .fangdajing {
+  .header .buycar {
     height: 1.21875rem;
     width: 1.21875rem;
     position: absolute;
-    right: 1.325rem;
+    right: 1.5625rem;
     text-decoration: none; }
-    .header .fangdajing i {
+    .header .buycar i {
       height: 100%;
       line-height: 1.21875rem;
-      font-size: 16px;
+      font-size: 20px;
       color: #fff; }
 
 .main {
