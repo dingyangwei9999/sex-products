@@ -2,18 +2,20 @@ require(['config'],function(){
 	require(['jquery','swiper','global'],function(){
 		$(function(){
 			$('.footer').load(erp.htmlUrl+'footer.html');
+
 			//轮播图
 			var mySwiper=new Swiper('.swiper-container',{
 				loop : true,
 				autoplay :2000,
 				pagination : '.swiper-pagination'
 			})
+
 			//倒计时
 			var $hour=$('.hour')
 			var $min=$('.min')
 			var $sec=$('.sec')
 
-			var end = Date.parse('2017/5/28 07:34:10');
+			var end = Date.parse('2017/6/1 19:40:30');
 			
 
 			// 页面进入时先执行一次
@@ -31,33 +33,29 @@ require(['config'],function(){
 			 	var offsetTime = Math.floor((end - now)/1000);
 
 
-			 	// 剩余秒数
 			 	var secLeft = offsetTime%60;
-		 		if (secLeft<10) {
-		 			secLeft='0'+secLeft
-			 	}else{
-			 		secLeft=secLeft
-			 	}
 
-			 	// 剩余分钟数
 			 	var minLeft = Math.floor(offsetTime/60)%60;
-			 	if (minLeft<10) {
-			 		minLeft='0'+minLeft
-			 	}else{
-			 		minLeft=minLeft
-			 	}
 
-			 	// 剩余小时数
 			 	var hourLeft = Math.floor(offsetTime/60/60)%24;
-			 	if (hourLeft<10) {
-			 		hourLeft='0'+hourLeft
-			 	}else{
-			 		hourLeft=hourLeft
-			 	}
+
+			 	//当时间小于10的时候判断
+			 	secLeft<10? secLeft='0'+secLeft : secLeft=secLeft;
+			 	minLeft<10? minLeft='0'+minLeft : minLeft=minLeft;
+			 	hourLeft<10? hourLeft='0'+hourLeft : hourLeft=hourLeft;
+
+			 	
 
 				$hour.text(hourLeft);
 				$min.text(minLeft);
 				$sec.text(secLeft)
+
+				//判断相差时间为0的时候，直接等于00
+				if (offsetTime <=0) {
+					$hour.text('0'+'0');
+					$min.text('0'+'0');
+					$sec.text('0'+'0');
+			 	}
 			 }
 
 			 //滚动一定距离出现顶部的按钮	 
@@ -69,20 +67,58 @@ require(['config'],function(){
 
 		    $main.scroll(function(){
 		        var  scrollTop=  $main.scrollTop();
-		        if(scrollTop>200){
-		           $btn.fadeIn(1000)
-		        }else{
-		            $btn.fadeOut(1000)
-		        }
+		      
+		        // if(scrollTop>200){
+		        //    $btn.fadeIn(1000)
+		        // }else{
+		        //     $btn.fadeOut(1000)
+		        // }
 
-		        if (scrollTop>=100) {
-		        	$searchs.stop().animate({width:'90%'},500)
-		        	$search.css('backgroundColor',$main_color)
-		        }else{
-		        	$searchs.stop().animate({width:'25%'},500)
-		        	$search.css('backgroundColor','')
-		        }
+		        // if (scrollTop>=100) {
+		        // 	$searchs.stop().animate({width:'90%'},500)
+		        // 	// $search.fadeIn(800)
+		        // }else{
+		        // 	$searchs.stop().animate({width:'25%'},500)
+		        // 	// $search.fadeOut(800)
+		        // }
+		        	
+	        	var hei =$main.height() + window.innerHeight*3;
+	        
+	        		if(scrollTop >= hei){
+	        			hei=hei+500
+		       
+		        	console.log(hei)
+		    //     	$.ajax({
+						// url: erp.baseUrl + 'getProductsAdvanced',
+						// type: 'post',
+						// data: {"skip":0,"limit":4},
+						// dataType: 'json',
+						// // async:false,
+						// success:function(response){
+						
+						// 	var all = response.map(function(item){	
+						// 		var sale = '已售' + ' ' + item.sales;
+						// 		// console.log(sale)			
+						// 		return `<div class="prlist">
+						// 	 				<a href="${erp.htmlUrl}detail.html?_id=${item._id}">
+						// 	 					<img src="../../upload/${item.preview}" alt="">
+						// 	 					<p class="detail">${item.title}</p>
+						// 	 					<p class="price">￥${item.price}
+						// 							<span class="sale">
+						// 								${sale}
+						// 							</span>
+						// 	 					</p>
+						// 	 				</a>
+						// 	 			</div>`
+						// 	}).join('')
+						// 	$('.you_like h3').after(all)
+						// }
+					// });
+		       	 }
+		       
 		    });
+
+
 			 //返回顶部按钮
 		    $btn.click(function(){
 		        $main.animate({scrollTop:0},1000);
@@ -114,7 +150,7 @@ require(['config'],function(){
 
 		    //nav-list的 a标签localhost更改为erp
 		    var $nav_list_A = $('.nav-list a');
-		    console.log($nav_list_A)
+		    // console.log($nav_list_A)
 		    $nav_list_A.each(function(index,item){
 				$(item).attr('href',erp.htmlUrl + $(item).attr('href'));
 		    });
@@ -205,6 +241,9 @@ require(['config'],function(){
 										break; 
 										case 1:
 										a = 'second';
+										break;
+										case 2:
+										a = 'third';
 										break;
 									}
 									return `
@@ -371,13 +410,14 @@ require(['config'],function(){
 			$.ajax({
 				url: erp.baseUrl + 'getProductsAdvanced',
 				type: 'post',
-				data: {"limit":20},
+				data: {"skip":0,"limit":4},
 				dataType: 'json',
 				// async:false,
 				success:function(response){
 				
 					var all = response.map(function(item){	
-						var sale = '已售' + ' ' + item.sales;			
+						var sale = '已售' + ' ' + item.sales;
+						// console.log(sale)			
 						return `<div class="prlist">
 					 				<a href="${erp.htmlUrl}detail.html?_id=${item._id}">
 					 					<img src="../../upload/${item.preview}" alt="">

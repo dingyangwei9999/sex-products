@@ -184,7 +184,8 @@ img {
       flex: 1; }
       #container .time_product ul li img {
         width: 2.5rem;
-        height: 2.5rem; }
+        height: 2.5rem;
+        text-indent: center; }
       #container .time_product ul li p {
         text-align: center; }
       #container .time_product ul li .save {
@@ -209,22 +210,26 @@ img {
     margin-left: 0.15625rem; }
   #container .prefectureDiv .picture1 .first {
     width: 63.5%;
-    height: 4.53125rem; }
+    height: 4.53125rem;
+    box-shadow: 0.03125rem 0.03125rem 0.03125rem 0.03125rem #ccc; }
     #container .prefectureDiv .picture1 .first img {
-      width: 6.34375rem;
-      height: 4.21875rem; }
+      width: 100%;
+      height: 100%; }
   #container .prefectureDiv .picture1 .second {
     width: 31%;
-    height: 4.53125rem; }
+    height: 4.53125rem;
+    box-shadow: 0.03125rem 0.03125rem 0.03125rem 0.03125rem #ccc; }
     #container .prefectureDiv .picture1 .second img {
-      width: 3.125rem;
-      height: 4.21875rem; }
+      width: 100%;
+      height: 100%; }
   #container .prefectureDiv .picture1 .third {
     width: 31%;
-    height: 4.59375rem; }
+    height: 4.53125rem;
+    margin-top: 0.3125rem;
+    box-shadow: 0.03125rem 0.03125rem 0.03125rem 0.03125rem #ccc; }
     #container .prefectureDiv .picture1 .third img {
-      width: 3.125rem;
-      height: 4.21875rem; }
+      width: 100%;
+      height: 100%; }
   #container .prefectureDiv .picture1 .forth {
     width: 31%;
     height: 4.59375rem; }
@@ -446,7 +451,8 @@ img {
     height: 7.34375rem;
     width: 48%;
     margin: 0.8%;
-    background: #fff; }
+    background: #fff;
+    box-shadow: 0.03125rem 0.03125rem 0.03125rem 0.03125rem #ccc; }
     #container .you_like .prlist a img {
       width: 100%;
       height: 4.75rem; }
