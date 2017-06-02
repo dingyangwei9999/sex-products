@@ -46,18 +46,20 @@ require(['config'],function(){
 			.on('blur','input',function(){
 				console.log(this)
 				$self = $(this);
-				var $val = $self.val();
+				var $val;
+				//将价格类转为number类型
+				if($self.hasClass('numtype')){
+					$val = Number($self.val());
+				}else{
+					$val = $self.val();
+				}
 				var $key = $self.closest('td').attr('class');
 				var $tr = $self.closest('tr');
 				var _id = $tr.attr('data-_id');
-				if($key === 'keyword' || $key === 'classify'){
-					console.log('=========',$key);
-					// var keyword = $key;
-					// var classify = $('#classify').val();
+				if($key === 'keyword' || $key === 'classify' || $key === 'prefecture'){
 					$val = $val.split(/，|,|\s+/);
-					// classify = classify.split(/，|,|\s+/);
 				}
-				console.log($key,$val);
+				console.log($key,$val,typeof $val);
 				$.ajax({
 					url: erp.baseUrl + 'updataProducts',
 					type: 'post',
@@ -65,10 +67,6 @@ require(['config'],function(){
 					dataType: 'json',
 					success:function(response){
 						console.log(response);
-						//数据库删除成功后移除DOM节点
-						// if(response.status){
-						// 	$tr.remove();
-						// }
 					}
 				});				
 			});
@@ -125,7 +123,6 @@ require(['config'],function(){
 						arr.push(data);
 					}
 				}
-				console.log('arr,',arr,'data',data,data instanceof Array);
 				$('#tbody').append(
 					arr.map(function(elem, index) {
 						return `
@@ -134,11 +131,11 @@ require(['config'],function(){
                 <td id="t_preview" class="preview"><img src="../upload/${elem.preview}"></td>
                 <td class="_id"><a title="${elem._id}">${elem._id}</a></td>
                 <td class="title"><input type="text" name="" value="${elem.title}" id="resetSty"></td>
-                <td class="price"><input type="text" name="" value="${elem.price}" id="resetSty"></td>
-                <td class="ori_price"><input type="text" name="" value="${elem.ori_price}" id="resetSty"></td>
-                <td class="repertory"><input type="text" name="" value="${elem.repertory}" id="resetSty"></td>
-                <td class="sales"><input type="text" name="" value="${elem.sales}" id="resetSty"></td>
-                <td class="freight"><input type="text" name="" value="${elem.freight}" id="resetSty"></td>
+                <td class="price"><input type="text" name="" class="numtype" value="${elem.price}" id="resetSty"></td>
+                <td class="ori_price"><input type="text" name="" class="numtype" value="${elem.ori_price}" id="resetSty"></td>
+                <td class="repertory"><input type="text" name="" class="numtype" value="${elem.repertory}" id="resetSty"></td>
+                <td class="sales"><input type="text" name="" class="numtype" value="${elem.sales}" id="resetSty"></td>
+                <td class="freight"><input type="text" name="" class="numtype" value="${elem.freight}" id="resetSty"></td>
                 <td class="classify"><input type="text" name="" value="${elem.classify}" id="resetSty"></td>
                 <td class="keyword"><input type="text" name="" value="${elem.keyword}" id="resetSty"></td>
                  <td class="prefecture"><input type="text" name="" value="${elem.prefecture}" id="resetSty"></td>
