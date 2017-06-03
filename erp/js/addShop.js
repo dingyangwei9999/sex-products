@@ -51,10 +51,13 @@ require(['config'],function(){
 				//分别将关键字和分类变换成数组
 				var keyword = $('#keyword').val();
 				var classify = $('#classify').val();
+				var prefecture = $('#prefecture').val();
 				keyword = keyword.split(/，|,|\s+/);
 				classify = classify.split(/，|,|\s+/);
+				prefecture = prefecture.split(/，|,|\s+/);
 				newShop.keyword = keyword;
 				newShop.classify = classify;
+				newShop.prefecture = prefecture;
 				newShop.description = $('#description').val();
 				//将对象转换成json字符串，用于发送ajax请求
 				newShop = JSON.stringify(newShop);
