@@ -2,6 +2,16 @@ require(['config'],function(){
 	require(['jquery','swiper','global'],function(){
 		$(function(){
 			$('.footer').load(erp.htmlUrl+'footer.html');
+
+			//搜索框传递参数跳转到搜索页面
+			$('.searchSubmit').click(function(){
+
+				var $value=$('.searchText').val();
+				if ($value==='') {
+					$value='无';
+				}
+				location.href=erp.htmlUrl + 'classify_search.html' + '?keyword=' + $value
+			})
 			//轮播图
 			var mySwiper=new Swiper('.swiper-container',{
 				loop : true,
@@ -394,6 +404,7 @@ require(['config'],function(){
 					$('.you_like h3').after(all)
 				}
 			})
+
 
 			//页面的数据传参
 			// var obj = {
