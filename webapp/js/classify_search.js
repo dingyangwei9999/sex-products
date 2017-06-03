@@ -1,5 +1,5 @@
 require(['config'],function(){
-	require(['jquery','baseUrl'],function(){
+	require(['jquery','global'],function(){
 		$('.foot').load('../html/footer.html');
 		$('.back').click(function(){
 			window.history.back(-1);
@@ -8,38 +8,11 @@ require(['config'],function(){
 		$(".buycar").attr('href',erp.htmlUrl + 'shoppingCart.html');
 		$('.zonghe').addClass('active');
 
+
 		var _keyword = location.search.substring(9);
 		_keyword=decodeURI(_keyword);
 		console.log(_keyword);
-		// $('.type_title span').text(type_name);
-		// 
-		// 
-		// ----------------搜索功能----------------
-		// $('.searchSubmit').click(function(){
-		// 		var $value=$('.searchText').val();
 
-		// 		 $.ajax({
-		// 			url: erp.baseUrl + 'getProductsByArr',
-		// 			type: 'post',
-		// 			data: {"keyword":$value},
-		// 			dataType: 'json',
-		// 			// async:false,
-		// 			success:function(response){
-		// 			window.sessionStorage.setItem('data',JSON.stringify(response))
-					
-					
-		// 			}
-		// 		});
-		// 		location.href =erp.htmlUrl + 'classify_search.html';
-			
-		// })
-		// ----------------搜索功能----------------
-
-
-
-		// var session = window.sessionStorage.getItem('data')
-		// var arrs = JSON.parse(session)
-		// console.log(arrs)
 		var h3='<h3>抱歉，没有找到与您搜索输入相匹配的商品！</h3>'
 
 		$.ajax({
