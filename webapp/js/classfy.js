@@ -7,15 +7,20 @@ require(['config'],function(){
 		type: 'post',
 		dataType: 'json',
 		success: function(response){
-		    //得到数据库中所有商品的专区，并将专区的数据放在左侧tab栏显示出来
-			var classfyArr = response[0].classify;
-			console.log(classfyArr);
-			var htmlNode1 = '';
-			for(var i = 0; i < classfyArr.length; i ++){ 
-	            htmlNode1 += '<li class="title">'+classfyArr[i]+'</li>'
+			if (!response.length==0) {
+			    //得到数据库中所有商品的专区，并将专区的数据放在左侧tab栏显示出来
+				var classfyArr = response[0].classify;
+				console.log(classfyArr);
+				var htmlNode1 = '';
+				for(var i = 0; i < classfyArr.length; i ++){ 
+		            htmlNode1 += '<li class="title">'+classfyArr[i]+'</li>'
+				}
+				$('.classfyul').append(htmlNode1);
+				$('.title').first().addClass('active');
 			}
-			$('.classfyul').append(htmlNode1);
-			$('.title').first().addClass('active');
+			else{
+				console.log('分类列无数据');
+			}
 			//刷新页面默认显示热门专区的商品信息↓
 			$.ajax({
 					url: erp.baseUrl + 'getProductsByArr',
@@ -102,6 +107,8 @@ require(['config'],function(){
 	$('.back').click(function(){
 		window.history.back(-1);
 	})
+	$(".homepage").attr('href',erp.webappUrl + 'index.html');
+	$(".buycar").attr('href',erp.htmlUrl + 'shoppingCart.html');
 	// $(".homepage").attr('href',erp.webappUrl + 'index.html');
 	// $(".buycar").attr('href',erp.htmlUrl + 'shoppingCart.html');
 	// $('.classify1').find('.morepro').click(function(){
