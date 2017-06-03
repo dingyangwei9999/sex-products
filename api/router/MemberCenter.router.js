@@ -27,20 +27,18 @@ exports.Register = function(app){
 
 
 	app.post('/myProfile', urlencodedParser, function(request, response){
+		console.log(request.body);
+		db.exists('myProfile', request.body,['phone'], function(data){
+			console.log(data)
+			if(!data.length){
 
-		db.exists('myProfile', request.body,['name','nickname','wechat','gender','city','birthday'], function(data){
-
-			if(data.length > 0){
-				request.session.phone = request.body.phone;
+				db.save('myProfile',request.body)
 				response.send(apiResult(true))
 
 			} else {
-				db.del('myProfile',{},[],function(result){
 
-					if(result){
-						db.save('myProfile', request.body);
-					}
-				});
+				// console.log(data[0],'------',request.body)
+				db.updateProducts('myProfile',data[0],request.body);
 				
 				response.send(apiResult(false, '资料修改成功'));
 			}
@@ -49,7 +47,8 @@ exports.Register = function(app){
 
 	// 获取我的资料的数据
 	app.post('/getmyProfile', urlencodedParser, function(request, response){
-		db.exists('myProfile',request.body,[],function(result){
+		console.log(request.body)
+		db.exists('myProfile',request.body,['phone'],function(result){
 			response.send(result);
 		});
 
@@ -58,34 +57,47 @@ exports.Register = function(app){
 
 	// 设置收货管理地址
 	app.post('/address', urlencodedParser, function(request, response){
-		db.save('address', request.body)
-		response.send(apiResult(false, '设置成功'))
+		console.log(request.body)
+		db.exists('address', request.body,['address','name','phoneNum','city','phone','shi','qu'],function(result){
+			if(result.length){
+				response.send(apiResult(true, '该地址已存在'))
+			}else{
+				
+				db.save('address', request.body)
+				response.send(apiResult(false, '设置成功'))
+			}
+		})
+		
+		
 	});
 	// 获取收货管理地址
 	app.post('/getaddress', urlencodedParser, function(request, response){
-		db.extract('address',function(result){
+		db.exists('address',request.body,['phone'],function(result){
 			response.send(result);
 		});
 	});
 	// 删除收货管理地址
 	app.post('/deladdress', urlencodedParser, function(request, response){
-		db.del('address',request.body,['address','name','phoneNum','city'],function(result){
+		// console.log(request.body)
+		db.del('address',request.body,['address','name','phoneNum','city','phone','shi','qu'],function(result){
 			response.send(result);
 		});
 	});
 	// 修改收货管理地址
 	app.post('/Alteraddress', urlencodedParser, function(request, response){
 		
-		 console.log(JSON.parse(request.body.data));
+		 // console.log(JSON.parse(request.body.data));
 	    //需要修改的数据
 	    var data = JSON.parse(request.body.data);
 	    // //根据id是否查询得到商品
 	    var isUpdate = false;
 
 	    db.exists('address',{},[],function(result){
+	    	console.log(result)
 	      result.forEach(function(item){
 	        if(item._id == request.body._id){
 	          isUpdate = true;
+	          console.log(item,data)
 	           db.updateProducts('address',item,data);
 	          return false;
 	        }

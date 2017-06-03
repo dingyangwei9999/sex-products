@@ -44,7 +44,7 @@
 				font-size:16px;
 				input,select{
 					border:0;
-					height:90%;
+					height:70%;
 					position:relative;
 					top:-0.125rem;
 					margin-left:0.3125rem;
@@ -59,15 +59,15 @@
 					font-size:12px;
 				}
 				.date{
-					margin-left:0.0rem;
-					top:-0.09375rem;
+					margin-left:0.25rem;
+					top:-0.15625rem;
 				}
 				.genderRadio{
 					top:0.09375rem;
 				}
 				.gengder{
 					position:relative;
-					top:-0.25rem;
+					top:-0.09375rem;
 					left:-0.21875rem;
 				}
 				.phone{
@@ -84,7 +84,7 @@
 		.modification_btn{
 			height:100%;
 			width:100%;
-			background:#31cd00;
+			background:#00b5ca;
 			color:#fff;
 			border-radius:0.1875rem;
 			border:0;

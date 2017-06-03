@@ -2,15 +2,17 @@ require(['config'],function(){
 	require(['jquery','global'],function(){
 		$(function(){
 			var quondamID;
-			$.post(erp.baseUrl +  'getaddress',{},function(response){
-				// console.log(response)
+			$.post(erp.baseUrl +  'getaddress',{'phone':sessionStorage.getItem('phone')},function(response){
+				
 				// 生成 存储的地址信息记录
 				if( response[0] != null){
+					console.log(response)
 					var res=response.map(function(item,index){
+						console.log(item)
 						var cname = 'adressRecord'+index;
-
-						return `<div class="adressRecord ${cname}">
-								    <div class="clearfix"><i class="iconfont icon-shouhuodizhiguanli"></i></div>
+						
+						return `<div class="adressRecord">
+								    <div class="moren clearfix"><p style="color:${item.default}" class="${item.cname}">${item.has}</p><i class="iconfont icon-shouhuodizhiguanli" style="color:${item.default}"></i></div>
 								    <div>
 								        <div class="inner">
 								           <div>${item.address}</div>
@@ -50,9 +52,62 @@ require(['config'],function(){
 						$('#mobileAlter').val(response[idx]['phoneNum']),
 						// $('#shiAlter option:selected').text(response[idx]['shi']),
 						// $('#quAlter option:selected').text(response[idx]['qu']),
+						$('#shi').val(response[idx]['shi']),
+						$('#qu').val(response[idx]['qu']),
 						$('#sel-provanceAlter option:selected').text(response[idx]['city'])
 
 						
+				})
+
+
+				// 点击图标变换默认地址
+				// console.log($('.moren'))
+				$('.moren').on('touchstart',function(){
+					console.log(1)
+					var idx=$(this).parents('.adressRecord')[0].className.substr(-1,1)
+					quondam2ID=response[idx]._id;
+
+					var other_id=[];
+					response.forEach(function(item){
+						if(item._id==quondam2ID){
+							return false;
+						}
+						other_id.push(item._id)
+					})
+
+					$('.adressRecord').find('i').css({color:'#ccc'})
+					$(this).children('i').css({color:'#72CB62'})
+					$('.adressRecord').find('p').text('设为默认').css({color:'#ccc'})
+					$(this).children('p').text('默认').css({color:'#72CB62'})
+					$('.adressRecord').find('p').toggleClass().addClass('has')
+					$(this).children('p').toggleClass().addClass('has2')
+
+
+					$.post(erp.baseUrl+'Alteraddress',{
+							"_id":quondam2ID,
+							"data":JSON.stringify({
+							default:'#72CB62',
+							has:'默认',
+							cname:'has2'
+						})
+					},function(response){
+						// console.log(response)
+						// location.reload();
+					})
+
+					other_id.forEach(function(id){
+						$.post(erp.baseUrl+'Alteraddress',{
+								"_id":id,
+								"data":JSON.stringify({
+								default:'#ccc',
+								has:'设为默认',
+								cname:'has'
+							})
+						},function(response){
+							// console.log(response)
+							// location.reload();
+						})
+					})	
 				})
 
 
@@ -70,6 +125,8 @@ require(['config'],function(){
 
 			});
 
+			
+
 			// 点击 新增收货地址
 			$('.new_address').click(function(){
 				addAddress();
@@ -81,12 +138,18 @@ require(['config'],function(){
 				// 收集信息，存到数据库
 				if($('#mobile').val()!=''){
 					$.post(erp.baseUrl+'address',{
+						phone:sessionStorage.getItem('phone'),
 						address:$('#address').val(),
 						name:$('#name').val(),
 						phoneNum:$('#mobile').val(),
 						// shi:$('#shi option:selected').text(),
 						// qu:$('#qu option:selected').text(),
+						shi:$('#shi').val(),
+						qu:$('#qu').val(),
 						city:$('#sel-provance option:selected').text(),
+						default:'#ccc',
+						has:'设为默认',
+						cname:'has'
 
 					},function(response){
 						// alert(response.message);
@@ -96,20 +159,15 @@ require(['config'],function(){
 
 				if($('#mobileAlter').val()!=''){
 
-					$.post(erp.baseUrl+'Alteraddress',
-						// address:$('#addressAlter').val(),
-						// name:$('#nameAlter').val(),
-						// phoneNum:$('#mobileAlter').val(),
-						// // shi:$('#shiAlter option:selected').text(),
-						// // qu:$('#quAlter option:selected').text(),
-						// city:$('#sel-provanceAlter option:selected').text()
-						
-						{"_id":quondamID,"data":JSON.stringify({
+					$.post(erp.baseUrl+'Alteraddress',{
+							"_id":quondamID,"data":JSON.stringify({
 							address:$('#addressAlter').val(),
 							name:$('#nameAlter').val(),
 							phoneNum:$('#mobileAlter').val(),
 							// shi:$('#shiAlter option:selected').text(),
 							// qu:$('#quAlter option:selected').text(),
+							shi:$('#shi').val(),
+							qu:$('#qu').val(),
 							city:$('#sel-provanceAlter option:selected').text()
 						})
 					},function(response){
@@ -117,8 +175,8 @@ require(['config'],function(){
 						// console.log(response)
 					})
 					
-					
 				}
+
 				backAddress();
 				location.reload();
 			})
@@ -131,6 +189,8 @@ require(['config'],function(){
 				$('#mobile').val(''),
 				// $('#shi option:selected').text(''),
 				// $('#qu option:selected').text(''),
+				$('#shi').val(''),
+				$('#qu').val(''),
 				$('#sel-provance option:selected').text('北京市')
 			});
 

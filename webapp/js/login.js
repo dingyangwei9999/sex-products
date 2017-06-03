@@ -7,9 +7,14 @@ require(['config'],function(){
 				window.location.href='register.html'
 			})
 
+			// 点击返回 返回首页
+			$('.back').click(function(){
+				window.location.href='../index.html'
+			})
+
 			// 点击验证码登录
 			$('.loginCode').click(function(){
-				alert('暂不支持此功能')
+				// alert('暂不支持此功能')
 			})
 
 			// 表单字体颜色变回黑色

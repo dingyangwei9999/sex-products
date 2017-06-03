@@ -95,7 +95,7 @@ img {
         font-size: 16px; }
         #container main .line .inline input, #container main .line .inline select {
           border: 0;
-          height: 90%;
+          height: 70%;
           position: relative;
           top: -0.125rem;
           margin-left: 0.3125rem;
@@ -105,13 +105,13 @@ img {
         #container main .line .inline option {
           font-size: 12px; }
         #container main .line .inline .date {
-          margin-left: 0.0rem;
-          top: -0.09375rem; }
+          margin-left: 0.25rem;
+          top: -0.15625rem; }
         #container main .line .inline .genderRadio {
           top: 0.09375rem; }
         #container main .line .inline .gengder {
           position: relative;
-          top: -0.25rem;
+          top: -0.09375rem;
           left: -0.21875rem; }
         #container main .line .inline .phone {
           color: #D0D0D0;
@@ -122,7 +122,7 @@ img {
     #container section .modification_btn {
       height: 100%;
       width: 100%;
-      background: #31cd00;
+      background: #00b5ca;
       color: #fff;
       border-radius: 0.1875rem;
       border: 0;
