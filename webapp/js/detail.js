@@ -1,9 +1,8 @@
 require(['config'],function(){
 	require(['jquery','sideshow','global'],function(){		
 	 	// 拿取传参的参数
-		var i=0;
-		// 有值的时候就显示，没有就不显示
 		var data_name = location.search.substring(1).slice(4);
+		var i=0;
 		//获得sessionStorage中的商品信息
 		var goods = sessionStorage.getItem('goods');
 		//假如有则解析，没有则给空数组
@@ -12,10 +11,10 @@ require(['config'],function(){
 			console.log(goods)
 			 	if (item._id === data_name ) {
 			 		i = item.count;
+			 		// 有值的时候就显示，没有就不显示
 			 		if(i>0){
 						$('#btn_addCart').show();
 						session(i)
-						console.log(9999)
 					}else{
 						$('#btn_addCart').hide();
 					}
@@ -47,7 +46,6 @@ require(['config'],function(){
 	 	// 跳转到购物车
 	 	$('.detail_cart').on('click',function(){
 	 		location.href=erp.htmlUrl+"shoppingCart.html"
-	 		shop_session();
 	 	})
 	 	$('#fun_shou').click(function(){
 	 		location.href =	erp.webappUrl+ "index.html"
@@ -73,7 +71,7 @@ require(['config'],function(){
 		 });
 
 		// 返回上一级按钮
-		$('.pic_left').on('click',function(){
+		$('.pic_left').on('touchstart',function(){
 			window.history.back(-1);
 			// window.history.go(-1);
 		})
@@ -111,39 +109,42 @@ require(['config'],function(){
 	 	})
 		 // 加入购物车
 		var btn_addshoppCart=$('.addCart');
-		//  // 点击加入购物车出现的小按钮
+		// 点击加入购物车出现的小按钮
 	 	$('#btn_add').on('click',function(){
 	 		$(this).prev('input').text(function(){
 	 			i = ++this.value;
 	 			return i;
 	 		})
 	 		session(i);
-	 	});
-	 	// 减少
+	 		shop_session();
+	 	});		
+	 	// 减少按钮
 	 	$('#btn_reduce').on('click',function(){
 	 		i--;
 	 		if(i<1){
 	 			return 1
 	 		}
 	 		session(i);
+	 		shop_session();
 	 	});
 	 	// 确认按钮
 		$('.bottom_confim').click(function(){
 			$('#btn_addCart').css('display','block');
 			$('.detail_bottom').hide();
 			$('.detail_pic').hide();
-			// $('bottom_total').val(i);
+			$('bottom_total').val(i);
 			session(i);
 		})
+
 		// 加入购物车
-		btn_addshoppCart.on('click',function(){console.log(i)  
+		btn_addshoppCart.on('click',function(){
 			i++;
 		 	$('#btn_addCart').show();
 		 	$('.success').stop(true).show(200).delay(400).hide(300);
-			// shop_session();
+			shop_session();
 			session(i);
 		})
-		// 重写session
+		// 重写数值session
 		function session(i){
 			$('#btn_addCart').text(i);
 			$('#bottom_total').val(i);
@@ -156,7 +157,6 @@ require(['config'],function(){
 		})
 
 		var shop_preview;
-
 		// 数据的拿取
 		$.ajax({
 				url: erp.baseUrl + 'getProductsById',

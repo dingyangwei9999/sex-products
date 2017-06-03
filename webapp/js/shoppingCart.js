@@ -11,7 +11,7 @@ require(['config'],function(){
 		var  ObjArr =[];
 		var goods = window.sessionStorage.getItem('goods');
 		goods = goods ? JSON.parse(goods) : [];
-		console.log(goods);
+		console.log(goods[0]);
 			if (goods[0]) {
 				$('.no_shop').hide();
 			}else{
@@ -69,8 +69,9 @@ require(['config'],function(){
 			});
 		});
 		// 返回上一级按钮
-		$('.icon-jinlingyingcaiicon01').click(function(){
+		$('header h3').on('touchstart',function(){
 			window.history.back(-1);
+			console.log(9999)
 		})
 		// 删除按钮
 		$('.del').click(function(){
@@ -124,9 +125,15 @@ require(['config'],function(){
 		//全选按钮
 		$('.check_all').click(function() {
 			var allCheckBtn = $('.pic_cart i');
-			allCheckBtn.each(function(index,item){
-				$(item).removeClass('check').addClass('checkon');
-			});
+			if ($('.check_all i').hasClass('check')) {
+				allCheckBtn.each(function(index,item){
+					$(item).removeClass('check').addClass('checkon');
+				});
+			}else{
+				allCheckBtn.each(function(index,item){
+					$(item).removeClass('checkon').addClass('check');
+				});
+			}	
 			calcResult();
 		});
 
@@ -179,7 +186,7 @@ require(['config'],function(){
 			}
 			kong();
 		})
-		// 购物车清空
+		// 购物车没有商品显示购物车为空
 		function kong(){
 			if($('li[_id]').length===0){
 				$('.no_shop').show();
@@ -201,8 +208,6 @@ require(['config'],function(){
 			});	
 			sessionStorage.setItem('goods',JSON.stringify(goods));
 		}
-
-
 		console.log(window.sessionStorage.getItem('indent'));
 	});
 });
