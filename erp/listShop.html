@@ -25,6 +25,89 @@
     body{
     min-width: 1200px;
   }
+  .layer{
+    position: fixed;
+    width: 100%;
+    height:100%;
+    background-color: rgba(0,0,0,.88);
+    z-index: 10;
+  }
+  .popup{
+    display: none;
+  }
+  .closeWindow{
+    position: fixed;
+    top:100px;
+    right:50px;
+    z-index: 20;
+  }
+  .editShopTip{
+    position: fixed;
+    z-index: 11;
+    width:1000px;
+    left:50%;
+    top:50%;
+    margin-left: -450px;
+    margin-top:-180px;
+  }
+  .editShopTip .img{
+    float: left;
+    width: 25%;
+    height:250px;
+    background-size:contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  .priceSundry{
+    float: left;
+    width:75%;
+  }
+  .editShopTip p:nth-of-type(1){
+    display: block;
+    /*margin-top: 30px;*/
+  }
+  .editShopTip p:nth-of-type(3){
+    display: block;
+  }
+  .editShopTip p.title input{
+    width:470px;
+  }
+  .editShopTip p.title{
+    width:700px;
+  }
+  .editShopTip p{
+    margin:10px 0;
+    font-size: 12px;
+    padding-left: 40px;
+    color:#fff;
+    width:315px;
+    display: inline-block;
+  }
+  
+  .editShopTip input{
+    color: #000;
+  }
+  .details{
+    margin-top:280px;
+  }
+  .details p{
+    width: 100%;
+    margin:10px 0;
+  }
+  .details p input{
+    width:605px;
+  }
+  .priceSundry .t_del{
+    position: fixed;
+    top:180px;
+    right:-110px;
+  }
+  .priceSundry ._id{
+    font-weight: bolder;
+  }
+  .priceSundry .js_delShop{
+    padding: .625em 1em;
+  }
 </style>
 
 
@@ -32,6 +115,33 @@
 
 <body>
 <header class="am-topbar admin-header"></header>
+
+<!-- 修改商品信息时的弹窗 -->
+<div class="popup">
+  <div class="layer"></div>
+  <div class="am-btn am-btn-success closeWindow">关闭</div>
+  <div class="editShopTip">
+  <!--  -->
+    <!-- <div class="img"></div> -->
+ <!--    <div class="priceSundry">
+      <p class="_id">商品名ID：${elem._id}</p>
+      <p class="t_del"><span class="am-btn am-btn-default am-btn-xs am-text-danger am-round" id="btn_del"><i class="am-icon-trash-o">双击删除该商品</i></span></p>
+      <p class="title">商品名称：<input type="text" name="" value="${elem.title}" id="resetSty"><button class="am-btn am-btn-default am-btn-xs am-text-secondary am-round" data-am-modal="{target: '#my-popups'}" title="修改库存信息"><span class="am-icon-pencil-square-o"></span></button></p>
+      <p class="price">价格：<input type="text" name="" class="numtype" value="${elem.price}" id="resetSty"><button class="am-btn am-btn-default am-btn-xs am-text-secondary am-round" data-am-modal="{target: '#my-popups'}" title="修改库存信息"><span class="am-icon-pencil-square-o"></span></button></p>
+      <p class="ori_price">原&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;价：<input type="text" name="" class="numtype" value="${elem.ori_price}" id="resetSty"><button class="am-btn am-btn-default am-btn-xs am-text-secondary am-round" data-am-modal="{target: '#my-popups'}" title="修改库存信息"><span class="am-icon-pencil-square-o"></span></button></p>
+      <p class="repertory">库存：<input type="text" name="" class="numtype" value="${elem.repertory}" id="resetSty"><button class="am-btn am-btn-default am-btn-xs am-text-secondary am-round" data-am-modal="{target: '#my-popups'}" title="修改库存信息"><span class="am-icon-pencil-square-o"></span></button></p>
+      <p class="sales">销&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;量：<input type="text" name="" class="numtype" value="${elem.sales}" id="resetSty"><button class="am-btn am-btn-default am-btn-xs am-text-secondary am-round" data-am-modal="{target: '#my-popups'}" title="修改库存信息"><span class="am-icon-pencil-square-o"></span></button></p>
+      <p class="freight">运费：<input type="text" name="" class="numtype" value="${elem.freight}" id="resetSty"><button class="am-btn am-btn-default am-btn-xs am-text-secondary am-round" data-am-modal="{target: '#my-popups'}" title="修改库存信息"><span class="am-icon-pencil-square-o"></span></button></p>
+    </div> -->
+    <!-- <div class="details">              
+      <p class="classify">分&nbsp;&nbsp;&nbsp;&nbsp;类(多个用空格或逗号分隔)：<input type="text" name="" value="${elem.classify}" id="resetSty"><button class="am-btn am-btn-default am-btn-xs am-text-secondary am-round" data-am-modal="{target: '#my-popups'}" title="修改库存信息"><span class="am-icon-pencil-square-o"></span></button></p>
+      <p class="keyword">关键字(多个用空格或逗号分隔)：<input type="text" name="" value="${elem.keyword}" id="resetSty"><button class="am-btn am-btn-default am-btn-xs am-text-secondary am-round" data-am-modal="{target: '#my-popups'}" title="修改库存信息"><span class="am-icon-pencil-square-o"></span></button></p>
+       <p class="prefecture">专&nbsp;&nbsp;&nbsp;&nbsp;区(多个用空格或逗号分隔)：<input type="text" name="" value="${elem.prefecture}" id="resetSty"><button class="am-btn am-btn-default am-btn-xs am-text-secondary am-round" data-am-modal="{target: '#my-popups'}" title="修改库存信息"><span class="am-icon-pencil-square-o"></span></button></p>
+    </div> -->
+    <!--  -->
+  </div>
+</div>
+
 
 <div class="am-cf admin-main"> 
 
@@ -120,7 +230,7 @@
           <table width="100%" class="am-table am-table-bordered am-table-radius am-table-striped">
             <thead>
               <tr class="am-success">
-                <th class="table-check"><input type="checkbox" /></th>
+                <!-- <th class="table-check"><input type="checkbox" /></th> -->
                 <th class="preview">预览图</th>
                 <th class="_id">ID</th>
                 <th class="title">商品名</th>
@@ -129,10 +239,10 @@
                 <th class="repertory">库存</th>
                 <th class="sales">销量</th>
                 <th class="freight">运费</th>
-                <th class="classify">分类<span style="font-size: 12px">(空格/逗号分隔)</span></th>
-                <th class="keyword">关键字<span style="font-size: 12px">(空格/逗号分隔)</span></th>
-                <th class="prefecture">专区<span style="font-size: 12px">(空格/逗号分隔)</span></th>
-                <th class="delete">删除</th>
+                <th class="classify">分类<span style="font-size: 12px"></span></th>
+                <!-- <th class="keyword">关键字<span style="font-size: 12px">(空格/逗号分隔)</span></th> -->
+                <!-- <th class="prefecture">专区<span style="font-size: 12px">(空格/逗号分隔)</span></th> -->
+                <th class="delete">操作</th>
               </tr>
             </thead>
             <tbody id="tbody">
@@ -187,7 +297,7 @@
  
  <div class="foods">
   <ul>
-    版权所有@2015. 模板收集自 <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> -  More Templates<a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a>
+    版权所有@2017 浙江情趣用品
   </ul>
   <dl>
     <a href="" title="返回头部" class="am-icon-btn am-icon-arrow-up"></a>
