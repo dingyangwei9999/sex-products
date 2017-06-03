@@ -147,7 +147,7 @@ require(['config'],function(){
 		function session(i){
 			$('#btn_addCart').text(i);
 			$('#bottom_total').val(i);
-			$('#staNum').text('数量为'+i);
+			$('#staNum').text('数量为 : '+i);
 		}
 		// 点击更多的按钮
 		var btn_evenmore = $('.btn_more');

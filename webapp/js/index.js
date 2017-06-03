@@ -176,13 +176,28 @@ require(['config'],function(){
 		    });
 
 
-		    //nav-list的 a标签localhost更改为erp
-		    var $nav_list_A = $('.nav-list a');
+		  //   //nav-list的 a标签localhost更改为erp
+		  //   var $nav_list_A = $('.nav-list a');
 
-		    $nav_list_A.each(function(index,item){
-				$(item).attr('href',erp.htmlUrl + $(item).attr('href'));
-		    });
+		  //   $nav_list_A.each(function(index,item){
+		  //   	console.log(item)
+				// $(item).attr('href',erp.htmlUrl + $(item).attr('href'));
+		  //   });
 
+		    //tab标签的点击跳转页面
+		    
+		    $('.nav-list .first a').click(function(){
+		    	location.href=erp.htmlUrl + 'classify.html';
+		    })
+		    $('.nav-list .second a').click(function(){
+		    	location.href=erp.htmlUrl + 'classify_type.html?_type=热门专区';
+		    })
+		    $('.nav-list .third a').click(function(){
+		    	location.href=erp.htmlUrl + 'classify_type.html?_type=限时抢购';
+		    })
+		    $('.nav-list .forth a').click(function(){
+		    	location.href=erp.htmlUrl + 'classify_type.html?_type=女性专区';
+		    })
 		    //读取数据
 		    $.ajax({
 				url: erp.baseUrl + 'getProductsByArr',
@@ -254,11 +269,12 @@ require(['config'],function(){
 							dataType: 'json',
 							// async:false,
 							success:function(response){
+								console.log(response);
 								var a;
 								var female =`
 								<div class="prefectureDiv">
 						 			<h3>${elem}
-										<a href="${erp.htmlUrl}classify_female.html">更多&nbsp;&nbsp;>
+										<a href="${erp.htmlUrl}classify_type.html?_type=${response[0].prefecture}">更多&nbsp;&nbsp;>
 						 				</a>
 						 			</h3>
 						 			<div class="pic">
