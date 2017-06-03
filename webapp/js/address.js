@@ -11,8 +11,8 @@ require(['config'],function(){
 						console.log(item)
 						var cname = 'adressRecord'+index;
 						
-						return `<div class="adressRecord">
-								    <div class="moren clearfix"><p style="color:${item.default}" class="${item.cname}">${item.has}</p><i class="iconfont icon-shouhuodizhiguanli" style="color:${item.default}"></i></div>
+						return `<div class="adressRecord ${cname}">
+								    <div class="moren clearfix"><p style="color:${item.default}" class="${item.classname}">${item.has}</p><i class="iconfont icon-shouhuodizhiguanli" style="color:${item.default}"></i></div>
 								    <div>
 								        <div class="inner">
 								           <div>${item.address}</div>
@@ -88,7 +88,7 @@ require(['config'],function(){
 							"data":JSON.stringify({
 							default:'#72CB62',
 							has:'默认',
-							cname:'has2'
+							classname:'has2'
 						})
 					},function(response){
 						// console.log(response)
@@ -101,7 +101,7 @@ require(['config'],function(){
 								"data":JSON.stringify({
 								default:'#ccc',
 								has:'设为默认',
-								cname:'has'
+								classname:'has'
 							})
 						},function(response){
 							// console.log(response)
@@ -149,7 +149,7 @@ require(['config'],function(){
 						city:$('#sel-provance option:selected').text(),
 						default:'#ccc',
 						has:'设为默认',
-						cname:'has'
+						classname:'has'
 
 					},function(response){
 						// alert(response.message);
