@@ -4,6 +4,9 @@ require(['config'],function(){
 
 			$('.footer').load(erp.htmlUrl+'footer.html');
 
+			$('.searchKeyword').on('touchstart','a',function(){
+					window.location.href=erp.htmlUrl + 'classify_search.html?keyword=' + $(this).text();
+			})
 
 			//搜索框传递参数跳转到搜索页面
 			$('.searchSubmit').click(function(){
@@ -30,7 +33,7 @@ require(['config'],function(){
 			var $sec=$('.sec')
 
 
-			var end = Date.parse('2017/6/3 11:27:10');
+			var end = Date.parse('2017/6/4 11:27:10');
 			
 
 			// 页面进入时先执行一次
