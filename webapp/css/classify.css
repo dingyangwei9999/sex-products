@@ -208,12 +208,12 @@ img {
       height: 1.84375rem;
       line-height: 1.84375rem;
       text-align: center;
-      font-size: 5px;
+      font-size: 12px;
       border-bottom: 0.03125rem solid #fff;
       font-weight: bold;
       color: #6767fe; }
       .main .classfy_name ul li i {
-        font-size: 6px;
+        font-size: 12px;
         margin-right: 1px; }
   .main .pro_show {
     overflow: hidden;
@@ -232,7 +232,7 @@ img {
           float: right;
           height: 0.925rem;
           line-height: 0.625rem;
-          font-size: 8px;
+          font-size: 12px;
           color: #FD19AE; }
       .main .pro_show .proarea .everypro {
         float: left;
@@ -247,7 +247,7 @@ img {
           height: 3.125rem; }
         .main .pro_show .proarea .everypro .productname {
           color: #333;
-          font-size: 5px;
+          font-size: 12px;
           margin-top: 0.3125rem;
           text-align: center;
           padding: 0 0.0625rem;
@@ -260,7 +260,7 @@ img {
           color: #FD19AE;
           height: 20px;
           line-height: 0.625rem;
-          font-size: 9px;
+          font-size: 12px;
           margin-top: 0.15625rem; }
         .main .pro_show .proarea .everypro p > span {
           color: #000; }
