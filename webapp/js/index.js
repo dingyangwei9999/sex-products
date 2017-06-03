@@ -106,7 +106,7 @@ require(['config'],function(){
 		        if (scrollTop>=100) {
 
 		        	$searchs.stop().animate({width:'90%'},500)
-		        	$search.css('backgroundColor','#FFBFBF')
+		        	$search.css('backgroundColor',$main_color)
 		        }else{
 		        	$searchs.stop().animate({width:'25%'},500)
 		        	$search.css('backgroundColor','')
