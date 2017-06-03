@@ -125,9 +125,15 @@ require(['config'],function(){
 		//全选按钮
 		$('.check_all').click(function() {
 			var allCheckBtn = $('.pic_cart i');
-			allCheckBtn.each(function(index,item){
-				$(item).removeClass('check').addClass('checkon');
-			});
+			if ($('.check_all i').hasClass('check')) {
+				allCheckBtn.each(function(index,item){
+					$(item).removeClass('check').addClass('checkon');
+				});
+			}else{
+				allCheckBtn.each(function(index,item){
+					$(item).removeClass('checkon').addClass('check');
+				});
+			}	
 			calcResult();
 		});
 
