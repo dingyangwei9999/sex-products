@@ -90,15 +90,19 @@ article form {
     article form p .findPassword {
       margin-right: 5.5%;
       float: right; }
+  article form .back {
+    float: left;
+    margin-left: 5.5%;
+    color: #ccc; }
   article form .loginCode {
     float: right;
     margin-right: 5.5%; }
   article form .login_btn {
-    width: 89%;
+    width: 92%;
     height: 1.25rem;
     margin-top: 0.859375rem;
-    margin-left: 5.5%;
-    margin-right: 5.5%;
+    margin-left: 4%;
+    margin-right: 4%;
     color: #fff;
     background: #00b5ca;
     border: none;

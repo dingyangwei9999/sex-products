@@ -101,6 +101,7 @@ require(['config'],function(){
 		        }
 
 		        if (scrollTop>=100) {
+
 		        	$searchs.stop().animate({width:'90%'},500)
 		        	$search.css('backgroundColor',$main_color)
 		        }else{
@@ -163,8 +164,9 @@ require(['config'],function(){
 		    	$warp.fadeIn();
 		    });
 		    $close.click(function(){
-		    	$container.fadeIn();
-		    	$warp.fadeOut();
+		    	// $container.fadeIn();
+		    	// $warp.fadeOut();
+		    	window.location.reload();
 		    });
 
 		    //placeholder文字隐藏
@@ -174,6 +176,7 @@ require(['config'],function(){
 		    $('.searchText').blur(function(){
 		    	$('.searchText').attr('placeholder','情趣内衣')
 		    });
+
 
 
 		  //   //nav-list的 a标签localhost更改为erp
@@ -198,6 +201,7 @@ require(['config'],function(){
 		    $('.nav-list .forth a').click(function(){
 		    	location.href=erp.htmlUrl + 'classify_type.html?_type=女性专区';
 		    })
+
 		    //读取数据
 		    $.ajax({
 				url: erp.baseUrl + 'getProductsByArr',
@@ -206,13 +210,15 @@ require(['config'],function(){
 				dataType: 'json',
 				// async:false,
 				success:function(response){
+					console.log('---------');
+					// console.log(response)
 					var res = response.map(function(item){
-						
+						console.log(item)
 						var reduce=parseInt(item.ori_price - item.price);
 						return `
 							<li>
 								<a href="${erp.htmlUrl}detail.html?_id=${item._id}">
-									<img src="../../upload/${item.preview}" alt="">
+									<img src="${erp.baseUrl}upload/${item.preview}" alt="">
 								</a>
 			 					<p>￥${item.price}</p>
 			 					<p><s>￥${item.ori_price}</s></p>
@@ -261,6 +267,7 @@ require(['config'],function(){
 					});
 					prefecture.forEach(function(elem){
 						//此处elem就是需要查询专区 (如女性专区)
+						console.log(elem);
 						$.ajax({
 							url: erp.baseUrl + 'getProductsAdvanced',
 							type: 'post',
@@ -293,7 +300,7 @@ require(['config'],function(){
 									}
 									return `
 				 						<a href="${erp.htmlUrl}detail.html?_id=${item._id}" class="${a}">
-					 						<img src="../../upload/${item.preview}" alt="">
+					 						<img src="${erp.baseUrl}upload/${item.preview}" alt="">
 					 					</a>
 										`;
 								}).join('');
@@ -323,7 +330,7 @@ require(['config'],function(){
 						// console.log(sale)			
 						return `<div class="prlist">
 					 				<a href="${erp.htmlUrl}detail.html?_id=${item._id}">
-					 					<img src="../../upload/${item.preview}" alt="">
+					 					<img src="${erp.baseUrl}upload/${item.preview}" alt="">
 					 					<p class="detail">${item.title}</p>
 					 					<p class="price">￥${item.price}
 											<span class="sale">

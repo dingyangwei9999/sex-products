@@ -8,6 +8,9 @@ require(['config'],function(){
 			$('input').keyup(function(){
 				$(this).css({color:'#000'});
 			})
+			$('form a').on('touchstart',function(){
+				window.location.href='resgisterProtocol.html'
+			})
 
 			// 点击注册，发送表单数据验证
 			$('.register_btn').click(function(){

@@ -41,7 +41,7 @@ exports.Register = function(app){
 
 // 客户端注册 普通用户
 	app.post('/register',urlencodedParser, function(request, response){
-		console.log(request.body)
+		// console.log(request.body)
 		db.exists('sexUser', request.body,['phone'], function(data){
 			
 			if(data.length > 0){
@@ -66,7 +66,7 @@ exports.Register = function(app){
 	// sexAdmin是管理员登录的集合名（表名）
 	app.post('/loginAdmin', urlencodedParser, function(request, response){
 		db.exists('sexAdmin', request.body,['adminAccounts','password'], function(data){
-			console.log(request.body);
+			// console.log(request.body);
 			if(data.length > 0){
 				request.session.adminAccounts = request.body.adminAccounts;
 				response.send(apiResult(true,'',data))
@@ -79,7 +79,7 @@ exports.Register = function(app){
 
 	// 后台注册 管理员用户
 	app.post('/registerAdmin',urlencodedParser, function(request, response){
-		console.log(request.body,'=====')
+		// console.log(request.body,'=====')
 		db.exists('sexAdmin', request.body,['adminAccounts'], function(data){
 			
 			if(data.length > 0){
