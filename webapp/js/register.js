@@ -1,7 +1,10 @@
 require(['config'],function(){
 	require(['jquery','global'],function(){
 		$(function(){
-			//
+			//返回登陆界面
+			$('.backToLogin').on('touchstart',function(){
+				window.location.href='login.html'
+			})
 			
 
 			// 表单字体颜色变回黑色

@@ -153,9 +153,9 @@ require(['config'],function(){
 			//计算价格
 			$liGather.each(function(index,item){
 				var $self = $(item);
-				var $itemPrice = Number($self.find('.price').text());
-				var $itemCount = Number($self.find('.num_text').val());
-				// console.log($itemCount)
+				$itemPrice = Number($self.find('.price').text());
+				$itemCount = Number($self.find('.num_text').val());
+				console.log($itemCount)
 				totlaPrice += ($itemPrice*$itemCount);
 				totalShop += $itemCount;
 				// console.log(totlaPrice)

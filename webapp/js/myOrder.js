@@ -46,7 +46,7 @@ require(['config'],function(){
 			// 	}];
 			var daifukuan_arr = JSON.parse(sessionStorage.getItem('indent'));
 			all_arr['daifukuan_arr']=daifukuan_arr;
-			// console.log(all_arr)
+			console.log(all_arr)
 
 			//如果调取的数据不为空，则隐藏 当前界面的nothing
 			// var arr=[
@@ -90,12 +90,12 @@ require(['config'],function(){
 				// console.log(2111)
 				// $('.all .nothing').css({display:'none'});
 				var res=all_arr['daifukuan_arr'].map(function(item){
-					var totalPrice=item.qty*item.price;
+					var totalPrice=(item.qty*item.price).toFixed(2);
 					return `<div class="order_main">
-						        <div class="title">${item.orderNum}<span>${item.orderStatus}</span></div>
+						        <div class="title">订单号：${item.orderNum}<span>${item.ourderstatus}</span></div>
 						        <div class="goods">
 						            <div>
-						            	<img src="${item.img}">
+						            	<img src="${erp.baseUrl}upload/${item.img}">
 						            </div>
 						            <div>
 						                <div class="inner">

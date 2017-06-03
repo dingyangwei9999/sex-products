@@ -14,8 +14,14 @@ require(['config'],function(){
 
 			// 点击验证码登录
 			$('.loginCode').click(function(){
-				// alert('暂不支持此功能')
+				alert('暂不支持此功能')
 			})
+			// 点击找回密码
+			$('.findPassword').click(function(){
+				alert('找回密码?');
+				alert('不存在的')
+			})
+			
 
 			// 表单字体颜色变回黑色
 			$('input').keyup(function(){

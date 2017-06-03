@@ -84,6 +84,11 @@ body {
       color: #bebebe; }
       body article form p span {
         margin-left: 0.46875rem; }
+      body article form p .backToLogin {
+        margin-left: 2rem;
+        text-decoration: underline;
+        color: #FFBFBF;
+        font-weight: bold; }
     body article form .register_btn {
       width: 89%;
       height: 1.25rem;

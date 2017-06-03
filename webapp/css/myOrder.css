@@ -144,7 +144,9 @@ img {
             width: 1.3125rem;
             height: 1.3125rem; }
           #container .main .order_main .goods > div .name {
-            margin-left: 0.25rem; }
+            width: 5.0rem;
+            margin-left: 0.25rem;
+            font-size: 13px; }
         #container .main .order_main .goods .price {
           float: right;
           color: #666;
