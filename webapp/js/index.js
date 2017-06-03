@@ -3,6 +3,18 @@ require(['config'],function(){
 		$(function(){
 			$('.footer').load(erp.htmlUrl+'footer.html');
 
+<<<<<<< HEAD
+=======
+			//搜索框传递参数跳转到搜索页面
+			$('.searchSubmit').click(function(){
+
+				var $value=$('.searchText').val();
+				if ($value==='') {
+					$value='无';
+				}
+				location.href=erp.htmlUrl + 'classify_search.html' + '?keyword=' + $value
+			})
+>>>>>>> 2519828a87a4ff21f18a6539f6c4bb312d0d4160
 			//轮播图
 			var mySwiper=new Swiper('.swiper-container',{
 				loop : true,
@@ -211,6 +223,7 @@ require(['config'],function(){
 				success: function(response){
 				    //得到数据库中首页的专区
 	    			var prefecture = [];
+	    			console.log(response);
 	    			//遍历response以获得专区
 					response.forEach(function(item){
 						prefecture = item.prefecture;
@@ -433,6 +446,7 @@ require(['config'],function(){
 					$('.you_like h3').after(all)
 				}
 			})
+
 
 			//页面的数据传参
 			// var obj = {

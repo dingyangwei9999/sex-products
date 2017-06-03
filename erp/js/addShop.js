@@ -43,11 +43,11 @@ require(['config'],function(){
 				//信息填写完整继续执行
 				var newShop = {};
 				newShop.title = $('#title').val();
-				newShop.price = $('#price').val();
-				newShop.ori_price = $('#ori_price').val();
-				newShop.freight = $('#freight').val();
-				newShop.sales = $('#sales').val();
-				newShop.repertory = $('#repertory').val();
+				newShop.price = Number($('#price').val());
+				newShop.ori_price = Number($('#ori_price').val());
+				newShop.freight = Number($('#freight').val());
+				newShop.sales = Number($('#sales').val());
+				newShop.repertory = Number($('#repertory').val());
 				//分别将关键字和分类变换成数组
 				var keyword = $('#keyword').val();
 				var classify = $('#classify').val();

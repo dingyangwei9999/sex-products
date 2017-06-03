@@ -149,6 +149,9 @@ body::-webkit-scrollbar {
     height: 2.5rem;
     background: #fff;
     border-radius: 0.15625rem; }
+    #container .detail_bottom .bottom_info .info_left > img {
+      height: 100%;
+      width: 100%; }
   #container .detail_bottom .bottom_info .info_right {
     position: absolute;
     left: 3.4375rem;
@@ -203,11 +206,13 @@ body::-webkit-scrollbar {
         height: 1.0625rem;
         float: right;
         margin-right: 0.3125rem; }
-        #container .detail_bottom .bottom_other .number .num #btn_reduce {
+        #container .detail_bottom .bottom_other .number .num #btn_reduce, #container .detail_bottom .bottom_other .number .num #btn_add {
           width: 1.09375rem;
           border: none;
           float: left;
-          height: 1.0625rem; }
+          color: #333;
+          height: 1.0625rem;
+          background: #eee; }
         #container .detail_bottom .bottom_other .number .num #bottom_total {
           width: 1.25rem;
           display: block;
@@ -216,13 +221,6 @@ body::-webkit-scrollbar {
           height: 1.0625rem;
           line-height: 1rem;
           float: left; }
-        #container .detail_bottom .bottom_other .number .num #btn_add {
-          width: 1.09375rem;
-          height: 1.0625rem;
-          border: none;
-          color: #333;
-          float: right;
-          background: #eee; }
   #container .detail_bottom .bottom_confim {
     width: 100%;
     background: #FD19AE;
