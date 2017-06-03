@@ -1,19 +1,23 @@
 require(['config'],function(){
 	require(['jquery','swiper','global'],function(){
 		$(function(){
-			$('.footer').load(erp.htmlUrl+'footer.html');
+			$('.footer').load(erp.htmlUrl+'footer.html')
+			
+
+
 			//轮播图
 			var mySwiper=new Swiper('.swiper-container',{
 				loop : true,
 				autoplay :2000,
 				pagination : '.swiper-pagination'
 			})
+
 			//倒计时
 			var $hour=$('.hour')
 			var $min=$('.min')
 			var $sec=$('.sec')
 
-			var end = Date.parse('2017/5/28 07:34:10');
+			var end = Date.parse('2017/6/3 11:27:10');
 			
 
 			// 页面进入时先执行一次
@@ -57,16 +61,30 @@ require(['config'],function(){
 
 				$hour.text(hourLeft);
 				$min.text(minLeft);
-				$sec.text(secLeft)
+				$sec.text(secLeft);
+
+				if (offsetTime <=0) {
+					$hour.text('0' + '0');
+					$min.text('0' + '0');
+					$sec.text('0' + '0')
+				}
+
 			 }
 
-			 //滚动一定距离出现顶部的按钮	 
+
+			//滚动一定距离出现顶部的按钮	 
 			var $btn=$('.toTop');
 			var $main=$('.main');
 			var $search = $('.searchFirst')
 			var $searchs = $('.searchfix')
 		    var $kuan = $('.search');
 
+		    //猜你喜欢请求起始值
+		    var skip = 0;
+		    //每次拿数据的数量
+		    var limit = 4;
+		    //标记只能允许一个ajax请求
+		    var timeoutFlat = true,responseLength = limit;
 		    $main.scroll(function(){
 		        var  scrollTop=  $main.scrollTop();
 		        if(scrollTop>200){
@@ -81,6 +99,42 @@ require(['config'],function(){
 		        }else{
 		        	$searchs.stop().animate({width:'25%'},500)
 		        	$search.css('backgroundColor','')
+		        }
+		        if(scrollTop >= $('.you_like').height() - $('.main').innerHeight() + 2300){
+		        	console.log(true,'--');
+		        	if(timeoutFlat && !(responseLength < limit)){
+		        		timeoutFlat = false;
+		        		setTimeout(function(){
+		        			timeoutFlat = true;
+		        			$.ajax({
+								url: erp.baseUrl + 'getProductsAdvanced',
+								type: 'post',
+								data: {"skip":skip,"limit":limit},
+								dataType: 'json',
+								// async:false,
+								success:function(response){
+									skip += limit;
+									responseLength = response.length;
+									var all = response.map(function(item){	
+										var sale = '已售' + ' ' + item.sales;			
+										return `<div class="prlist">
+									 				<a href="${erp.htmlUrl}detail.html?_id=${item._id}">
+									 					<img src="../../upload/${item.preview}" alt="">
+									 					<p class="detail">${item.title}</p>
+									 					<p class="price">￥${item.price}
+															<span class="sale">
+																${sale}
+															</span>
+									 					</p>
+									 				</a>
+									 			</div>`
+									}).join('')
+									$('.you_like').append(all)
+								}
+							})
+		        		},200);
+		        	}
+    				
 		        }
 		    });
 			 //返回顶部按钮
@@ -114,7 +168,7 @@ require(['config'],function(){
 
 		    //nav-list的 a标签localhost更改为erp
 		    var $nav_list_A = $('.nav-list a');
-		    console.log($nav_list_A)
+		   
 		    $nav_list_A.each(function(index,item){
 				$(item).attr('href',erp.htmlUrl + $(item).attr('href'));
 		    });
@@ -206,6 +260,9 @@ require(['config'],function(){
 										case 1:
 										a = 'second';
 										break;
+										case 2:
+										a = 'third';
+										break;
 									}
 									return `
 				 						<a href="${erp.htmlUrl}detail.html?_id=${item._id}" class="${a}">
@@ -222,160 +279,18 @@ require(['config'],function(){
 			});
 
 
-			// //热门专区数据写入
-			// $.ajax({
-			// 	url: erp.baseUrl + 'getProductsByArr',
-			// 	type: 'post',
-			// 	data: {},
-			// 	dataType: 'json',
-			// 	// async:false,
-			// 	success:function(response){
-			// 		console.log(response)
-			// 		var a;
-			// 		//热门
-			// 		var $hot = $('<div/>').addClass('hot_product')
-			// 		var $h3 = $('<h3>')
-			// 		//套套
-			// 		var $condom = $('<div/>').addClass('condom_product')
-			// 		var $h3 = $('<h3>')
-
-			// 		$h3.text('热门专区')
-			// 		var $picture=$('<div/>').addClass('picture')
-			// 		$hot.prepend($h3)
-			// 		$h3.after($picture)
 			
-			// 		var hot = response.map(function(item,index){
-			// 			if(response[index].classify == '热门专区'){
-							
-			// 				switch(index){
-			// 					case 3:
-			// 					a = 'first';
-			// 					break; 
-			// 					case 4:
-			// 					a = 'second';
-			// 					break;
-			// 				}
-			// 				return `<a href="${erp.htmlUrl}detail.html?_id=${item._id}" class="${a}">
-			//  				<img src="../../upload/${item.listImg[0]}" alt="">
-			//  						</a>`
-			// 			}else if(response[index].classify == '套套专区'){
-			// 				console.log(index)
 
-			// 				switch(index){
-			// 					case 8:
-			// 					a = 'first';
-			// 					break; 
-			// 					case 9:
-			// 					a = 'second';
-			// 					break;
-			// 				}
-			// 				return `<a href="${erp.htmlUrl}detail.html?_id=${item._id}" class="${a}">
-			//  				<img src="../../upload/${item.listImg[0]}" alt="">
-			//  						</a>`
-			// 			}
-			// 		}).join('')
-			// 		$picture.append(hot)
-			// 		$('.time_product').after($hot)
-			// 	}
-			// })
-
-			// //套套专区数据写入
-			// // $.ajax({
-			// // 	url: erp.baseUrl + 'getProductsByArr',
-			// // 	type: 'post',
-			// // 	data: {"classify":'套套专区'},
-			// // 	dataType: 'json',
-			// // 	async:false,
-			// // 	success:function(response){
-			// // 		var a;
-			// // 		// var $condom=$('<div/>').addClass('condom_product')
-			// // 		// var $h3=$('<h3>')
-			// // 		// $h3.text('套套专区')
-			// // 		// var $picture=$('<div/>').addClass('pictures')
-			// // 		// $hot.prepend($h3)
-			// // 		// $h3.after($pictures)
-
-			// // 		var condom = response.map(function(item,index){
-			// // 			switch(index){
-			// // 				case 0:
-			// // 				a = 'first';
-			// // 				break; 
-			// // 				case 1:
-			// // 				a = 'second';
-			// // 				break;
-			// // 			}
-			// // 			return `<a href="${erp.htmlUrl}detail.html?_id=${item._id}" class="${a}">
-		 // // 				<img src="../../upload/${item.listImg[0]}" alt="">
-		 // // 			</a>`
-			// // 		}).join('')
-			// // 		$('.pictures').append(condom)
-			// // 		// $('.time_product').after($condom)
-			// // 	}
-			// // })
-
-			// //女性专区数据写入
-			// $.ajax({
-			// 	url: erp.baseUrl + 'getProductsByArr',
-			// 	type: 'post',
-			// 	data: {"classify":'女性专区'},
-			// 	dataType: 'json',
-			// 	// async:false,
-			// 	success:function(response){
-			// 		var a;
-			// 		var female = response.map(function(item,index){
-			// 			switch(index){
-			// 				case 0:
-			// 				a = 'first';
-			// 				break; 
-			// 				case 1:
-			// 				a = 'second';
-			// 				break;
-			// 			}
-			// 			return `<a href="${erp.htmlUrl}detail.html?_id=${item._id}" class="${a}">
-		 // 				<img src="../../upload/${item.listImg[0]}" alt="">
-		 // 			</a>`
-			// 		}).join('')
-			// 		$('.picture1').append(female)
-			// 	}
-			// })
-
-			// //男性专区数据写入
-			
-			// $.ajax({
-			// 	url: erp.baseUrl + 'getProductsByArr',
-			// 	type: 'post',
-			// 	data: {"classify":'男性专区'},
-			// 	dataType: 'json',
-			// 	// async:false,
-			// 	success:function(response){
-			// 		var a;
-			// 		var male = response.map(function(item,index){
-			// 			switch(index){
-			// 				case 0:
-			// 				a = 'first';
-			// 				break; 
-			// 				case 1:
-			// 				a = 'second';
-			// 				break;
-			// 			}
-			// 			return `<a href="${erp.htmlUrl}detail.html?_id=${item._id}" class="${a}">
-		 // 				<img src="../../upload/${item.listImg[0]}" alt="">
-		 // 			</a>`
-			// 		}).join('')
-			// 		$('.picture2').append(male)
-			// 	}
-			// })
-
-			// //猜你喜欢专区
+			//猜你喜欢专区
 			
 			$.ajax({
 				url: erp.baseUrl + 'getProductsAdvanced',
 				type: 'post',
-				data: {"limit":20},
+				data: {"skip":skip,"limit":limit},
 				dataType: 'json',
 				// async:false,
 				success:function(response){
-				
+					skip += limit;
 					var all = response.map(function(item){	
 						var sale = '已售' + ' ' + item.sales;			
 						return `<div class="prlist">
@@ -390,10 +305,24 @@ require(['config'],function(){
 					 				</a>
 					 			</div>`
 					}).join('')
-					$('.you_like h3').after(all)
+					$('.you_like').append(all)
 				}
 			})
 
+			//搜索功能
+			$('.searchSubmit').click(function(){
+				var $value=$('.searchText').val();
+				if ($value == '') {
+					$value = 'none'
+				}
+				location.href=erp.htmlUrl + 'classify_search.html' + '?keyword=' + $value;
+			})
+			
+			var search = `<a href="">飞机杯</a>`;
+			$('.searchKeyword').append(search)
+			
+
+						
 			//页面的数据传参
 			// var obj = {
 			// 	name:'非洲美女',
